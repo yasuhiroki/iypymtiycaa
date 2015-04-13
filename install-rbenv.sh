@@ -13,9 +13,9 @@ else
 fi
 
 rbenvrc=".rbenvrc"
-grep -sq rbenv ~/${rbenvrc} || echo 'export PATH="$HOME/.rbenv/bin:$PATH"' > ~/${rbenvrc}
-grep -sq rbenv ~/${rbenvrc} || echo 'eval "$(rbenv init -)"' >> ~/${rbenvrc}
-grep -sq rbenv ~/${rbenvrc} || echo 'alias be="bundle exec"' >> ~/${rbenvrc}
+grep -sq '.*PATH.*rbenv.*' ~/${rbenvrc} || echo 'export PATH="$HOME/.rbenv/bin:$PATH"' > ~/${rbenvrc}
+grep -sq '.*rbenv init.*' ~/${rbenvrc} || echo 'eval "$(rbenv init -)"' >> ~/${rbenvrc}
+grep -sq '.*alias.*bundle exec.*' ~/${rbenvrc} || echo 'alias be="bundle exec"' >> ~/${rbenvrc}
 
 grep -sq "${rbenvrc}" ~/.bashrc || echo "source ~/${rbenvrc}" >> ~/.bashrc
 
