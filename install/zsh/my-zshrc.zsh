@@ -15,4 +15,15 @@ alias rb='ruby -e'
 alias rbn='ruby -nae'
 alias rbp='ruby -pae'
 
-alias yy='history -p !! | pbcopy'
+alias yy='fc -ln -1 | pbcopy'
+
+export EDITOR=vim
+
+source ~/.rbenvrc
+[[ -s "~/.gvm/scripts/gvm" ]] && source "~/.gvm/scripts/gvm"
+
+type pbcopy >/dev/null || alias pbcopy='xsel --clipboard --input'
+
+export NODE_PATH=`npm root -g`
+
+type tmux && alias tmux='tmux -2'
