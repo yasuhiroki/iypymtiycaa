@@ -7,4 +7,5 @@ else
 fi
 
 cp $(dirname $0)/tmux/tmux.conf ~/.tmux.conf
+touch ~/.tmux.conf.local
 
