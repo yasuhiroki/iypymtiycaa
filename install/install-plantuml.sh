@@ -10,7 +10,7 @@ mv plantuml.jar ~/mybin
 
 cat <<EOH > ~/mybin/plantuml
 #!/bin/bash
-java -jar $HOME/mybin/plantuml.jar -tsvg $@
+java -jar \$HOME/mybin/plantuml.jar -tsvg \$@
 EOH
 chmod 755 ~/mybin/plantuml
 
