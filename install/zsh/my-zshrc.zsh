@@ -1,7 +1,3 @@
-eval "$(rbenv init -)"
-
-alias be='bundle exec'
-
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
@@ -28,6 +24,6 @@ type pbcopy >/dev/null || alias pbcopy='xsel --clipboard --input'
 
 export NODE_PATH=`npm root -g`
 
-type tmux && alias tmux='tmux -2'
+type tmux >/dev/null && alias tmux='tmux -2'
 
 export PATH="$HOME/mybin:$PATH"
