@@ -18,7 +18,8 @@ else
 fi
 
 rc=".enhancdrc"
-echo "ENHANCD_COMMAND='c'
+echo "Init ${rc}"
+echo "ENHANCD_COMMAND='cd'
 source ~/${install_dir}/enhancd.sh
 " > ~/${rc}
 [ -f ~/.bashrc ] && grep -sq "^source.*${rc}$" ~/.bashrc || echo "source ~/${rc}" >> ~/.bashrc
