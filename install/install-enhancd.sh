@@ -11,11 +11,8 @@ else
     git clone https://github.com/b4b4r07/enhancd.git ~/${install_dir}
 fi
 
-if [ "$(uname)" == 'Darwin' ]; then
-    brew install peco
-else
-    echo "go get github.com/peco/peco/cmd/peco"
-fi
+echo "Install fzf"
+bash $(dirname $0)/install-fzf.sh
 
 rc=".enhancdrc"
 echo "Init ${rc}"

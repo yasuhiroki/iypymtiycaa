@@ -6,8 +6,12 @@ export PATH="/usr/local/heroku/bin:$PATH"
   alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 }
 
-source ~/.caddyrc
-source ~/.enhancdrc
+# Read custom configure
+[ -s ~/.caddyrc ]   && source ~/.caddyrc
+[ -s ~/.enhancdrc ] && source ~/.enhancdrc
+[ -s ~/.fzfrc ]     && source ~/.fzfrc
+[ -s ~/.rbenvrc ]   && source ~/.rbenvrc
+[ -s ~/.gvm/scripts/gvm ] && source ~/.gvm/scripts/gvm
 
 alias rb='ruby -e'
 alias rbn='ruby -nae'
@@ -17,9 +21,6 @@ alias yy='fc -ln -1 | pbcopy'
 
 export EDITOR=vim
 
-source ~/.rbenvrc
-[[ -s "~/.gvm/scripts/gvm" ]] && source "~/.gvm/scripts/gvm"
-
 type pbcopy >/dev/null || alias pbcopy='xsel --clipboard --input'
 
 export NODE_PATH=`npm root -g`
@@ -27,3 +28,4 @@ export NODE_PATH=`npm root -g`
 type tmux >/dev/null && alias tmux='tmux -2'
 
 export PATH="$HOME/mybin:$PATH"
+
