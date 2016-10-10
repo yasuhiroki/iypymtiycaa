@@ -25,6 +25,11 @@ type pbcopy >/dev/null || alias pbcopy='xsel --clipboard --input'
 
 export NODE_PATH=`npm root -g`
 
+[ -f "$HOME/.vim" ] && {
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" ]
+}
+
 type tmux >/dev/null && alias tmux='tmux -2'
 
 export PATH="$HOME/mybin:$PATH"
