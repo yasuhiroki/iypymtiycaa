@@ -11,6 +11,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 [ -s ~/.enhancdrc ] && source ~/.enhancdrc
 [ -s ~/.fzfrc ]     && source ~/.fzfrc
 [ -s ~/.rbenvrc ]   && source ~/.rbenvrc
+[ -s ~/.yarnrc ]    && source ~/.yarnrc
 [ -s ~/.gvm/scripts/gvm ] && source ~/.gvm/scripts/gvm
 
 alias rb='ruby -e'
