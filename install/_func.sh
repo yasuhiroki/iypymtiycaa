@@ -3,5 +3,5 @@ function is_osx() {
 }
 
 function is_debian() {
-  [[ -e "/etc/debian_version" -o -e "/etc/lsb-release" ]]
+  [[ -e "/etc/debian_version" || -e "/etc/lsb-release" ]]
 }
