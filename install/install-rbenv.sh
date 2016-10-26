@@ -4,12 +4,12 @@ sudo apt install -y git autoconf bison build-essential libssl-dev libyaml-dev li
 
 echo "Install rbenv"
 if [ -d ~/.rbenv ]; then
-    (
-    cd ~/.rbenv
-    git pull
-    )
+  (
+  cd ~/.rbenv
+  git pull
+  )
 else
-    git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+  git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 fi
 
 rbenvrc=".rbenvrc"
@@ -20,12 +20,12 @@ grep -sq '.*alias.*bundle exec.*' ~/${rbenvrc} || echo 'alias be="bundle exec"' 
 grep -sq "${rbenvrc}" ~/.bashrc || echo "source ~/${rbenvrc}" >> ~/.bashrc
 
 if [ -d ~/.rbenv/plugins/ruby-build ]; then
-    (
-    cd ~/.rbenv/plugins/ruby-build
-    git pull
-    )
+  (
+  cd ~/.rbenv/plugins/ruby-build
+  git pull
+  )
 else
-    git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+  git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 fi
 
 
