@@ -1,5 +1,11 @@
-[ -d ~/.fzf ] && (cd ~/.fzf; git pull)
-[ ! -d ~/.fzf ] && git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+if [ -d ~/.fzf ]; then
+  (
+  cd ~/.fzf
+  git pull
+  )
+else
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+fi
 
 ~/.fzf/install
 

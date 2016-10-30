@@ -17,9 +17,6 @@ bash $(dirname $0)/install-fzf.sh
 rc=".enhancdrc"
 echo "Init ${rc}"
 echo "ENHANCD_COMMAND='cd'
-source ~/${install_dir}/enhancd.sh
+source ~/${install_dir}/init.sh
 " > ~/${rc}
-[ -f ~/.bashrc ] && grep -sq "^source.*${rc}$" ~/.bashrc || echo "source ~/${rc}" >> ~/.bashrc
-[ -f ~/.zshrc ]  && grep -sq "^source.*${rc}$" ~/.zshrc || echo "source ~/${rc}" >> ~/.zshrc
-
 
