@@ -1,3 +1,5 @@
+#!/bin/bsah
+
 # My node development
 #  - Install manager: nvm
 #  - Package manager: npm/yarn

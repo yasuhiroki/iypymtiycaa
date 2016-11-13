@@ -1,3 +1,5 @@
+#!/bin/bsah
+
 . $(dirname $0)/_func.sh
 
 if is_osx ;then

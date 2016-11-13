@@ -1,3 +1,5 @@
+#!/bin/bsah
+
 if [ -d ~/.fzf ]; then
   (
   cd ~/.fzf
