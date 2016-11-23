@@ -5,6 +5,6 @@
 if is_osx ;then
   brew install graphviz
 else
-  apt install graphviz
+  sudo apt install graphviz
 fi
 

@@ -31,8 +31,8 @@ case "$lsb_dist" in
   ubuntu|debian|linuxmint|solydxk)
     wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
     sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
-    apt-get update
-    apt-get install jenkins
+    sudo apt-get update
+    sudo apt-get install jenkins
     exit 0
     ;;
   *)
