@@ -35,3 +35,6 @@ type tmux >/dev/null && alias tmux='tmux -2'
 
 export PATH="$HOME/mybin:$PATH"
 
+stty stop undef
+stty start undef
+
