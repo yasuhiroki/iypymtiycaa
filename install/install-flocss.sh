@@ -1,4 +1,4 @@
-#!/bin/bsah
+#!/bin/bash
 
 mkdir -p ~/mybin/
 if [ ! -f ~/mybin/mkflocss ]; then

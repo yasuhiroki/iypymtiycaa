@@ -1,4 +1,4 @@
-#!/bin/bsah
+#!/bin/bash
 
 # My node development
 #  - Install manager: nvm

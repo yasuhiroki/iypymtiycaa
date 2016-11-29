@@ -1,4 +1,4 @@
-#!/bin/bsah
+#!/bin/bash
 
 type java >/dev/null || {
   echo "Plant UML need java"

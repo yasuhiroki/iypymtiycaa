@@ -1,4 +1,4 @@
-#!/bin/bsah
+#!/bin/bash
 
 . $(dirname $0)/_func.sh
 

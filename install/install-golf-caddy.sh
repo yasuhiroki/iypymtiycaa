@@ -1,4 +1,4 @@
-#!/bin/bsah
+#!/bin/bash
 
 install_caddy_dir=".golf-caddy"
 

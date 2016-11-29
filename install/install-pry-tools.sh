@@ -1,4 +1,4 @@
-#!/bin/bsah
+#!/bin/bash
 
 gems="pry pry-nav"
 if ruby -v | awk '{print }' | grep -sq 1.9 ; then
