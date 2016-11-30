@@ -9,7 +9,7 @@ else
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 fi
 
-~/.fzf/install
+~/.fzf/install --all
 
 cp $(dirname $0)/misc/fzfrc.sh ~/.fzfrc
 
