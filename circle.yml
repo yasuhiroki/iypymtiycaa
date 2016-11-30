@@ -1,3 +1,4 @@
 test:
   post:
-    - echo install/install*.sh | xargs -n1 | sed 's@^@./@g' | bash -e
+    - echo install/install*.sh | xargs -n1 | sed 's@^@./@g' > install.sh
+    - bash -e install.sh
