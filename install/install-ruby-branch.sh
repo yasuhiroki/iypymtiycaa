@@ -3,10 +3,10 @@
 version="${1:-trunk}"
 
 source_dir=".ruby"
-[ ! -d ${source_dir} ] && git clone https://github.com/ruby/ruby.git ~/${source_dir}
+[ ! -d ~/${source_dir} ] && git clone https://github.com/ruby/ruby.git ~/${source_dir}
 
 (
-  cd ${source_dir}
+  cd ~/${source_dir}
   git clean -xdf
   git checkout ${version}
   git pull
