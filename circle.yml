@@ -2,4 +2,4 @@ test:
   post:
     - echo install/install*.sh | xargs -n1 | sed 's@^@./@g' > install.sh
     - sed -i '/ruby-branch.sh/d' install.sh
-    - bash -e install.sh
+    - bash -xve install.sh
