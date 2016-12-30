@@ -2,15 +2,20 @@
 
 script_dir=$(dirname $0)
 
-if [ ! -d ~/.oh-my-zsh ]; then
-  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+. $(dirname $0)/_func.sh
+
+if is_osx; then
+  brew install zplug
+elif is_debian; then
+  curl -sL zplug.sh/installer | zsh
+else
+  echo "Not support"
+  exit 1
 fi
 
-cp ${script_dir}/zsh/my-zshrc.zsh ~/.oh-my-zsh/custom/
+backup_lotation ~/.zshrc
 
+cp ${script_dir}/zsh/zshrc ~/.zshrc
+cp ${script_dir}/zsh/my-zshrc.zsh ~/.my-zshrc.zsh
 
-#zsh-autosuggestions
-if [ $ZSH_CUSTOM ] && [ ! -d $ZSH_CUSTOM/plugins/zsh-autosuggestions ]; then
-  git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-fi
-
+exit 0
