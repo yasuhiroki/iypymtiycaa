@@ -10,8 +10,3 @@ if [ -d ~/${install_caddy_dir} ]; then
 else
     git clone git@github.com:shinh/caddy.git ~/${install_caddy_dir}
 fi
-
-caddyrc=".caddyrc"
-grep -sq 'alias' ~/${caddyrc} || echo "alias caddy=\"ruby ${install_caddy_dir}/caddy.rb\"" > ~/${caddyrc}
-grep -sq "${caddyrc}" ~/.bashrc || echo "source ~/${caddyrc}" >> ~/.bashrc
-
