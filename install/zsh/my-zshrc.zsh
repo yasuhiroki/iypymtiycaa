@@ -8,15 +8,10 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # Read custom configure
 [ -s ~/.caddyrc ]   && source ~/.caddyrc
-[ -s ~/.enhancdrc ] && source ~/.enhancdrc
 [ -s ~/.fzfrc ]     && source ~/.fzfrc
 [ -s ~/.rbenvrc ]   && source ~/.rbenvrc
 [ -s ~/.myrc/yarnrc ]    && source ~/.myrc/yarnrc
 [ -s ~/.gvm/scripts/gvm ] && source ~/.gvm/scripts/gvm
-
-alias rb='ruby -e'
-alias rbn='ruby -nae'
-alias rbp='ruby -pae'
 
 alias yy='fc -ln -1 | pbcopy'
 
