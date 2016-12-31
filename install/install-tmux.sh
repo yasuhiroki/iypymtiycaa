@@ -18,5 +18,5 @@ else
   os_conf="tmux.conf.ubuntu"
 fi
 cp $(dirname $0)/tmux/${os_conf} ~/.${os_conf}
-grep -sq ".${os_conf}" ~/${local_conf} && echo "source-file ~/.${os_conf}" >> ~/${local_conf}
+echo "source-file ~/.${os_conf}" >> ~/${local_conf}
 
