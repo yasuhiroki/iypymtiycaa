@@ -5,9 +5,9 @@ script_dir=$(dirname $0)
 . $(dirname $0)/_func.sh
 
 if is_osx; then
-  brew install zplug
+  type zplyg >>/dev/null || brew install zplug
 elif is_debian; then
-  curl -sL zplug.sh/installer | zsh
+  type zplyg >>/dev/null || curl -sL zplug.sh/installer | zsh
 else
   echo "Not support"
   exit 1
