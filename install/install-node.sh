@@ -19,12 +19,8 @@ else
 fi
 
 
-yarnrc_file="~/.myrc/yarnrc"
 if is_osx ;then
-  brew install yarn
+  type yarn >/dev/null || brew install yarn
 else
-  curl -o- -L https://yarnpkg.com/install.sh | bash
+  type yarn >/dev/null || curl -o- -L https://yarnpkg.com/install.sh | bash
 fi
-mkdir -p $(dirname ${yarnrc_file})
-touch ${yarnrc_file}
-grep -sq 'export PATH' ${yarnrc_file} || echo 'export PATH="$HOME/.yarn/bin:$PATH"' >> ${yarnrc_file}

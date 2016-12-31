@@ -8,8 +8,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # Read custom configure
 source ~/.iypymtiycaa/*
-[ -s ~/.rbenvrc ]   && source ~/.rbenvrc
-[ -s ~/.myrc/yarnrc ]    && source ~/.myrc/yarnrc
 [ -s ~/.gvm/scripts/gvm ] && source ~/.gvm/scripts/gvm
 
 alias yy='fc -ln -1 | pbcopy'
@@ -17,13 +15,6 @@ alias yy='fc -ln -1 | pbcopy'
 export EDITOR=vim
 
 type pbcopy >/dev/null || alias pbcopy='xsel --clipboard --input'
-
-export NODE_PATH=`npm root -g`
-
-[ -f "$HOME/.nvm" ] && {
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-}
 
 type tmux >/dev/null && alias tmux='tmux -2'
 
