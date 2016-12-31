@@ -8,7 +8,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # Read custom configure
 source ~/.iypymtiycaa/*
-[ -s ~/.gvm/scripts/gvm ] && source ~/.gvm/scripts/gvm
 
 alias yy='fc -ln -1 | pbcopy'
 

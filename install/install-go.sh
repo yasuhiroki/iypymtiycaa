@@ -2,7 +2,9 @@
 
 . $(dirname $0)/_func.sh
 
-if is_debian; then
-  sudo apt-get install curl git mercurial make binutils bison gcc build-essential
+type gvm >/dev/null || {
+  if is_debian; then
+    sudo apt install curl git mercurial make binutils bison gcc build-essential
+  fi
   bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
-fi
+}
