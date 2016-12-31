@@ -1,5 +1,7 @@
 #!/bin/bash
 
+. $(dirname $0)/_func.sh
+
 if [ -d ~/.fzf ]; then
   (
   cd ~/.fzf
@@ -9,7 +11,7 @@ else
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 fi
 
-~/.fzf/install --all
+is_installed fzf >/dev/null || ~/.fzf/install --all
 
 cp $(dirname $0)/misc/fzfrc.sh ~/.fzfrc
 

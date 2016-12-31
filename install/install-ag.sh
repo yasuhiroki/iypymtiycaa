@@ -3,11 +3,11 @@
 . $(dirname $0)/_func.sh
 
 if is_osx; then
-  brew install ag
+  is_installed ag || brew install ag
 elif is_debian; then
-  sudo apt install silversearcher-ag
+  is_installed ag || sudo apt install silversearcher-ag
 else
-  exit 0
+  exit 1
 fi
 
 echo "*~
