@@ -7,7 +7,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 }
 
 # Read custom configure
-[ -s ~/.caddyrc ]   && source ~/.caddyrc
+source ~/.iypymtiycaa/*
 [ -s ~/.fzfrc ]     && source ~/.fzfrc
 [ -s ~/.rbenvrc ]   && source ~/.rbenvrc
 [ -s ~/.myrc/yarnrc ]    && source ~/.myrc/yarnrc
@@ -23,7 +23,7 @@ export NODE_PATH=`npm root -g`
 
 [ -f "$HOME/.nvm" ] && {
   export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" ]
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 }
 
 type tmux >/dev/null && alias tmux='tmux -2'
