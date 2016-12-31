@@ -6,6 +6,16 @@ function is_debian() {
   [[ -e "/etc/debian_version" || -e "/etc/lsb-release" ]]
 }
 
+function update_rc() {
+  local rc_file="$1"
+  mkdir -p ~/.iypymtiycaa
+  cp ${rc_file} ~/.iypymtiycaa/
+}
+
+function is_installed() {
+  type ${1} >/dev/null
+}
+
 function backup_lotation() {
   local file="$1"
   [ -f ${file} ] && {
