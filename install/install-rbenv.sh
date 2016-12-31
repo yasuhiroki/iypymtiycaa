@@ -16,13 +16,6 @@ else
   git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 fi
 
-rbenvrc=".rbenvrc"
-grep -sq '.*PATH.*rbenv.*' ~/${rbenvrc} || echo 'export PATH="$HOME/.rbenv/bin:$PATH"' > ~/${rbenvrc}
-grep -sq '.*rbenv init.*' ~/${rbenvrc} || echo 'eval "$(rbenv init -)"' >> ~/${rbenvrc}
-grep -sq '.*alias.*bundle exec.*' ~/${rbenvrc} || echo 'alias be="bundle exec"' >> ~/${rbenvrc}
-
-grep -sq "${rbenvrc}" ~/.bashrc || echo "source ~/${rbenvrc}" >> ~/.bashrc
-
 if [ -d ~/.rbenv/plugins/ruby-build ]; then
   (
   cd ~/.rbenv/plugins/ruby-build
@@ -31,5 +24,4 @@ if [ -d ~/.rbenv/plugins/ruby-build ]; then
 else
   git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 fi
-
 
