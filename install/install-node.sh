@@ -22,9 +22,9 @@ update_rc $(dirname $0)/rc/nvmrc.sh
 
 
 if is_osx ;then
-  type yarn >/dev/null || brew install yarn
+  is_installed yarn || brew install yarn
 else
-  type yarn >/dev/null || curl -o- -L https://yarnpkg.com/install.sh | bash
+  is_installed yarn || curl -o- -L https://yarnpkg.com/install.sh | bash
 fi
 
 update_rc $(dirname $0)/rc/yarnrc.sh

@@ -11,6 +11,6 @@ else
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 fi
 
-is_installed fzf >/dev/null || ~/.fzf/install --all
+is_installed fzf || ~/.fzf/install --all
 
 update_rc $(dirname $0)/rc/fzfrc.sh
