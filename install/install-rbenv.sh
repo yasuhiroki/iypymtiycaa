@@ -25,3 +25,4 @@ else
   git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 fi
 
+update_rc $(dirname $0)/../rc/rbenvrc.sh
