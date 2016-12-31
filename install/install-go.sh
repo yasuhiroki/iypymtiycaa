@@ -9,4 +9,4 @@ type gvm >/dev/null || {
   bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
 }
 
-update_rc $(dirname $0)/../rc/gvm.sh
+update_rc $(dirname $0)/rc/gvm.sh

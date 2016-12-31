@@ -18,7 +18,7 @@ else
   ) && . "$NVM_DIR/nvm.sh"
 fi
 
-update_rc $(dirname $0)/../rc/nvmrc.sh
+update_rc $(dirname $0)/rc/nvmrc.sh
 
 
 if is_osx ;then
@@ -27,4 +27,4 @@ else
   type yarn >/dev/null || curl -o- -L https://yarnpkg.com/install.sh | bash
 fi
 
-update_rc $(dirname $0)/../rc/yarnrc.sh
+update_rc $(dirname $0)/rc/yarnrc.sh

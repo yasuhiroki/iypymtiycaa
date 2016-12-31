@@ -13,6 +13,4 @@ fi
 
 is_installed fzf >/dev/null || ~/.fzf/install --all
 
-cp $(dirname $0)/misc/fzfrc.sh ~/.fzfrc
-
-update_rc $(dirname $0)/../rc/fzfrc.sh
+update_rc $(dirname $0)/rc/fzfrc.sh
