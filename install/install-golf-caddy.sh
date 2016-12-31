@@ -1,5 +1,7 @@
 #!/bin/bash
 
+. $(dirname $0)/_func.sh
+
 install_caddy_dir=".golf-caddy"
 
 if [ -d ~/${install_caddy_dir} ]; then
