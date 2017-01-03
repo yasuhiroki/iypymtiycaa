@@ -18,4 +18,6 @@ backup_lotation ~/.zshrc
 cp ${script_dir}/zsh/zshrc ~/.zshrc
 cp ${script_dir}/zsh/my-zshrc.zsh ~/.my-zshrc.zsh
 
+update_rc $(dirname $0)/rc/alias.sh
+
 exit 0
