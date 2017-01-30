@@ -21,8 +21,8 @@ if is_osx; then
 elif is_debian; then
   echo 'source ~/.zplug/init.zsh'  > ~/.zshrc
   echo ''                         >> ~/.zshrc
-  cat ${script_dir}/zsh/zshrc     >> ~/.zshrc
 fi
+cat ${script_dir}/zsh/zshrc     >> ~/.zshrc
 cp ${script_dir}/zsh/my-zshrc.zsh ~/.my-zshrc.zsh
 
 update_rc $(dirname $0)/rc/alias.sh
