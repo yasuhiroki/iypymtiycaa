@@ -27,3 +27,5 @@ export PATH="$HOME/mybin:$PATH"
 stty stop undef
 stty start undef
 
+set -o emacs
+
