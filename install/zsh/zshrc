@@ -3,7 +3,7 @@ source ~/.zplug/init.zsh
 export ENHANCD_COMMAND='cd'
 zplug "b4b4r07/enhancd", use:init.sh
 
-zplug "zsh-users/zsh-syntax-highlighting", nice:10
+zplug "zsh-users/zsh-syntax-highlighting", defer:10
 
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-autosuggestions"
