@@ -10,7 +10,7 @@ if [ -d ~/${install_caddy_dir} ]; then
     git pull
     )
 else
-    git clone git@github.com:shinh/caddy.git ~/${install_caddy_dir}
+    git clone https://github.com/shinh/caddy.git ~/${install_caddy_dir}
 fi
 
 update_rc $(dirname $0)/rc/caddyrc.sh
