@@ -7,7 +7,7 @@ script_dir=$(dirname $0)
 if is_osx; then
   is_installed zplug || brew install zplug
 elif is_debian; then
-  is_installed zplug || curl -sL zplug.sh/installer | zsh -i
+  is_installed zplug || git clone https://github.com/zplug/zplug ~/.zplug
 else
   echo "Not support"
   exit 1
