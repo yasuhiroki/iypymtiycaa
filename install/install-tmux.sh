@@ -5,7 +5,7 @@
 if is_osx ;then
   is_installed tmux || brew install tmux
 else
-  echo "TODO"
+  sudo apt install tmux
 fi
 
 cp $(dirname $0)/tmux/tmux.conf ~/.tmux.conf
