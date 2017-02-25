@@ -12,7 +12,10 @@ alias ls='ls -F --color'
 }
 
 # Read custom configure
-source ~/.iypymtiycaa/*
+for f in ~/.iypymtiycaa/*
+do
+    source $f
+done
 
 alias yy='fc -ln -1 | pbcopy'
 
