@@ -2,13 +2,17 @@ FROM ubuntu
 MAINTAINER Yasuhiro Kiyota
 
 ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
 ENV TERM xterm-256color
 
 SHELL ["/bin/bash", "-c"]
 
 RUN apt -y update \
     && apt -y upgrade \
-    && apt -y install git sudo curl zsh make gcc
+    && apt -y install git sudo curl zsh make gcc connect-proxy
+
+RUN apt -y install libboost-all-dev cmake
 
 RUN sed -i 's/bash/zsh/' /etc/passwd
 
@@ -27,28 +31,34 @@ RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
     && bash install/install-ag.sh
 
 RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
-    && bash install/install-fzf.sh \
+    && bash install/install-fzf.sh
 
 RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
-    && bash install/install-graphviz.sh \
+    && bash install/install-graphviz.sh
 
 RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
-    && bash install/install-node.sh \
+    && bash install/install-node.sh
 
 RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
-    && bash install/install-pbcopy.sh \
+    && bash install/install-pbcopy.sh
 
 RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
-    && bash install/install-java.sh \
+    && bash install/install-java.sh
 
 RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
-    && bash install/install-plantuml.sh \
+    && bash install/install-plantuml.sh
 
 RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
-    && bash install/install-rbenv.sh \
+    && bash install/install-rbenv.sh
 
 RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
-    && bash install/install-tmux.sh \
+    && bash install/install-pip.sh
+
+RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
+    && bash install/install-jq.sh
+
+RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
+    && bash install/install-tmux.sh
 
 RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
     && bash install/install-zsh.sh
