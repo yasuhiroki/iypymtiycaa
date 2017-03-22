@@ -27,6 +27,10 @@ type tmux >/dev/null && alias tmux='tmux -2'
 
 export PATH="$HOME/mybin:$PATH"
 
+setopt share_history
+setopt hist_ignore_dups
+export HISTFILE=${HOME}/.zsh_history
+
 stty stop undef
 stty start undef
 

@@ -8,9 +8,6 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-autosuggestions"
 
-setopt share_history
-setopt hist_ignore_dups
-
 zplug "yasuhiroki/bttf-color-zsh"
 
 if ! zplug check --verbose; then
