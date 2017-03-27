@@ -13,6 +13,6 @@ mkdir -p ~/mybin
 
 cat <<EOH > ~/mybin/plantuml
 #!/bin/bash
-java -jar \$HOME/mybin/plantuml.jar -tsvg \$@
+java -jar \$HOME/mybin/plantuml.jar -config <(echo "skinparam defaultFontName serif") -tsvg \$@
 EOH
 chmod 755 ~/mybin/plantuml
