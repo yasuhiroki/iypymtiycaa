@@ -13,7 +13,7 @@ function update_rc() {
 }
 
 function is_installed() {
-  type ${1} 2>/dev/null
+  type ${1} >/dev/null 2>1
 }
 
 function backup_lotation() {
