@@ -1,0 +1,32 @@
+#!/usr/bin/env zsh
+
+function zshef::install() {
+    zshef::util::mng::is_installed "plantuml" || {
+        my::download
+        my::create::file
+    }
+}
+
+function zshef::update() {
+    zshef::util::mng::is_installed "plantuml" && {
+        my::download
+        my::create::file
+    }
+}
+
+function my::url() {
+    echo 'http://downloads.sourceforge.net/project/plantuml/plantuml.jar'
+}
+
+function my::download() {
+    mkdir -p ~/mybin/
+    curl -sL "$(my::url)" -o ~/mybin/plantuml.jar
+}
+
+function my::create::file() {
+cat <<EOH > ~/mybin/plantuml
+#!/bin/bash
+java -jar \$HOME/mybin/plantuml.jar -config <(echo "skinparam defaultFontName serif") -tsvg \$@
+EOH
+chmod 755 ~/mybin/plantuml
+}
