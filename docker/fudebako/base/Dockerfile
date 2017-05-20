@@ -14,7 +14,7 @@ RUN apt -y update \
     && apt -y upgrade \
     && apt -y install git sudo curl zsh make gcc connect-proxy man fonts-horai-umefont
 
-RUN apt -y install libboost-all-dev cmake
+RUN apt -y install libboost-all-dev cmake openjdk-8-jre
 
 RUN sed -i 's/bash/zsh/' /etc/passwd
 
@@ -29,42 +29,6 @@ RUN mkdir -p /root/github.com/yasuhiroki/ \
     && cd /root/github.com/yasuhiroki/ \
     && git clone https://github.com/yasuhiroki/iypymtiycaa
 
-RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
-    && bash install/install-ag.sh
+RUN curl https://raw.githubusercontent.com/yasuhiroki/zshef/master/install.sh | sh
 
-RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
-    && bash install/install-fzf.sh
-
-RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
-    && bash install/install-graphviz.sh
-
-RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
-    && bash install/install-node.sh
-
-RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
-    && bash install/install-pbcopy.sh
-
-RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
-    && bash install/install-java.sh
-
-RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
-    && bash install/install-plantuml.sh
-
-RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
-    && bash install/install-rbenv.sh
-
-RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
-    && bash install/install-pip.sh
-
-RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
-    && bash install/install-jq.sh
-
-RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
-    && bash install/install-tmux.sh
-
-RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
-    && bash install/install-zsh.sh
-
-RUN cd /root/github.com/yasuhiroki/iypymtiycaa \
-    && bash install/git/git-config.sh
-
+RUN cd /root/github.com/yasuhiroki/iypymtiycaa/zshef && zshef run
