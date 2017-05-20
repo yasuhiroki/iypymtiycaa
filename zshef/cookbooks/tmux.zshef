@@ -1,0 +1,68 @@
+#!/usr/bin/env zsh
+
+function zshef::install() {
+    my::config
+}
+
+function zshef::install::osx() {
+    zshef::util::mng::is_installed "tmux" || {
+        brew install tmux
+    }
+    [ $? != 0 ] && return $?
+    my::config::osx
+}
+
+function zshef::install::debian() {
+    zshef::util::mng::is_installed "tmux" || {
+        apt install tmux
+    }
+    [ $? != 0 ] && return $?
+    my::config::debian
+}
+
+function zshef::update() {
+    my::config
+}
+
+function zshef::update::osx() {
+    zshef::util::mng::is_installed "tmux " && {
+        brew upgrade tmux
+    }
+    [ $? != 0 ] && return $?
+    my::config::osx
+}
+
+function zshef::update::debian() {
+    zshef::util::mng::is_installed "tmux " && {
+        apt upgrade tmux
+    }
+    [ $? != 0 ] && return $?
+    my::config::debian
+}
+
+
+function my::config() {
+    my::config::copy "tmux.conf" "${HOME}/.tmux.conf"
+}
+
+function my::config::osx() {
+    my::config::copy "tmux.conf.mac" "${HOME}/.tmux.conf.local"
+}
+
+function my::config::debian() {
+    my::config::copy "tmux.conf.ubuntu" "${HOME}/.tmux.conf.local"
+}
+
+function my::config::copy() {
+  local src="$1"
+  local dest="$2"
+
+  local dir="${${(%):-%N}:A:h}"
+  local file="${dir}/cookbooks/tmux/${src}"
+  test -f ${file} || {
+    zshef::util::log::error "Not found file ${file}"
+    return 1
+  }
+  cp ${file} ${dest}
+}
+
