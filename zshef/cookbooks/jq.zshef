@@ -1,0 +1,27 @@
+#!/usr/bin/env zsh
+
+function zshef::install::osx() {
+    zshef::util::mng::is_installed "jq" || {
+        brew install jq
+    }
+}
+
+function zshef::install::debian() {
+    zshef::util::mng::is_installed "jq" || {
+        wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -O /usr/local/bin/jq
+        chmod 755 /usr/local/bin/jq
+    }
+}
+
+function zshef::update::osx() {
+    zshef::util::mng::is_installed "jq" && {
+        brew upgrade jq
+    }
+}
+
+function zshef::update::debian() {
+    zshef::util::mng::is_installed "jq" && {
+        wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -O /usr/local/bin/jq
+        chmod 755 /usr/local/bin/jq
+    }
+}
