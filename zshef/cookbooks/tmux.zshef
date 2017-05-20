@@ -43,6 +43,8 @@ function zshef::update::debian() {
 
 function my::config() {
     my::config::copy "tmux.conf" "${HOME}/.tmux.conf"
+    [ $? != 0 ] && return $?
+    echo "alias tmux='tmux -2'" > ~/.iypymtiycaa/tmuxrc.sh
 }
 
 function my::config::osx() {

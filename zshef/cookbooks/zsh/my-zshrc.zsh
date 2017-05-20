@@ -11,20 +11,17 @@ alias ls='ls -F --color'
   alias gls='gls -F --color'
 }
 
+alias ll='ls -l'
+alias la='ls -a'
+alias yy='fc -ln -1 | pbcopy'
+
 # Read custom configure
 for f in ~/.iypymtiycaa/*
 do
     source $f
 done
 
-alias yy='fc -ln -1 | pbcopy'
-
 export EDITOR=vim
-
-type pbcopy >/dev/null || alias pbcopy='xsel --clipboard --input'
-
-type tmux >/dev/null && alias tmux='tmux -2'
-
 export PATH="$HOME/mybin:$PATH"
 
 setopt share_history
