@@ -1,0 +1,20 @@
+#!/usr/bin/env zsh
+
+function zshef::install() {
+    test -f ~/mybin/mkflocss || {
+        mkdir -p ~/mybin/
+        curl $(my::url) -o ~/mybin/mkflocss
+        chmod 755 ~/mybin/mkflocss
+    }
+}
+
+function zshef::update() {
+    test -f ~/mybin/mkflocss && {
+        curl $(my::url) -o ~/mybin/mkflocss
+        chmod 755 ~/mybin/mkflocss
+    }
+}
+
+function my::url() {
+    echo "https://gist.githubusercontent.com/yasuhiroki/1992d40007e40d50b44501546dd1a4ee/raw/dda00dc392d02b1afe6d35c10612fdb13fef7523/mkflocss.sh"
+}
