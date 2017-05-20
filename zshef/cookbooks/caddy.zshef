@@ -1,0 +1,26 @@
+#!/usr/bin/env zsh
+
+function zshef::install() {
+    zshef::util::mng::is_installed "caddy" || {
+        git clone https://github.com/shinh/caddy.git ~/.golf-caddy
+    }
+    [ $? != 0 ] && return $?
+    my::config
+}
+
+function zshef::update() {
+    zshef::util::mng::is_installed "caddy" && {
+        (
+        test -d ~/.golf-caddy || return 1
+        cd ~/.golf-caddy
+        git pull
+        )
+    }
+    [ $? != 0 ] && return $?
+    my::_config
+}
+
+function my::config() {
+    echo 'alias caddy="ruby ~/.golf-caddy/caddy.rb"' > ~/.iypymtiycaa/caddyrc.sh
+}
+
