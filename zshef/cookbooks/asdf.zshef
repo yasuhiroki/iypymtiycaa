@@ -1,0 +1,43 @@
+#!/usr/bin/env zsh
+
+function zshef::install() {
+    zshef::util::mng::is_installed "asdf" || {
+        my::config
+        git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+    }
+}
+
+function zshef::install::osx() {
+    zshef::util::mng::is_installed "asdf" || {
+        zshef::install::depends::osx
+    }
+}
+
+function zshef::install::debian() {
+    zshef::util::mng::is_installed "asdf" || {
+        apt install silversearcher-ag
+    }
+}
+
+function zshef::install::depends::osx() {
+    brew install coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc
+}
+
+function zshef::install::depends::debian() {
+    apt install automake autoconf libreadline-dev libncurses-dev libssl-dev libyaml-dev libxslt-dev libffi-dev libtool unixodbc-dev
+}
+
+function zshef::update() {
+    zshef::util::mng::is_installed "asdf" && {
+        my::config
+        (
+        cd ~/.asdf
+        git pull
+        )
+    }
+}
+
+function my::config() {
+    echo '. ~/.asdf/asdf.sh' > ~/.iypymtiycaa/asdfrc.sh
+}
+
