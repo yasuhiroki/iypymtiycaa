@@ -9,7 +9,7 @@ function zshef::install() {
     }
 
     # TODO: install gpg when use OSX
-    zshef::util::mng::is_installed "elixir" || {
+    my::asdf::is_installed "elixir" || {
         param=(\
           "elixir"\
           "1.4.2"\

@@ -8,7 +8,7 @@ function zshef::install() {
         return 1
     }
 
-    zshef::util::mng::is_installed "ruby" || {
+    my::asdf::is_installed "ruby" || {
         param=(\
           "ruby"\
           "2.4.0"\

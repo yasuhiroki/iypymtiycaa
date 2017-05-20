@@ -9,7 +9,7 @@ function zshef::install() {
     }
 
     # TODO: install gpg when use OSX
-    zshef::util::mng::is_installed "python" || {
+    my::asdf::is_installed "python" || {
         param=(\
           "python"\
           "3.5.3"\

@@ -9,7 +9,7 @@ function zshef::install() {
     }
 
     # TODO: install gpg when use OSX
-    zshef::util::mng::is_installed "node" || {
+    my::asdf::is_installed "nodejs" || {
         param=(\
           "nodejs"\
           "6.10.1"\

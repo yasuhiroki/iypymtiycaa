@@ -1,3 +1,8 @@
+function my::asdf::is_installed() {
+  local lang="$1"
+  asdf list ${lang} >/dev/null 2>&1
+}
+
 function my::asdf::default_install() {
   local lang="$1"
   local version="$2"
