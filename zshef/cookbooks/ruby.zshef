@@ -1,0 +1,40 @@
+#!/usr/bin/env zsh
+
+source ${${(%):-%N}:A:h}/asdf/_func.sh
+
+function zshef::install() {
+    zshef::util::mng::is_installed "asdf" || {
+        zshef::util::log::error "Depends asdf"
+        return 1
+    }
+
+    zshef::util::mng::is_installed "ruby" || {
+        param=(\
+          "ruby"\
+          "2.4.0"\
+          "https://github.com/asdf-vm/asdf-ruby.git"\
+          )
+
+        my::asdf::default_install ${param[@]}
+        [ $? != 0 ] && return $?
+    }
+}
+
+# TODO: to use asdf
+function zshef::install::trunk::osx() {
+    source_dir=".ruby"
+    [ ! -d ~/${source_dir} ] && git clone https://github.com/ruby/ruby.git ~/${source_dir}
+    BUILD_OPT="--enable-shared --with-readline-dir=$(brew --prefix readline) --with-openssl-dir=$(brew --prefix openssl)"
+    (
+      cd ~/${source_dir}
+      git clean -xdf
+      git checkout ${version}
+      git pull
+      autoconf
+      ./configure --prefix=$HOME/.rbenv/versions/${version} ${BUILD_OPT} --enable-debug-env CPPFLAGS='-DRUBY_DEBUG_ENV -DARRAY_DEBUG'
+      make
+      make check
+      make install
+    )
+}
+
