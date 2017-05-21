@@ -14,7 +14,7 @@ function zshef::install::osx() {
 
 function zshef::install::debian() {
     zshef::util::mng::is_installed "tmux" || {
-        apt install tmux
+        sudo apt -y install tmux
     }
     [ $? != 0 ] && return $?
     my::config::debian
@@ -34,7 +34,7 @@ function zshef::update::osx() {
 
 function zshef::update::debian() {
     zshef::util::mng::is_installed "tmux " && {
-        apt upgrade tmux
+        sudo apt -y upgrade tmux
     }
     [ $? != 0 ] && return $?
     my::config::debian

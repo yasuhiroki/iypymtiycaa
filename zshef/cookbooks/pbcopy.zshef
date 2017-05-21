@@ -2,7 +2,7 @@
 
 function zshef::install::debian() {
     zshef::util::mng::is_installed "zplug" || {
-        apt install xsel
+        sudo apt -y install xsel
     }
     [ $? != 0 ] && return $?
     my::config::debian

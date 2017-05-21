@@ -33,7 +33,7 @@ function my::depends::install::osx() {
 }
 
 function my::depends::install::debian() {
-    apt install graphviz
+    sudo apt -y install graphviz
 }
 
 function my::download() {
