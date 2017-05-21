@@ -15,7 +15,7 @@ function zshef::install::osx() {
 
 function zshef::install::debian() {
     zshef::util::mng::is_installed "asdf" || {
-        sudo apt -y install silversearcher-ag
+        zshef::install::depends::debian
     }
 }
 
