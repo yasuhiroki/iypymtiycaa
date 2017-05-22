@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+function zshef::install::debian() {
+    zshef::util::mng::is_installed "zplug" || {
+        sudo apt -y install xsel
+    }
+    [ $? != 0 ] && return $?
+    my::config::debian
+}
+
+function my::config::debian() {
+    echo "alias pbcopy='xsel --clipboard --input'" > ~/.iypymtiycaa/pbcopyrc.sh
+}
+

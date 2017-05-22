@@ -1,0 +1,50 @@
+#!/usr/bin/env zsh
+
+function zshef::install() {
+    zshef::util::mng::is_installed "plantuml" || {
+        my::download
+        my::create::file
+    }
+}
+
+function zshef::install::osx() {
+    my::depends::install::osx
+}
+
+function zshef::install::debian() {
+    my::depends::install::debian
+}
+
+function zshef::update() {
+    zshef::util::mng::is_installed "plantuml" && {
+        my::download
+        my::create::file
+    }
+}
+
+function my::url() {
+    echo 'http://downloads.sourceforge.net/project/plantuml/plantuml.jar'
+}
+
+function my::depends::install::osx() {
+    brew list graphviz >/dev/null 2>&1 || {
+        brew install graphviz
+    }
+}
+
+function my::depends::install::debian() {
+    sudo apt -y install graphviz
+}
+
+function my::download() {
+    mkdir -p ~/mybin/
+    curl -sL "$(my::url)" -o ~/mybin/plantuml.jar
+}
+
+function my::create::file() {
+cat <<EOH > ~/mybin/plantuml
+#!/bin/bash
+java -jar \$HOME/mybin/plantuml.jar -config <(echo "skinparam defaultFontName serif") -tsvg \$@
+EOH
+chmod 755 ~/mybin/plantuml
+}

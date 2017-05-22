@@ -1,0 +1,32 @@
+#!/usr/bin/env zsh
+
+function zshef::install() {
+    zshef::util::mng::is_installed "fzf" || {
+        git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+        ~/.fzf/install --all
+    }
+    [ $? != 0 ] && return $?
+    my::_config
+}
+
+function zshef::update() {
+    zshef::util::mng::is_installed "fzf" && {
+        (
+        test -d ~/.fzf || return 1
+        cd ~/.fzf
+        git pull
+        ~/.fzf/install --all
+        )
+    }
+    [ $? != 0 ] && return $?
+    my::_config
+}
+
+function my::_config() {
+cat <<EOH > ~/.iypymtiycaa/fzfrc.sh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS="--reverse"
+export FZF_CTRL_R_OPTS="\${FZF_CTRL_R_OPTS//--reverse/} --reverse"
+EOH
+}
+

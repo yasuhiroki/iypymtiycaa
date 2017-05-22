@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+
+source ${${(%):-%N}:A:h}/asdf/_func.sh
+
+function zshef::install() {
+    zshef::util::mng::is_installed "asdf" || {
+        zshef::util::log::error "Depends asdf"
+        return 1
+    }
+
+    # TODO: install gpg when use OSX
+    my::asdf::is_installed "elixir" || {
+        param=(\
+          "elixir"\
+          "1.4.2"\
+          "https://github.com/asdf-vm/asdf-elixir.git"\
+          )
+
+        my::asdf::default_install ${param[@]}
+    }
+}
+

@@ -1,0 +1,44 @@
+#!/usr/bin/env zsh
+
+function zshef::install() {
+    _config
+}
+
+function zshef::install::osx() {
+    zshef::util::mng::is_installed "ag" || {
+        brew install ag
+    }
+}
+
+function zshef::install::debian() {
+    zshef::util::mng::is_installed "ag" || {
+        sudo apt -y install silversearcher-ag
+    }
+}
+
+function zshef::update() {
+    _config
+}
+
+function zshef::update::osx() {
+    zshef::util::mng::is_installed "ag" && {
+        brew upgrade ag
+    }
+}
+
+function _config() {
+    echo "*~
+    *.swp
+
+    .git
+    .svn
+
+    *.jpeg
+    *.jpg
+    *.png
+    *.gif
+
+    *.class
+    " > ~/.agignore
+}
+

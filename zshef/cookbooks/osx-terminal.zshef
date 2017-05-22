@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+
+function zshef::install::osx() {
+    test -d ~/.osx-terminal-themes || {
+        git clone git@github.com:lysyi3m/osx-terminal-themes.git ~/.osx-terminal-themes
+        local theme='Solarized Dark'
+        #open "$HOME/.osx-terminal-themes/schemes/${theme}.terminal"
+    }
+}
+
+function zshef::update::osx() {
+    test -d ~/.osx-terminal-themes && {
+        (
+        cd ~/.osx-terminal-themes
+        git pull
+        )
+    }
+}
+

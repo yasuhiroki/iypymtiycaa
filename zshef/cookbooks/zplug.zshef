@@ -1,0 +1,25 @@
+#!/usr/bin/env zsh
+
+function zshef::install() {
+    zshef::util::mng::is_installed "zplug" || {
+        [ -d ~/.zplug ] || git clone https://github.com/zplug/zplug ~/.zplug
+    }
+    [ $? != 0 ] && return $?
+    my::config
+}
+
+function zshef::update() {
+    my::config
+}
+
+function my::config() {
+    local dir="${${(%):-%N}:A:h}/cookbooks/zsh"
+    local dest="${HOME}/.iypymtiycaa"
+
+    echo 'source ~/.zplug/init.zsh'  > ~/.zshrc
+    echo '' >> ~/.zshrc
+    cat ${dir}/zshrc >> ~/.zshrc
+
+    cp ${dir}/my-zshrc.zsh ~/.my-zshrc.zsh
+}
+
