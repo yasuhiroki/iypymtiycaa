@@ -17,7 +17,6 @@ function zshef::install() {
           )
 
         my::asdf::default_install ${param[@]}
-        [ $? != 0 ] && return $?
     }
 }
 
