@@ -12,6 +12,7 @@ function zshef::install() {
         }
         pip install awscli
     }
+    my::config
 }
 
 function zshef::update() {
@@ -26,4 +27,10 @@ function zshef::update() {
         }
         pip install -U awscli
     }
+    my::config
+}
+
+function my::config() {
+    local completion="~/.asdf/installs/python/3.5.3/bin/aws_zsh_completer.sh"
+    echo "test -f ${completion} && source ${completion}" > ~/.iypymtiycaa/awsclirc.sh
 }
