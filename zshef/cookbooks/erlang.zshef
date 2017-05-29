@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+
+source ${${(%):-%N}:A:h}/asdf/_func.sh
+
+function zshef::install() {
+    zshef::util::mng::is_installed "asdf" || {
+        zshef::util::log::error "Depends asdf"
+        return 1
+    }
+
+    # TODO: install gpg when use OSX
+    my::asdf::is_installed "erlang" || {
+        param=(\
+          "erlang"\
+          "19.3"\
+          "https://github.com/asdf-vm/asdf-erlang.git"\
+          )
+
+        my::asdf::default_install ${param[@]}
+    }
+}
+
