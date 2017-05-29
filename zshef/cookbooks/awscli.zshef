@@ -1,0 +1,29 @@
+#!/usr/bin/env zsh
+
+function zshef::install() {
+    zshef::util::mng::is_installed "aws" || {
+        zshef::util::mng::is_installed "python" || {
+            zshef::util::log::error "Depends python"
+            return 1
+        }
+        zshef::util::mng::is_installed "pip" || {
+            zshef::util::log::error "Depends pip"
+            return 1
+        }
+        pip install awscli
+    }
+}
+
+function zshef::update() {
+    zshef::util::mng::is_installed "aws" && {
+        zshef::util::mng::is_installed "python" || {
+            zshef::util::log::error "Depends python"
+            return 1
+        }
+        zshef::util::mng::is_installed "pip" || {
+            zshef::util::log::error "Depends pip"
+            return 1
+        }
+        pip install -U awscli
+    }
+}
