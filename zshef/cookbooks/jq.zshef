@@ -2,7 +2,7 @@
 
 function zshef::install::osx() {
     zshef::util::mng::is_installed "jq" || {
-        brew install jq
+        zshef::util::os::mac::install "jq"
     }
 }
 
@@ -15,7 +15,7 @@ function zshef::install::debian() {
 
 function zshef::update::osx() {
     zshef::util::mng::is_installed "jq" && {
-        brew upgrade jq
+        zshef::util::os::mac::update "jq"
     }
 }
 

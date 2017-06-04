@@ -6,7 +6,7 @@ function zshef::install() {
 
 function zshef::install::osx() {
     zshef::util::mng::is_installed "git" || {
-        brew install git
+        zshef::util::os::mac::install "git"
     }
     _config
 }
@@ -17,7 +17,7 @@ function zshef::update() {
 
 function zshef::update::osx() {
     zshef::util::mng::is_installed "git" && {
-        brew upgrade git
+        zshef::util::os::mac::update "git"
     }
     _config
 }

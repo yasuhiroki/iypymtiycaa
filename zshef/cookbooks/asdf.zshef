@@ -20,7 +20,10 @@ function zshef::install::debian() {
 }
 
 function zshef::install::depends::osx() {
-    brew install coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc
+    for m in coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc
+    do
+        zshef::util::os::mac::install "$m"
+    done
 }
 
 function zshef::install::depends::debian() {

@@ -28,7 +28,7 @@ function my::url() {
 
 function my::depends::install::osx() {
     brew list graphviz >/dev/null 2>&1 || {
-        brew install graphviz
+        zshef::util::os::mac::install "jq"
     }
 }
 

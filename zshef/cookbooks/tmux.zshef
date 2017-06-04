@@ -6,8 +6,8 @@ function zshef::install() {
 
 function zshef::install::osx() {
     zshef::util::mng::is_installed "tmux" || {
-        brew install reattach-to-user-namespace
-        brew install tmux
+        zshef::util::os::mac::install "reattach-to-user-namespace"
+        zshef::util::os::mac::install "tmux"
     }
     [ $? != 0 ] && return $?
     my::config::osx
@@ -27,7 +27,7 @@ function zshef::update() {
 
 function zshef::update::osx() {
     zshef::util::mng::is_installed "tmux" && {
-        brew upgrade -f tmux
+        zshef::util::os::mac::update "tmux"
     }
     [ $? != 0 ] && return $?
     my::config::osx
