@@ -25,15 +25,15 @@ function zshef::update() {
 }
 
 function zshef::update::osx() {
-    zshef::util::mng::is_installed "tmux " && {
-        brew upgrade tmux
+    zshef::util::mng::is_installed "tmux" && {
+        brew upgrade -f tmux
     }
     [ $? != 0 ] && return $?
     my::config::osx
 }
 
 function zshef::update::debian() {
-    zshef::util::mng::is_installed "tmux " && {
+    zshef::util::mng::is_installed "tmux" && {
         sudo apt -y upgrade tmux
     }
     [ $? != 0 ] && return $?
