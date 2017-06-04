@@ -1,10 +1,8 @@
 # Setup 'v' to begin selection as in Vim
 # reattach-to-user-namespace is mac command only
 # in ubuntu using xsel or xclip instead of pbcopy (don't use alias)
-bind-key -t vi-copy v begin-selection
-bind-key -t vi-copy y copy-pipe "xsel --clipboard --input"
-
-# Update default binding of `Enter` to also use copy-pipe
-unbind -t vi-copy Enter
-bind-key -t vi-copy Enter copy-pipe "xsel --clipboard --input"
+bind-key -T copy-mode-vi v send -X begin-selection
+bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel "xsel --clipboard --input"
+unbind   -T copy-mode-vi Enter
+bind-key -T copy-mode-vi Enter send -X copy-pipe-and-cancel "xsel --clipboard --input"
 
