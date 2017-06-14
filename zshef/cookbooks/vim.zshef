@@ -1,0 +1,57 @@
+#!/usr/bin/env zsh
+
+function zshef::install() {
+    :
+}
+
+function zshef::install::osx() {
+    local vim_src_dir=$(my::src::path)
+    [ ! -d ${vim_src_dir} ] && {
+        git clone https://github.com/vim/vim ${vim_src_dir}
+        cd ${vim_src_dir}
+        my::make
+    }
+    my::config
+}
+
+function zshef::install::debian() {
+    local vim_src_dir=$(my::src::path)
+    [ ! -d ${vim_src_dir} ] && {
+        git clone https://github.com/vim/vim ${vim_src_dir}
+        cd ${vim_src_dir}
+        my::depends::debian
+        my::make
+    }
+    my::config
+}
+
+function zshef::update() {
+    local vim_src_dir=$(my::src::path)
+    [ -d ${vim_src_dir} ] && {
+        cd ${vim_src_dir}
+        git clean -xdf
+        git pull
+        my::make
+    }
+    my::config
+}
+
+function my::src::path() {
+    echo "$HOME/.vim-src"
+}
+
+function my::make() {
+    ./configure  --with-features=huge --enable-gui=gnome2 --enable-perlinterp --enable-pythoninterp --enable-python3interp --enable-rubyinterp --enable-luainterp --with-luajit --enable-fail-if-missing
+    make
+    make install
+}
+
+function my::depends::debian() {
+    sudo apt-get -y build-dep vim
+    sudo apt install -y gettext libncurses5-dev libacl1-dev libgpm-dev lua5.2 liblua5.2-dev luajit libluajit-5.1 libperl-dev python-dev python3-dev ruby-dev ncurses-dev
+}
+
+function my::config() {
+    echo "alias vim='/usr/local/bin/vim'" > ~/.iypymtiycaa/vimrc.sh
+}
+
