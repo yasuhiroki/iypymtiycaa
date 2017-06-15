@@ -5,13 +5,7 @@ function zshef::install() {
 }
 
 function zshef::install::osx() {
-    local vim_src_dir=$(my::src::path)
-    [ ! -d ${vim_src_dir} ] && {
-        git clone https://github.com/vim/vim ${vim_src_dir}
-        cd ${vim_src_dir}
-        my::make
-    }
-    my::config
+    brew install macvim --with-override-system-vim
 }
 
 function zshef::install::debian() {
@@ -25,7 +19,11 @@ function zshef::install::debian() {
     my::config
 }
 
-function zshef::update() {
+function zshef::install::osx() {
+    brew upgrade macvim
+}
+
+function zshef::update::debian() {
     local vim_src_dir=$(my::src::path)
     [ -d ${vim_src_dir} ] && {
         cd ${vim_src_dir}
@@ -44,7 +42,7 @@ function my::make() {
     ./configure \
         --with-features=huge \
         --enable-perlinterp \
-        \ #--enable-pythoninterp \
+        --enable-pythoninterp \
         --enable-python3interp \
         --enable-rubyinterp \
         --enable-luainterp \
