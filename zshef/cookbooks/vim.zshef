@@ -5,7 +5,8 @@ function zshef::install() {
 }
 
 function zshef::install::osx() {
-    brew install macvim --with-override-system-vim
+    env HOMEBREW_CASK_OPTS="--appdir=/Applications" brew cask install macvim
+    my::config::osx
 }
 
 function zshef::install::debian() {
@@ -16,11 +17,11 @@ function zshef::install::debian() {
         my::depends::debian
         my::make
     }
-    my::config
+    my::config::debian
 }
 
-function zshef::install::osx() {
-    brew upgrade macvim
+function zshef::update::osx() {
+    my::config::osx
 }
 
 function zshef::update::debian() {
@@ -31,7 +32,7 @@ function zshef::update::debian() {
         git pull
         my::make
     }
-    my::config
+    my::config::debian
 }
 
 function my::src::path() {
@@ -59,7 +60,12 @@ function my::depends::debian() {
     sudo apt install -y gettext libncurses5-dev libacl1-dev libgpm-dev lua5.2 liblua5.2-dev luajit libluajit-5.1 libperl-dev python-dev python3-dev ruby-dev ncurses-dev
 }
 
-function my::config() {
+function my::config::osx() {
+    echo "alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim \"\$@\"'"  >  ~/.iypymtiycaa/vimrc.sh
+    echo "alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim \"\$@\"'" >> ~/.iypymtiycaa/vimrc.sh
+}
+
+function my::config::debian() {
     echo "alias vim='/usr/local/bin/vim'" > ~/.iypymtiycaa/vimrc.sh
 }
 
