@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+
+function zshef::install() {
+    my::config
+}
+
+function zshef::update() {
+    my::config
+}
+
+function my::config() {
+    cat <<EOH > ~/.docker/config.json
+{
+  "detachKeys": "ctrl-_,_"
+}
+EOH
+}
