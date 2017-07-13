@@ -1,0 +1,29 @@
+version: 2
+jobs:
+  build:
+    machine:
+      enabled: true
+    steps:
+      - checkout
+      - run:
+          name: install-zsh
+          command: apt install -y zsh
+      - run:
+          name: checkout-zshef
+          command: git clone https://github.com/yasuhiroki/zshef.git ../zshef
+      - run:
+          name: mkdir
+          command: mkdir -p ~/.iypymtiycaa
+  test:
+    machine:
+      enabled: true
+    steps:
+      - run:
+          name: pre-install
+          command: zsh -c 'source ../zshef/init.sh; cd zshef; zshef install asdf zsh; exit 0'
+      - run:
+          name: test-install
+          command: zsh -c 'source ../zshef/init.sh; yes | source ~/.zshrc; cd zshef; zshef install'
+      - run:
+          name: test-update
+          command: zsh -c 'source ../zshef/init.sh; yes | source ~/.zshrc; cd zshef; zshef update'
