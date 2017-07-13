@@ -11,6 +11,7 @@ function zshef::install() {
     my::docker::language::init \
         "ruby:alpine" \
         "docker run -it --rm -e BUNDLE_APP_CONFIG" \
-        "/usr/local/bin" > ~/.iypymtiycaa/docker-ruby-alias.sh
+        "/usr/local/bin" \
+        "${HOME}/mybin"
 }
 
