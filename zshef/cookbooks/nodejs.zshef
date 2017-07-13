@@ -1,35 +1,25 @@
 #!/usr/bin/env zsh
 
-source ${${(%):-%N}:A:h}/asdf/_func.sh
+source ${${(%):-%N}:A:h}/docker/_func.sh
 
 function zshef::install() {
-    zshef::util::mng::is_installed "asdf" || {
-        zshef::util::log::error "Depends asdf"
+    zshef::util::mng::is_installed "docker" || {
+        zshef::util::log::error "Depends docker"
         return 1
     }
 
-    # TODO: install gpg when use OSX
-    my::asdf::is_installed "nodejs" || {
-        param=(\
-          "nodejs"\
-          "6.10.1"\
-          "https://github.com/asdf-vm/asdf-nodejs.git"\
-          )
+    my::docker::language::init \
+        "node:alpine" \
+        "docker run -it --rm" \
+        "/usr/local/bin" \
+        "${HOME}/mybin"
 
-        my::asdf::default_install ${param[@]}
-        [ $? != 0 ] && return $?
-
-        my::install::modules
-        [ $? != 0 ] && return $?
-
-        my::config
-    }
+    my::install::modules
+    my::config
 }
 
 function my::install::modules() {
     zshef::util::mng::is_installed "npm" && {
-        npm install -g npm
-        npm install -g https://yarnpkg.com/latest.tar.gz
         npm install -g eslint eslint-config-airbnb
     }
 }
