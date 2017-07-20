@@ -16,7 +16,7 @@ function my::docker::language::init() {
   do
     my::docker::bin::body \
         "${img}" \
-        "${run_opt} -v \$(pwd):\$(pwd) -w \$(pwd)" \
+        "${run_opt} -v \$(pwd -P):\$(pwd -P) -w \$(pwd -P)" \
         "${b} \"\${@}\"" > ${local_bin_dir}/${b}
     chmod 755 ${local_bin_dir}/${b}
   done
