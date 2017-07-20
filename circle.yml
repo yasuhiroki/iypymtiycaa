@@ -1,9 +1,0 @@
-test:
-  pre:
-    - sudo apt install -y zsh
-    - git clone https://github.com/yasuhiroki/zshef.git ../zshef
-    - mkdir -p ~/.iypymtiycaa
-  post:
-    - zsh -c 'source ../zshef/init.sh; cd zshef; zshef install asdf zsh; exit 0'
-    - zsh -c 'source ../zshef/init.sh; yes | source ~/.zshrc; cd zshef; zshef install'
-    - zsh -c 'source ../zshef/init.sh; yes | source ~/.zshrc; cd zshef; zshef update'
