@@ -10,12 +10,12 @@ function zshef::install() {
 
     my::docker::language::init \
         "node:alpine" \
-        "docker run -it --rm" \
+        "-i --rm -v $HOME/mybin/volume/nodejs:/usr/local/lib/ -v /usr/local/lib/node_modules/npm" \
         "/usr/local/bin" \
         "${HOME}/mybin"
 
     my::install::modules
-    my::config
+    #my::config
 }
 
 function my::install::modules() {

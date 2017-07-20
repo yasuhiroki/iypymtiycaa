@@ -12,7 +12,6 @@ function zshef::install() {
         "ruby:alpine" \
         "-i --rm -e BUNDLE_APP_CONFIG -v $HOME/mybin/volume/ruby:/usr/local/bundle/" \
         "/usr/local/bin" \
-        "${HOME}/mybin" \
-        "irb"
+        "${HOME}/mybin"
 }
 
