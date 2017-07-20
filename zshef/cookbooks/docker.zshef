@@ -14,4 +14,10 @@ function my::config() {
   "detachKeys": "ctrl-_,_"
 }
 EOH
+cat <<EOH > ~/.iypymtiycaa/docker.zsh
+function d::sh() {
+  : \${1:?Need docker container id}
+  docker exec -it \${1} /bin/sh
+}
+EOH
 }
