@@ -21,6 +21,7 @@ function zshef::install::debian() {
 }
 
 function zshef::update::osx() {
+    env HOMEBREW_CASK_OPTS="--appdir=/Applications" brew cask reinstall macvim
     my::config::osx
 }
 
