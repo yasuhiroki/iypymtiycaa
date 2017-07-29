@@ -2,7 +2,7 @@
 
 source ${${(%):-%N}:A:h}/asdf/_func.sh
 
-function zshef::install() {
+function zshef::install::debian() {
     zshef::util::mng::is_installed "asdf" || {
         zshef::util::log::error "Depends asdf"
         return 1
@@ -12,12 +12,38 @@ function zshef::install() {
     my::asdf::is_installed "python" || {
         param=(\
           "python"\
-          "3.5.3"\
+          "2.7"\
           "https://github.com/tuvistavie/asdf-python.git"\
           )
+        my::asdf::default_install ${param[@]}
 
+        param=(\
+          "python"\
+          "3.6.2"\
+          "https://github.com/tuvistavie/asdf-python.git"\
+          )
         my::asdf::default_install ${param[@]}
     }
 }
 
+function zshef::install::osx() {
+    brew list python &>/dev/null || {
+        brew install python
+    }
+    brew list python3 &>/dev/null || {
+        brew install python3
+    }
+    my::config::osx
+}
 
+function zshef::update::osx() {
+    brew reinstall python
+    brew reinstall python3
+    my::config::osx
+}
+
+function my::config::osx() {
+cat <<-EOH > ~/.iypymtiycaa/python.sh
+export PATH=/usr/local/opt/python/libexec/bin:$PATH
+EOH
+}
