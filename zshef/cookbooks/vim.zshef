@@ -5,7 +5,8 @@ function zshef::install() {
 }
 
 function zshef::install::osx() {
-    env HOMEBREW_CASK_OPTS="--appdir=/Applications" brew cask install macvim
+    brew tap macvim-dev/macvim
+    brew install --HEAD macvim-dev/macvim/macvim
     my::config::osx
 }
 
@@ -21,7 +22,9 @@ function zshef::install::debian() {
 }
 
 function zshef::update::osx() {
-    env HOMEBREW_CASK_OPTS="--appdir=/Applications" brew cask reinstall macvim
+    rm -rf /Users/yasuhiroki/Library/Caches/Homebrew/macvim--git
+    brew tap macvim-dev/macvim
+    brew reinstall --HEAD macvim-dev/macvim/macvim
     my::config::osx
 }
 
