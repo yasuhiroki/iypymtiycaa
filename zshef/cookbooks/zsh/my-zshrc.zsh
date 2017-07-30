@@ -15,7 +15,7 @@ alias yy='fc -ln -1 | pbcopy'
 # Read custom configure
 for f in ~/.iypymtiycaa/*
 do
-    source $f
+    source $f || echo "Could not source $f"
 done
 
 export EDITOR=vim
