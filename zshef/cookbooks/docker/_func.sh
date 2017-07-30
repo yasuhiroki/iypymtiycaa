@@ -14,15 +14,38 @@ function my::docker::language::init() {
   local bin_list=($(docker run ${=run_opt} ${=img} ls --color=never -1 ${bin_dir} | tr -d '\r' | xargs))
   for b in ${bin_list[@]}
   do
-    my::docker::bin::body \
+    my::docker::bin::create \
         "${img}" \
-        "${run_opt} -v \$(pwd -P):\$(pwd -P) -w \$(pwd -P)" \
-        "${b} \"\${@}\"" > ${local_bin_dir}/${b}
-    chmod 755 ${local_bin_dir}/${b}
+        "$(_my::docker::bin::option "${run_opt}")" \
+        "${local_bin_dir}" \
+        "${b}" \
+        "${b} \"\${@}\""
   done
 }
 
-function my::docker::bin::body() {
+function my::docker::bin::create() {
+  local img="$1"
+  local run_opt="$2"
+  local local_bin_dir="$3"
+  local bin_file="$4"
+  : ${bin_file:?}
+  local cmd="$5"
+  : ${cmd:?}
+
+  mkdir -p ${local_bin_dir:?} >& /dev/null
+
+  _my::docker::bin::body \
+      "${img}" \
+      "${run_opt}" \
+      "${cmd}"     > ${local_bin_dir}/${bin_file}
+  chmod 755          ${local_bin_dir}/${bin_file}
+}
+
+function _my::docker::bin::option() {
+  echo "${1} -v \$(pwd -P):\$(pwd -P) -w \$(pwd -P)"
+}
+
+function _my::docker::bin::body() {
   local img="$1"
   local run_opt="$2"
   local cmd="$3"
