@@ -8,10 +8,11 @@ function zshef::install() {
         return 1
     }
 
+    my::docker::build "ruby" "yasuhiroki/ruby:alpine"
+
     my::docker::language::init \
-        "ruby:alpine" \
+        "yasuhiroki/ruby:alpine" \
         "-i --rm -e BUNDLE_APP_CONFIG -v $HOME/mybin/volume/ruby:/usr/local/bundle/" \
         "/usr/local/bin" \
         "${HOME}/mybin"
 }
-
