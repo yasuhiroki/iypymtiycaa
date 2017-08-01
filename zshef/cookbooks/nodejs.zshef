@@ -2,6 +2,20 @@
 
 source ${${(%):-%N}:A:h}/docker/_func.sh
 
+function zshef::install() {
+    my::install::docker
+}
+
+function zshef::update() {
+    zshef::util::mng::is_installed "node" && {
+        my::config
+    }
+}
+
+function my::config() {
+    :
+}
+
 function my::nodejs::docker::img() {
     echo "node:alpine"
 }
@@ -24,7 +38,7 @@ function my::nodejs::local::bin::dir() {
     echo "${HOME}/mybin"
 }
 
-function zshef::install() {
+function my::install::docker() {
     zshef::util::mng::is_installed "docker" || {
         zshef::util::log::error "Depends docker"
         return 1
@@ -36,12 +50,13 @@ function zshef::install() {
         "$(my::nodejs::docker::bin::dir)" \
         "$(my::nodejs::local::bin::dir)"
 
-    my::install::common::modules
+    my::install::docker::common::modules
 
     my::config
 }
 
-function my::install::common::modules() {
+
+function my::install::docker::common::modules() {
     zshef::util::mng::is_installed "npm" && {
 
         my::docker::bin::create \
@@ -66,14 +81,3 @@ function my::install::common::modules() {
         done
     }
 }
-
-function zshef::update() {
-    zshef::util::mng::is_installed "node" && {
-        my::config
-    }
-}
-
-function my::config() {
-    :
-}
-
