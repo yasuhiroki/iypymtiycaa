@@ -1,5 +1,16 @@
 #!/usr/bin/env zsh
 
+function my::docker::build() {
+    local dist_name="$1"
+    local base_dir="${${(%):-%N}:A:h}/cookbooks/${dist_name}"
+    local image_name="$2"
+    local dockerfile="${3:-Dockerfile}"
+    (
+        cd ${base_dir}
+        docker build --file ${dockerfile} -t ${image_name} .
+    )
+}
+
 function my::docker::language::init() {
   local img="$1"
   local run_opt="$2"
@@ -61,4 +72,3 @@ fi
 docker run ${run_opt} \${opt} ${img} ${cmd}
 EOH
 }
-
