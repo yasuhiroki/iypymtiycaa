@@ -50,6 +50,13 @@ function my::install::docker() {
         "$(my::nodejs::docker::bin::dir)" \
         "$(my::nodejs::local::bin::dir)"
 
+    my::docker::bin::create \
+        "$(my::nodejs::docker::img)" \
+        "$(my::nodejs::docker::run::cmd)" \
+        "$(my::nodejs::local::bin::dir)" \
+        "nodesh" \
+        "/bin/sh"
+
     my::install::docker::common::modules
 
     my::config
