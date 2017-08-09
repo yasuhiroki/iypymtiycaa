@@ -30,7 +30,7 @@ function my::docker::language::init() {
             "$(_my::docker::bin::option "${run_opt}")" \
             "${local_bin_dir}" \
             "${b}" \
-            "${b} \"\${@}\""
+            "${b}"
     done
 }
 
@@ -64,11 +64,13 @@ function _my::docker::bin::body() {
     : ${run_opt:?}
     : ${cmd:?}
     cat <<EOH
+#!/usr/bin/env zsh
+
 if [ -t 0 ]; then
   opt="-t"
 else
   opt=""
 fi
-docker run ${run_opt} \${opt} ${img} ${cmd}
+docker run ${run_opt} \${MY_DOCKER_OPT} \${opt} ${img} ${cmd} \${=@}
 EOH
 }
