@@ -1,5 +1,13 @@
 #!/usr/bin/env zsh
 
+function my::local::tmp::dir::osx() {
+    echo "/private/var/folders/1d/yhbvtw1n5tnf4fxgwjb_wpzw0000gn/T"
+}
+
+function my::docker::tmp::dir::osx() {
+    echo "/var/folders/1d/yhbvtw1n5tnf4fxgwjb_wpzw0000gn/T"
+}
+
 function my::docker::build() {
     local dist_name="$1"
     local base_dir="${${(%):-%N}:A:h}/cookbooks/${dist_name}"
@@ -53,7 +61,13 @@ function my::docker::bin::create() {
 }
 
 function _my::docker::bin::option() {
-    echo "${1} -v \$(pwd -P):\$(pwd -P) -w \$(pwd -P)"
+    local opt=(\
+        "${1}" \
+        "-v $(my::local::tmp::dir::osx):$(my::docker::tmp::dir::osx)" \
+        "-v \$(pwd -P):\$(pwd -P)" \
+        "-w \$(pwd -P)" \
+    )
+    echo ${opt[@]}
 }
 
 function _my::docker::bin::body() {
@@ -71,6 +85,6 @@ if [ -t 0 ]; then
 else
   opt=""
 fi
-docker run ${run_opt} \${MY_DOCKER_OPT} \${opt} ${img} ${cmd} \${=@}
+docker run ${=run_opt} \${=MY_DOCKER_OPT} \${opt} ${img} ${cmd} \${=@}
 EOH
 }
