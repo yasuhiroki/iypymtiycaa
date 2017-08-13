@@ -60,12 +60,19 @@ function my::docker::bin::create() {
     chmod 755          ${local_bin_dir}/${bin_file}
 }
 
+function my::docker::bin::opt::share::pwd() {
+    local opt=(\
+        "-v \$(pwd -P):\$(pwd -P)" \
+        "-w \$(pwd -P)" \
+    )
+    echo ${opt[@]}
+}
+
 function _my::docker::bin::option() {
     local opt=(\
         "${1}" \
         "-v $(my::local::tmp::dir::osx):$(my::docker::tmp::dir::osx)" \
-        "-v \$(pwd -P):\$(pwd -P)" \
-        "-w \$(pwd -P)" \
+        "$(my::docker::bin::opt::share::pwd)" \
     )
     echo ${opt[@]}
 }
