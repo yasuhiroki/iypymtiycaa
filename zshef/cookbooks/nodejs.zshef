@@ -12,12 +12,8 @@ function zshef::update() {
     }
 }
 
-function my::config() {
-    :
-}
-
 function my::nodejs::docker::img() {
-    echo "node:alpine"
+    echo "yasuhiroki/node:alpine"
 }
 
 function my::nodejs::docker::run::cmd() {
@@ -44,6 +40,8 @@ function my::install::docker() {
         return 1
     }
 
+    my::docker::build "nodejs" "$(my::nodejs::docker::img)"
+
     my::docker::language::init \
         "$(my::nodejs::docker::img)" \
         "$(my::nodejs::docker::run::cmd)" \
@@ -57,34 +55,16 @@ function my::install::docker() {
         "nodesh" \
         "/bin/sh"
 
-    my::install::docker::common::modules
+    my::docker::bin::create \
+        "$(my::nodejs::docker::img)" \
+        "$(my::nodejs::docker::run::cmd)" \
+        "$(my::nodejs::local::bin::dir)" \
+        "gnpm" \
+        "npm"
 
     my::config
 }
 
-
-function my::install::docker::common::modules() {
-    zshef::util::mng::is_installed "npm" && {
-
-        my::docker::bin::create \
-            "$(my::nodejs::docker::img)" \
-            "$(my::nodejs::docker::run::cmd)" \
-            "$(my::nodejs::local::bin::dir)" \
-            "gnpm" \
-            "npm \"\${@}\""
-
-        gnpm install \
-            eslint eslint-config-airbnb \
-            tslint typescript
-
-        for b in "eslint" "tslint" "tsserver" "tsc"
-        do
-            my::docker::bin::create \
-                "$(my::nodejs::docker::img)" \
-                "$(my::nodejs::docker::run::cmd)" \
-                "$(my::nodejs::local::bin::dir)" \
-                "${b}" \
-                "/node_modules/.bin/${b} \"\${@}\""
-        done
-    }
+function my::config() {
+    :
 }
