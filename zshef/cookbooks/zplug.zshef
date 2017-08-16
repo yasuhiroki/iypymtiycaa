@@ -9,6 +9,12 @@ function zshef::install() {
 }
 
 function zshef::update() {
+    zshef::util::mng::is_installed "zplug" && {
+        (
+        cd ~/.zplug
+        git pull
+        )
+    }
     my::config
 }
 
