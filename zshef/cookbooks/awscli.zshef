@@ -31,6 +31,7 @@ function zshef::update() {
 }
 
 function my::config() {
-    local completion="~/.asdf/installs/python/3.5.3/bin/aws_zsh_completer.sh"
-    echo "test -f ${completion} && source ${completion}" > ~/.iypymtiycaa/awsclirc.sh
+    zshef::util::mng::is_installed "aws_zsh_completer.sh" && {
+        echo "source $(where aws_zsh_completer.sh)" > ~/.iypymtiycaa/awsclirc.sh
+    }
 }
