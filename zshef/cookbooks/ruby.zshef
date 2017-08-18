@@ -11,7 +11,7 @@ function my::ruby::docker::run::cmd() {
         "-i" \
         "--rm" \
         "-e BUNDLE_APP_CONFIG" \
-        " -v $HOME/mybin/volume/ruby:/usr/local/bundle/" \
+        "-v $HOME/mybin/volume/ruby:/usr/local/bundle/:delegated" \
     )
     echo ${v[@]}
 }

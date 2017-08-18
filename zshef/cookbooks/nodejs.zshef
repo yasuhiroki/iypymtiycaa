@@ -20,7 +20,7 @@ function my::nodejs::docker::run::cmd() {
     local v=(\
         "-i" \
         "--rm" \
-        "-v $HOME/mybin/volume/nodejs/node_modules:/node_modules" \
+        "-v $HOME/mybin/volume/nodejs/node_modules:/node_modules:delegated" \
         "-v /usr/local/lib/node_modules/npm"
     )
     echo ${v[@]}
