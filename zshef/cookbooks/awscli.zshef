@@ -2,30 +2,20 @@
 
 function zshef::install() {
     zshef::util::mng::is_installed "aws" || {
-        zshef::util::mng::is_installed "python" || {
-            zshef::util::log::error "Depends python"
-            return 1
-        }
-        zshef::util::mng::is_installed "pip" || {
-            zshef::util::log::error "Depends pip"
-            return 1
-        }
-        pip install awscli
+        my::install::awscli
+    }
+    zshef::util::mng::is_installed "eb" || {
+        my::install::awsebcli
     }
     my::config
 }
 
 function zshef::update() {
     zshef::util::mng::is_installed "aws" && {
-        zshef::util::mng::is_installed "python" || {
-            zshef::util::log::error "Depends python"
-            return 1
-        }
-        zshef::util::mng::is_installed "pip" || {
-            zshef::util::log::error "Depends pip"
-            return 1
-        }
-        pip install -U awscli
+        my::install::awscli
+    }
+    zshef::util::mng::is_installed "eb" && {
+        my::install::awsebcli
     }
     my::config
 }
@@ -34,4 +24,28 @@ function my::config() {
     zshef::util::mng::is_installed "aws_zsh_completer.sh" && {
         echo "source $(where aws_zsh_completer.sh)" > ~/.iypymtiycaa/awsclirc.sh
     }
+}
+
+function my::install::awscli() {
+    zshef::util::mng::is_installed "python" || {
+        zshef::util::log::error "Depends python"
+        return 1
+    }
+    zshef::util::mng::is_installed "pip" || {
+        zshef::util::log::error "Depends pip"
+        return 1
+    }
+    pip install -U awscli
+}
+
+function my::install::awsebcli() {
+    zshef::util::mng::is_installed "python" || {
+        zshef::util::log::error "Depends python"
+        return 1
+    }
+    zshef::util::mng::is_installed "pip" || {
+        zshef::util::log::error "Depends pip"
+        return 1
+    }
+    pip install -U awsebcli
 }
