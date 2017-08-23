@@ -71,7 +71,7 @@ function my::docker::bin::opt::share::pwd() {
 function _my::docker::bin::option() {
     local opt=(\
         "${1}" \
-        "-v $(my::local::tmp::dir::osx):$(my::docker::tmp::dir::osx):delegated" \
+        "-v $(my::local::tmp::dir::osx):$(my::docker::tmp::dir::osx):cached" \
         "$(my::docker::bin::opt::share::pwd)" \
     )
     echo ${opt[@]}
