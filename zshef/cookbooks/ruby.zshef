@@ -5,10 +5,16 @@ source ${${(%):-%N}:A:h}/ruby/_func_asdf.sh
 function zshef::install() {
     my::install
     my::config
+    my::alias
 }
 
 function zshef::update() {
     zshef::util::mng::is_installed "ruby" && {
         my::config
     }
+    my::alias
+}
+
+function my::alias() {
+    echo 'alias be="bundle exec"' > ~/.iypymtiycaa/rubyrc.sh
 }
