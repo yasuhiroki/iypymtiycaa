@@ -11,6 +11,7 @@ alias ls='ls -F --color'
 alias ll='ls -l'
 alias la='ls -a'
 alias yy='fc -ln -1 | pbcopy'
+alias taketemp='cd "$(mktemp -d)"'
 
 # Read custom configure
 for f in ~/.iypymtiycaa/*
