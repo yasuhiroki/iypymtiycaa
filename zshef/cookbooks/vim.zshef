@@ -8,6 +8,7 @@ function zshef::install::osx() {
     brew tap macvim-dev/macvim
     brew install --HEAD macvim-dev/macvim/macvim
     my::config::osx
+    my::depends::osx
 }
 
 function zshef::install::debian() {
@@ -71,5 +72,9 @@ function my::config::osx() {
 
 function my::config::debian() {
     echo "alias vim='/usr/local/bin/vim'" > ~/.iypymtiycaa/vimrc.sh
+}
+
+function my::depends::osx() {
+    brew install ctags
 }
 
