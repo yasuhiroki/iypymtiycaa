@@ -42,6 +42,7 @@ function my::ghq::install() {
     zshef::util::mng::is_installed "ghq" || {
         go get github.com/motemen/ghq
     }
+    git config --global ghq.root "~/LathropProjects"
 }
 
 function my::ghq::update() {
@@ -52,5 +53,6 @@ function my::ghq::update() {
     zshef::util::mng::is_installed "ghq" && {
         go get -u github.com/motemen/ghq
     }
+    git config --global ghq.root "~/LathropProjects"
 }
 
