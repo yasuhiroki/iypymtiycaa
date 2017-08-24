@@ -8,7 +8,8 @@ function zshef::install::osx() {
     zshef::util::mng::is_installed "git" || {
         zshef::util::os::mac::install "git"
     }
-    _config
+    my::config
+    my::ghq::install
 }
 
 function zshef::update() {
@@ -19,10 +20,11 @@ function zshef::update::osx() {
     zshef::util::mng::is_installed "git" && {
         zshef::util::os::mac::update "git"
     }
-    _config
+    my::config
+    my::ghq::update
 }
 
-function _config() {
+function my::config() {
     git config --global push.default simple
     git config --global core.autocrlf input
     echo "*~
@@ -30,5 +32,25 @@ function _config() {
     git config --global core.excludesfile ~/.gitignore_global
     git config --global rebase.autostash true
     git config --global rebase.autosquash true
+}
+
+function my::ghq::install() {
+    zshef::util::mng::is_installed "go" || {
+        zshef::util::log::error "Depends golang"
+        return 1
+    }
+    zshef::util::mng::is_installed "ghq" || {
+        go get github.com/motemen/ghq
+    }
+}
+
+function my::ghq::update() {
+    zshef::util::mng::is_installed "go" || {
+        zshef::util::log::error "Depends golang"
+        return 1
+    }
+    zshef::util::mng::is_installed "ghq" && {
+        go get -u github.com/motemen/ghq
+    }
 }
 
