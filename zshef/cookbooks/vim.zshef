@@ -5,8 +5,10 @@ function zshef::install() {
 }
 
 function zshef::install::osx() {
-    brew tap macvim-dev/macvim
-    brew install --HEAD macvim-dev/macvim/macvim
+    zshef::util::mng::is_installed "mvim" || {
+        brew tap macvim-dev/macvim
+        brew install --HEAD macvim-dev/macvim/macvim
+    }
     my::config::osx
     my::depends::osx
 }
@@ -23,9 +25,11 @@ function zshef::install::debian() {
 }
 
 function zshef::update::osx() {
-    rm -rf /Users/yasuhiroki/Library/Caches/Homebrew/macvim--git
-    brew tap macvim-dev/macvim
-    brew reinstall --HEAD macvim-dev/macvim/macvim
+    zshef::util::mng::is_installed "mvim" && {
+        rm -rf /Users/yasuhiroki/Library/Caches/Homebrew/macvim--git
+        brew tap macvim-dev/macvim
+        brew reinstall --HEAD macvim-dev/macvim/macvim
+    }
     my::config::osx
 }
 
@@ -75,6 +79,7 @@ function my::config::debian() {
 }
 
 function my::depends::osx() {
-    brew install ctags
+    brew tap universal-ctags/universal-ctags
+    brew install --HEAD universal-ctags
 }
 
