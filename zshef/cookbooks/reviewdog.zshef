@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+
+function zshef::install() {
+    zshef::util::mng::is_installed "go" || {
+        zshef::util::log::error "Depends golang"
+        return 1
+    }
+
+    zshef::util::mng::is_installed "reviewdog" || {
+        go get -u github.com/haya14busa/reviewdog/cmd/reviewdog
+    }
+}
+
+function zshef::update() {
+    zshef::util::mng::is_installed "reviewdog" && {
+        go get -u github.com/haya14busa/reviewdog/cmd/reviewdog
+    }
+}
