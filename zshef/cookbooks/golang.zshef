@@ -5,16 +5,10 @@ source ${${(%):-%N}:A:h}/golang/_func_asdf.sh
 function zshef::install() {
     my::install
     my::config
-    my::bin::path
 }
 
 function zshef::update() {
     zshef::util::mng::is_installed "go" && {
         my::config
     }
-    my::bin::path
-}
-
-function my::bin::path() {
-    echo "export PATH=\$HOME/go/bin:$PATH" > ~/.iypymtiycaa/golangrc
 }
