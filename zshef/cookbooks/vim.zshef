@@ -9,7 +9,7 @@ function zshef::install::osx() {
         brew tap macvim-dev/macvim
         brew install --HEAD macvim-dev/macvim/macvim
     }
-    my::config::osx
+    #my::config::osx
     my::depends::osx
 }
 
@@ -30,7 +30,7 @@ function zshef::update::osx() {
         brew tap macvim-dev/macvim
         brew reinstall --HEAD macvim-dev/macvim/macvim
     }
-    my::config::osx
+    #my::config::osx
 }
 
 function zshef::update::debian() {
