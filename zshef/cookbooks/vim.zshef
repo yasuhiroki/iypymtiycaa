@@ -81,5 +81,6 @@ function my::config::debian() {
 function my::depends::osx() {
     brew tap universal-ctags/universal-ctags
     brew install --HEAD universal-ctags
+    brew install cmake boost
 }
 
