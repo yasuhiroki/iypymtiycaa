@@ -7,6 +7,9 @@ function zshef::install() {
     zshef::util::mng::is_installed "eb" || {
         my::install::awsebcli
     }
+    zshef::util::mng::is_installed "cfn-lint" || {
+        my::install::cfnlint
+    }
     my::config
 }
 
@@ -16,6 +19,9 @@ function zshef::update() {
     }
     zshef::util::mng::is_installed "eb" && {
         my::install::awsebcli
+    }
+    zshef::util::mng::is_installed "cfn-lint" && {
+        my::install::cfnlint
     }
     my::config
 }
@@ -48,4 +54,16 @@ function my::install::awsebcli() {
         return 1
     }
     pip install -U awsebcli
+}
+
+function my::install::cfnlint() {
+    zshef::util::mng::is_installed "node" || {
+        zshef::util::log::error "Depends node"
+        return 1
+    }
+    zshef::util::mng::is_installed "npm" || {
+        zshef::util::log::error "Depends npm"
+        return 1
+    }
+    npm install -g cfn-lint
 }
