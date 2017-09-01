@@ -6,7 +6,7 @@ function my::circleci::cli::url() {
 
 function my::circleci::cli::bin() {
     mkdir -p $HOME/mybin &> /dev/null
-    echo "$HOME/mybin/"
+    echo "$HOME/mybin/circleci"
 }
 
 function zshef::install() {
