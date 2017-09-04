@@ -2,9 +2,9 @@
 
 function zshef::install() {
     zshef::util::mng::is_installed "asdf" || {
-        my::config
         git clone https://github.com/asdf-vm/asdf.git ~/.asdf
     }
+    my::config
 }
 
 function zshef::install::osx() {
@@ -32,15 +32,16 @@ function zshef::install::depends::debian() {
 
 function zshef::update() {
     zshef::util::mng::is_installed "asdf" && {
-        my::config
         (
         cd ~/.asdf
         git pull
         )
     }
+    my::config
 }
 
 function my::config() {
-    echo '. ~/.asdf/asdf.sh' > ~/.iypymtiycaa/asdfrc.sh
+    echo 'source ~/.asdf/asdf.sh' > ~/.iypymtiycaa/asdfrc.sh
+    echo 'source ~/.asdf/completions/asdf.bash' >> ~/.iypymtiycaa/asdfrc.sh
 }
 
