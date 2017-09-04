@@ -1,0 +1,40 @@
+#!/usr/bin/env zsh
+
+function zshef::install() {
+    zshef::util::mng::is_installed "textlint" || {
+        my::install::textlint
+    }
+    my::config::textlint
+}
+
+function zshef::update() {
+    zshef::util::mng::is_installed "textlint" && {
+        my::install::textlint
+    }
+    my::config::textlint
+}
+
+function my::config::textlint() {
+cat <<EOH > ~/.textlintrc
+{
+  "rules": {
+    "spellcheck-tech-word": true,
+    "preset-ja-technical-writing": true
+  }
+}
+EOH
+}
+
+function my::install::textlint() {
+    zshef::util::mng::is_installed "node" || {
+        zshef::util::log::error "Depends node"
+        return 1
+    }
+    zshef::util::mng::is_installed "npm" || {
+        zshef::util::log::error "Depends npm"
+        return 1
+    }
+    npm install -g \
+        textlint-rule-preset-ja-technical-writing \
+        textlint-rule-spellcheck-tech-word
+}
