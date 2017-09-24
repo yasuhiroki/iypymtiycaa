@@ -12,6 +12,7 @@ zplug "yasuhiroki/bttf-color-zsh"
 
 zplug 'molovo/revolver', as:command, use:revolver
 zplug 'zunit-zsh/zunit', as:command, use:zunit, hook-build:'./build.zsh'
+zplug 'marzocchi/zsh-notify'
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "

@@ -6,6 +6,10 @@ function zshef::install::osx() {
         local theme='Solarized Dark'
         #open "$HOME/.osx-terminal-themes/schemes/${theme}.terminal"
     }
+
+    zshef::util::mng::is_installed "terminal-notifier" || {
+        zshef::util::os::mac::install "terminal-notifier"
+    }
 }
 
 function zshef::update::osx() {
@@ -15,5 +19,10 @@ function zshef::update::osx() {
         git pull
         )
     }
+
+    zshef::util::mng::is_installed "terminal-notifier" && {
+        zshef::util::os::mac::update "terminal-notifier"
+    }
+    :
 }
 
