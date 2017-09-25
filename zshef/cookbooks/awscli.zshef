@@ -10,6 +10,9 @@ function zshef::install() {
     zshef::util::mng::is_installed "cfn-lint" || {
         my::install::cfnlint
     }
+    zshef::util::mng::is_installed "awslogs" || {
+        my::install::awslogs
+    }
     my::config
 }
 
@@ -22,6 +25,9 @@ function zshef::update() {
     }
     zshef::util::mng::is_installed "cfn-lint" && {
         my::install::cfnlint
+    }
+    zshef::util::mng::is_installed "awslogs" && {
+        my::install::awslogs
     }
     my::config
 }
@@ -66,4 +72,16 @@ function my::install::cfnlint() {
         return 1
     }
     npm install -g cfn-lint
+}
+
+function my::install::awslogs() {
+    zshef::util::mng::is_installed "python" || {
+        zshef::util::log::error "Depends python"
+        return 1
+    }
+    zshef::util::mng::is_installed "pip" || {
+        zshef::util::log::error "Depends pip"
+        return 1
+    }
+    pip install -U awslogs
 }
