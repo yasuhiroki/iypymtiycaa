@@ -13,6 +13,12 @@ alias la='ls -a'
 alias yy='fc -ln -1 | pbcopy'
 alias taketemp='cd "$(mktemp -d)"'
 
+if which python3 > /dev/null; then
+  alias serve='python3 -m http.server'
+else
+  alias serve='python -m SimpleHTTPServer'
+fi
+
 # Read custom configure
 for f in ~/.iypymtiycaa/*
 do
