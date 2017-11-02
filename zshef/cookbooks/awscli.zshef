@@ -16,6 +16,12 @@ function zshef::install() {
     my::config
 }
 
+function zshef::install::osx() {
+    zshef::util::mng::is_installed "ecs-cli" || {
+        my::download::osx::awsecscli::latest
+    }
+}
+
 function zshef::update() {
     zshef::util::mng::is_installed "aws" && {
         my::install::awscli
@@ -30,6 +36,12 @@ function zshef::update() {
         my::install::awslogs
     }
     my::config
+}
+
+function zshef::update::osx() {
+    zshef::util::mng::is_installed "ecs-cli" && {
+        my::download::osx::awsecscli::latest
+    }
 }
 
 function my::config() {
@@ -60,6 +72,15 @@ function my::install::awsebcli() {
         return 1
     }
     pip install -U awsebcli
+}
+
+function my::url::awsecscli::osx() {
+    echo "https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-darwin-amd64"
+}
+
+function my::download::osx::awsecscli::latest() {
+    curl $(my::url::awsecscli::osx)-latest -o ~/mybin/ecs-cli
+    chmod 755 ~/mybin/ecs-cli
 }
 
 function my::install::cfnlint() {
