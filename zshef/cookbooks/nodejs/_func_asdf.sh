@@ -27,7 +27,7 @@ function my::install::asdf() {
 }
 
 function my::npm::global::modules() {
-    echo eslint eslint-config-airbnb eslint-plugin-jsx-a11y prettier
+    echo eslint eslint-config-airbnb eslint-plugin-jsx-a11y eslint-plugin-react prettier
 }
 
 function my::install::modules() {
