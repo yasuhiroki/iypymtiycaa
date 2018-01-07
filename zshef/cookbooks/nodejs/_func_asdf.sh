@@ -28,9 +28,13 @@ function my::install::asdf() {
 
 function my::install::modules() {
     zshef::util::mng::is_installed "npm" && {
-        npm install -g npm
-        npm install -g https://yarnpkg.com/latest.tar.gz
-        npm install -g eslint eslint-config-airbnb
+        npm install -g npm eslint eslint-config-airbnb prettier
+    }
+}
+
+function my::update::modules() {
+    zshef::util::mng::is_installed "npm" && {
+        npm update -g npm eslint eslint-config-airbnb prettier
     }
 }
 

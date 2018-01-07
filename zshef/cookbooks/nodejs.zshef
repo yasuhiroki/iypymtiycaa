@@ -4,10 +4,12 @@ source ${${(%):-%N}:A:h}/nodejs/_func_asdf.sh
 
 function zshef::install() {
     my::install
+    my::install::modules
 }
 
 function zshef::update() {
     zshef::util::mng::is_installed "node" && {
         my::config
+        my::update::modules
     }
 }
