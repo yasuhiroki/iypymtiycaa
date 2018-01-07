@@ -26,15 +26,19 @@ function my::install::asdf() {
     }
 }
 
+function my::npm::global::modules() {
+    echo eslint eslint-config-airbnb eslint-plugin-jsx-a11y prettier
+}
+
 function my::install::modules() {
     zshef::util::mng::is_installed "npm" && {
-        npm install -g npm eslint eslint-config-airbnb prettier
+        npm install -g npm $(my::npm::global::modules)
     }
 }
 
 function my::update::modules() {
     zshef::util::mng::is_installed "npm" && {
-        npm update -g npm eslint eslint-config-airbnb prettier
+        npm update -g npm $(my::npm::global::modules)
     }
 }
 
