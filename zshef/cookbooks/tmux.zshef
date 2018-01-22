@@ -11,6 +11,7 @@ function zshef::install::osx() {
     }
     [ $? != 0 ] && return $?
     my::config::osx
+    my::install::optional::osx
 }
 
 function zshef::install::debian() {
@@ -31,6 +32,7 @@ function zshef::update::osx() {
     }
     [ $? != 0 ] && return $?
     my::config::osx
+    my::update::optional::osx
 }
 
 function zshef::update::debian() {
@@ -69,3 +71,14 @@ function my::config::copy() {
   cp ${file} ${dest}
 }
 
+function my::install::optional::osx() {
+    zshef::util::mng::is_installed "tmux-xpanes" || {
+        zshef::util::os::mac::install "tmux-xpanes"
+    }
+}
+
+function my::update::optional::osx() {
+    zshef::util::mng::is_installed "tmux-xpanes" && {
+        zshef::util::os::mac::update "tmux-xpanes"
+    }
+}
