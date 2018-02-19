@@ -10,6 +10,7 @@ function zshef::install::osx() {
     }
     my::config
     my::ghq::install
+    my::hub::install::osx
 }
 
 function zshef::update() {
@@ -22,6 +23,7 @@ function zshef::update::osx() {
     }
     my::config
     my::ghq::update
+    my::hub::update::osx
 }
 
 function my::config() {
@@ -54,5 +56,17 @@ function my::ghq::update() {
         go get -u github.com/motemen/ghq
     }
     git config --global ghq.root "~/LathropProjects"
+}
+
+function my::hub::install::osx() {
+    zshef::util::mng::is_installed "hub" || {
+        zshef::util::os::mac::install "hub"
+    }
+}
+
+function my::hub::update::osx() {
+    zshef::util::mng::is_installed "hub" && {
+        zshef::util::os::mac::update "hub"
+    }
 }
 
