@@ -39,7 +39,10 @@ function my::config() {
 }
 
 function my::config::commit_template() {
-    echo "# feature: 機能の追加
+    echo "
+
+
+# feature: 機能の追加
 # bug: バグの修正
 # style: コーディングスタイルの修正 (機能・パフォーマンスの変更は含まない)
 # refactor: リファクタ
@@ -58,7 +61,7 @@ function my::ghq::install() {
     zshef::util::mng::is_installed "ghq" || {
         go get github.com/motemen/ghq
     }
-    git config --global ghq.root "~/LathropProjects"
+    git config --global ghq.root "~/ghq"
 }
 
 function my::ghq::update() {
@@ -69,7 +72,7 @@ function my::ghq::update() {
     zshef::util::mng::is_installed "ghq" && {
         go get -u github.com/motemen/ghq
     }
-    git config --global ghq.root "~/LathropProjects"
+    git config --global ghq.root "~/ghq"
 }
 
 function my::hub::install::osx() {
