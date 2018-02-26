@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+function zshef::install::osx() {
+    zshef::util::mng::is_installed "nvim" || {
+        zshef::util::os::mac::install "neovim"
+    }
+}
+
+function zshef::update::osx() {
+    zshef::util::mng::is_installed "nvim" && {
+        zshef::util::os::mac::update "neovim"
+    }
+}
+
