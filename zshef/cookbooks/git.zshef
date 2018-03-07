@@ -35,7 +35,17 @@ function my::config() {
     git config --global rebase.autostash true
     git config --global rebase.autosquash true
 
+    my::config::alias
     my::config::commit_template
+}
+
+function my::config::alias() {
+    git config --global alias.poi "$(my::config::alias::poi)"
+    git config --global alias.ri 'rebase -i'
+}
+
+function my::config::alias::poi() {
+    echo '!git branch -D ''$(git branch --merged | grep -v '"'^*'"')'
 }
 
 function my::config::commit_template() {
