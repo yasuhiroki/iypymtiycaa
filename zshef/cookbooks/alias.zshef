@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+
+function zshef::install() {
+    my::_config
+}
+
+function zshef::update() {
+    my::_config
+}
+
+function my::_config() {
+cat <<EOH > ~/.iypymtiycaa/aliasrc.sh
+alias yukino=git
+alias yukky=git
+alias yuki=git
+EOH
+}
