@@ -10,8 +10,14 @@ function zshef::update() {
 
 function my::_config() {
 cat <<EOH > ~/.iypymtiycaa/aliasrc.sh
-alias yukino=git
-alias yukky=git
-alias yuki=git
+if type hub 1>/dev/null; then
+    alias yukino=hub
+    alias yukky=hub
+    alias yuki=hub
+else
+    alias yukino=git
+    alias yukky=git
+    alias yuki=git
+fi
 EOH
 }

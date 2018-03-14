@@ -89,11 +89,18 @@ function my::hub::install::osx() {
     zshef::util::mng::is_installed "hub" || {
         zshef::util::os::mac::install "hub"
     }
+    my::hub::config
 }
 
 function my::hub::update::osx() {
     zshef::util::mng::is_installed "hub" && {
         zshef::util::os::mac::update "hub"
     }
+    my::hub::config
 }
 
+function my::hub::config() {
+    local completions_dir="$HOME/.iypymtiycaa/zsh/completions/"
+    mkdir -p ${completions_dir}
+    curl https://raw.githubusercontent.com/github/hub/master/etc/hub.zsh_completion -o ${completions_dir}_hub
+}

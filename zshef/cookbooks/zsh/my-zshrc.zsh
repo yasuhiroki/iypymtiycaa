@@ -15,15 +15,22 @@ alias taketemp='cd "$(mktemp -d)"'
 
 if which python3 > /dev/null; then
   alias serve='python3 -m http.server'
-else
+elif which python2 > /dev/null; then
   alias serve='python -m SimpleHTTPServer'
+else
+  # brew の default python が python3 となったため
+  alias serve='python -m http.server'
 fi
 
 # Read custom configure
 for f in ~/.iypymtiycaa/*
 do
+    test -f $f || continue
     source $f || echo "Could not source $f"
 done
+fpath+=(~/.iypymtiycaa/zsh/completions/)
+autoload -U compinit
+compinit -C
 
 export EDITOR=vim
 export PATH="$HOME/mybin:$PATH"
@@ -38,4 +45,3 @@ stty stop undef
 stty start undef
 
 set -o emacs
-

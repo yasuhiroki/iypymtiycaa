@@ -20,7 +20,6 @@ function zshef::update() {
 
 function my::config() {
     local dir="${${(%):-%N}:A:h}/cookbooks/zsh"
-    local dest="${HOME}/.iypymtiycaa"
 
     echo 'source ~/.zplug/init.zsh'  > ~/.zshrc
     echo '' >> ~/.zshrc
