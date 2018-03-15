@@ -87,14 +87,16 @@ function my::ghq::update() {
 
 function my::hub::install::osx() {
     zshef::util::mng::is_installed "hub" || {
-        zshef::util::os::mac::install "hub"
+        # brew の hub は 2.9 なので 2.10 を入れたい
+        go get github.com/github/hub
     }
     my::hub::config
 }
 
 function my::hub::update::osx() {
     zshef::util::mng::is_installed "hub" && {
-        zshef::util::os::mac::update "hub"
+        rm -rf ~/go/src/github.com/github/hub/ ~/go/pkg/darwin_amd64/github.com/github/hub/
+        go get github.com/github/hub
     }
     my::hub::config
 }
@@ -103,4 +105,6 @@ function my::hub::config() {
     local completions_dir="$HOME/.iypymtiycaa/zsh/completions/"
     mkdir -p ${completions_dir}
     curl https://raw.githubusercontent.com/github/hub/master/etc/hub.zsh_completion -o ${completions_dir}_hub
+
+    git config --global alias.prpr '!hub pull-request -F .github/PULL_REQUEST_TEMPLATE.md --edit'
 }
