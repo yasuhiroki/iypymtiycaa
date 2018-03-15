@@ -9,6 +9,7 @@ function zshef::install::osx() {
         zshef::util::os::mac::install "git"
     }
     my::config
+    my::config::osx
     my::ghq::install
     my::hub::install::osx
 }
@@ -22,6 +23,7 @@ function zshef::update::osx() {
         zshef::util::os::mac::update "git"
     }
     my::config
+    my::config::osx
     my::ghq::update
     my::hub::update::osx
 }
@@ -42,6 +44,10 @@ function my::config() {
 function my::config::alias() {
     git config --global alias.poi "$(my::config::alias::poi)"
     git config --global alias.ri 'rebase -i'
+}
+
+function my::config::osx() {
+    git config --global alias.done "!git log --pretty=format:'- [x] %s %h' origin/develop..HEAD | gtac"
 }
 
 function my::config::alias::poi() {
