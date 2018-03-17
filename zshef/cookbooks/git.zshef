@@ -55,17 +55,14 @@ function my::config::alias::poi() {
 }
 
 function my::config::commit_template() {
-    echo "
-
-
-# feature: 機能の追加
-# bug: バグの修正
-# style: コーディングスタイルの修正 (機能・パフォーマンスの変更は含まない)
-# refactor: リファクタ
-# perf: パフォーマンスの改善
-# test: テストの追加・修正
-# docs: ドキュメントの追加修正
-# misc: その他、ビルド環境の設定変更など (docker, circleci, rubocop)" > ~/.git_commit_template.md
+    echo "feature: 機能の追加
+bug: バグの修正
+style: コーディングスタイルの修正 (機能・パフォーマンスの変更は含まない)
+refactor: リファクタ
+perf: パフォーマンスの改善
+test: テストの追加・修正
+docs: ドキュメントの追加修正
+misc: その他、ビルド環境の設定変更など (docker, circleci, rubocop)" > ~/.git_commit_template.md
     git config --global commit.template ~/.git_commit_template.md
 }
 
