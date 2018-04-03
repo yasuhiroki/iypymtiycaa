@@ -106,3 +106,26 @@ function my::install::awslogs() {
     }
     pip install -U awslogs
 }
+
+function my::install::script() {
+    test -f $(my::script::path) || {
+        mkdir -p ~/mybin/
+        curl $(my::script::url) -o $(my::script::path)
+        chmod 755 ~/mybin/mkflocss
+    }
+}
+
+function my::update::script() {
+    test -f $(my::script::path) && {
+        curl $(my::script::url) -o $(my::script::path)
+        chmod 755 ~/mybin/mkflocss
+    }
+}
+
+function my::script::path() {
+    echo "~/mybin/aws-eb-config-copy"
+}
+
+function my::script::url() {
+    echo "https://gist.githubusercontent.com/yasuhiroki/9691e42fa5d5d1ce057f81bcd32fcb98/raw/74f61fa52ca74d1490c452338b9b487e7e26447a/aws-eb-config-copy.sh"
+}
