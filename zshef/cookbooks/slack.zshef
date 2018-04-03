@@ -1,0 +1,37 @@
+#!/usr/bin/env zsh
+
+function zshef::install::osx() {
+    zshef::util::mng::is_installed "slackcat" || {
+        go get github.com/bcicen/slackcat
+    }
+    my::script
+}
+
+function zshef::update::osx() {
+    zshef::util::mng::is_installed "slackcat" && {
+        rm -rf ~/go/src/github.com/github/hub/ ~/go/pkg/darwin_amd64/github.com/github/hub/
+        go get github.com/bcicen/slackcat
+    }
+    my::script
+}
+
+function my::script() {
+cat > $(my::script::path) <<-EOH
+#!/bin/bash
+
+set -e
+
+which slackcat >/dev/null || { echo "required slackcat"; exit 1; }
+
+if [ \$# -gt 0 ]; then
+    echo "\${*}" | slackcat -c "\${MY_SLACK_CHANNEL:-times-yasuhiroki}" -u "\${MY_SLACK_USERNAME:-yasuhiroki}" --stream
+else
+    cat | slackcat -c "\${MY_SLACK_CHANNEL:-times-yasuhiroki}" -u "\${MY_SLACK_USERNAME:-yasuhiroki}" --stream
+fi
+EOH
+chmod 777 $(my::script::path)
+}
+
+function my::script::path() {
+    echo ~/mybin/slack
+}
