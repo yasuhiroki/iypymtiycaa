@@ -42,8 +42,9 @@ function my::config() {
 }
 
 function my::config::alias() {
-    git config --global alias.poi "$(my::config::alias::poi)"
+    git config --global alias.poi "!$(my::config::alias::poi)"
     git config --global alias.ri 'rebase -i'
+    git config --global alias.fbr "!$(my::config::alias::fbr)"
 }
 
 function my::config::osx() {
@@ -51,7 +52,11 @@ function my::config::osx() {
 }
 
 function my::config::alias::poi() {
-    echo '!git branch -D ''$(git branch --merged | grep -v '"'^*'"')'
+    echo 'git branch -D ''$(git branch --merged | grep -v '"'^*'"')'
+}
+
+function my::config::alias::fbr() {
+    echo 'f() { local branches branch; branches=$(git branch --all | grep -v HEAD) && branch=$(echo "$branches" | fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) && git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##"); }; f'
 }
 
 function my::config::commit_template() {
