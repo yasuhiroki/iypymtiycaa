@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+function zshef::install::osx() {
+    zshef::util::mng::is_installed "gron" || {
+        go get github.com/tomnomnom/gron
+    }
+    my::config
+}
+
+function zshef::update::osx() {
+    zshef::util::mng::is_installed "gron" && {
+        rm -rf ~/go/src/github.com/tomnomnom/gron/ ~/go/pkg/darwin_amd64/github.com/tomnomnom/gron/
+        go get github.com/tomnomnom/gron
+    }
+    my::config
+}
+
+function my::config() {
+cat <<EOH > ~/.iypymtiycaa/gronrc.sh
+alias norg="gron --ungron"
+alias ungron="gron --ungron"
+EOH
+}
