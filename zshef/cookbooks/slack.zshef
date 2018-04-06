@@ -9,7 +9,7 @@ function zshef::install::osx() {
 
 function zshef::update::osx() {
     zshef::util::mng::is_installed "slackcat" && {
-        rm -rf ~/go/src/github.com/github/hub/ ~/go/pkg/darwin_amd64/github.com/github/hub/
+        rm -rf ~/go/src/github.com/bcicen/slackcat/ ~/go/pkg/darwin_amd64/github.com/bcicen/slackcat/
         go get github.com/bcicen/slackcat
     }
     my::script
