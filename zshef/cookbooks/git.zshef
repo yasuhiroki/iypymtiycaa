@@ -48,7 +48,7 @@ function my::config::alias() {
 }
 
 function my::config::osx() {
-    git config --global alias.done "!git log --pretty=format:'- [x] %s %h' origin/develop..HEAD | gtac"
+    git config --global alias.done "!git log --pretty=format:'- [x] %s %h' origin/develop..HEAD | awk '\$0' | gtac"
 }
 
 function my::config::alias::poi() {
