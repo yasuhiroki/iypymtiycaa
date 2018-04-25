@@ -38,7 +38,7 @@ export PATH="$HOME/mybin:$PATH"
 setopt share_history
 setopt hist_ignore_dups
 export HISTFILE=${HOME}/.zsh_history
-export HISTSIZE=1000
+export HISTSIZE=10000
 export SAVEHIST=100000
 
 stty stop undef
