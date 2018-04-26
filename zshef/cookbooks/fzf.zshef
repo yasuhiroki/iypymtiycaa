@@ -24,9 +24,9 @@ function zshef::update() {
 
 function my::_config() {
 cat <<EOH > ~/.iypymtiycaa/fzfrc.sh
+export FZF_DEFAULT_OPTS='--reverse'
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_OPTS="--reverse"
-export FZF_CTRL_R_OPTS="\${FZF_CTRL_R_OPTS//--reverse/} --reverse"
 EOH
 }
 
