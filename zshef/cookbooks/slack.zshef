@@ -26,7 +26,7 @@ which slackcat >/dev/null || { echo "required slackcat"; exit 1; }
 if [ \$# -gt 0 ]; then
     echo "\${*}" | slackcat -c "\${MY_SLACK_CHANNEL:-times-yasuhiroki}" -u "\${MY_SLACK_USERNAME:-yasuhiroki}" --stream
 else
-    cat | slackcat -c "\${MY_SLACK_CHANNEL:-times-yasuhiroki}" -u "\${MY_SLACK_USERNAME:-yasuhiroki}" --stream
+    cat | gstdbuf -oL gsed 's/^/:yasuhiroki: /g' | slackcat -c "\${MY_SLACK_CHANNEL:-times-yasuhiroki}" -u "\${MY_SLACK_USERNAME:-yasuhiroki}" --stream
 fi
 EOH
 chmod 777 $(my::script::path)
