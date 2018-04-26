@@ -22,12 +22,6 @@ else
   alias serve='python -m http.server'
 fi
 
-# Read custom configure
-for f in ~/.iypymtiycaa/*
-do
-    test -f $f || continue
-    source $f || echo "Could not source $f"
-done
 fpath+=(~/.iypymtiycaa/zsh/completions/)
 autoload -U compinit
 compinit -C
@@ -45,3 +39,10 @@ stty stop undef
 stty start undef
 
 set -o emacs
+
+# Read custom configure
+for f in ~/.iypymtiycaa/*
+do
+    test -f $f || continue
+    source $f || echo "Could not source $f"
+done
