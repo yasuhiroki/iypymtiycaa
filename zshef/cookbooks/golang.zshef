@@ -6,6 +6,7 @@ function zshef::install() {
     my::install
     my::config
     my::bin::path
+    my::golang::dep
 }
 
 function zshef::update() {
@@ -13,8 +14,13 @@ function zshef::update() {
         my::config
     }
     my::bin::path
+    my::golang::dep
 }
 
 function my::bin::path() {
     echo "export PATH=\$HOME/go/bin:\$PATH" > ~/.iypymtiycaa/golangrc
+}
+
+function my::golang::dep() {
+    go get -u github.com/golang/dep/cmd/dep
 }
