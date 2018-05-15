@@ -11,7 +11,7 @@ function my::install::asdf() {
     my::asdf::is_installed "go" || {
         param=( \
           "go" \
-          "1.8.3" \
+          "1.9.6" \
           "https://github.com/kennyp/asdf-golang.git" \
         )
 
