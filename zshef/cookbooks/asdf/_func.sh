@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 function my::asdf::is_installed() {
   local lang="$1"
   asdf list ${lang} >/dev/null 2>&1
@@ -17,3 +19,10 @@ function my::asdf::default_install() {
   asdf global  ${lang} ${version}
 }
 
+function my::asdf::rc::name() {
+  echo '02_asdfrc.sh'
+}
+
+function my::asdf::rc::before::name() {
+  echo '01_asdfrc.sh'
+}

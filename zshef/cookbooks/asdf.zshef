@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+source ${${(%):-%N}:A:h}/asdf/_func.sh
+
 function zshef::install() {
     zshef::util::mng::is_installed "asdf" || {
         git clone https://github.com/asdf-vm/asdf.git ~/.asdf
@@ -41,7 +43,8 @@ function zshef::update() {
 }
 
 function my::config() {
-    echo 'source ~/.asdf/asdf.sh' > ~/.iypymtiycaa/asdfrc.sh
-    echo 'source ~/.asdf/completions/asdf.bash' >> ~/.iypymtiycaa/asdfrc.sh
+    : > ~/.iypymtiycaa/$(my::asdf::rc::name).sh
+    echo 'source ~/.asdf/asdf.sh' >> ~/.iypymtiycaa/$(my::asdf::rc::name).sh
+    echo 'source ~/.asdf/completions/asdf.bash' >> ~/.iypymtiycaa/$(my::asdf::rc::name).sh
 }
 

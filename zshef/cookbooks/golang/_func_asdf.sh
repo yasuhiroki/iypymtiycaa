@@ -24,5 +24,6 @@ function my::install () {
 }
 
 function my::config() {
-    :
+    : > ~/.iypymtiycaa/$(my::asdf::rc::before::name)-golang.sh
+    echo 'export GOPATH=$HOME/go' >> ~/.iypymtiycaa/$(my::asdf::rc::before::name)-golang.sh
 }
