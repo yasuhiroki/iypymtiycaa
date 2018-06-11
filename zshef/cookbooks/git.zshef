@@ -42,9 +42,13 @@ function my::config() {
 }
 
 function my::config::alias() {
-    git config --global alias.poi "!$(my::config::alias::poi)"
     git config --global alias.ri 'rebase -i'
+    # 不要なブランチをポイする
+    git config --global alias.poi "!$(my::config::alias::poi)"
+    # ブランチをあいまい検索してcheckoutする
     git config --global alias.fbr "!$(my::config::alias::fbr)"
+    # diff を正規表現で検索
+    git config --global alias.find "log -p -G"
 }
 
 function my::config::osx() {
