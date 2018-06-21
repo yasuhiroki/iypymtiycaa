@@ -12,7 +12,7 @@ function my::install::asdf() {
     my::asdf::is_installed "nodejs" || {
         param=(\
           "nodejs"\
-          "6.11.2"\
+          "8.11.3"\
           "https://github.com/asdf-vm/asdf-nodejs.git"\
           )
 
