@@ -9,7 +9,6 @@ function zshef::install::osx() {
         zshef::util::os::mac::install "reattach-to-user-namespace"
         zshef::util::os::mac::install "tmux"
     }
-    [ $? != 0 ] && return $?
     my::config::osx
     my::install::optional::osx
 }
@@ -30,7 +29,6 @@ function zshef::update::osx() {
     zshef::util::mng::is_installed "tmux" && {
         zshef::util::os::mac::update "tmux"
     }
-    [ $? != 0 ] && return $?
     my::config::osx
     my::update::optional::osx
 }
