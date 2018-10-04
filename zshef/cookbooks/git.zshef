@@ -119,7 +119,7 @@ function my::hub::config() {
     mkdir -p ${completions_dir}
     curl https://raw.githubusercontent.com/github/hub/master/etc/hub.zsh_completion -o ${completions_dir}_hub
 
-    git config --global alias.prpr '!hub pull-request -F .github/PULL_REQUEST_TEMPLATE.md --edit -a yasuhiroki'
+    git config --global alias.prpr '!hub pull-request -F .github/PULL_REQUEST_TEMPLATE.md --edit -a yasuhiroki -o'
     # Markdownのヘッダーがコメントアウト扱いになってしまうので
     # ref) https://github.com/github/hub/issues/1377
     git config --global core.commentchar ";"
