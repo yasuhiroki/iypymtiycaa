@@ -6,7 +6,7 @@ function my::install::asdf() {
     my::asdf::is_installed "ruby" || {
         local param=(\
             "ruby" \
-            "2.4.1" \
+            "2.5.1" \
             "https://github.com/asdf-vm/asdf-ruby.git" \
         )
 
