@@ -19,5 +19,8 @@ else
     alias yukky=git
     alias yuki=git
 fi
+
+alias ypush="git push -u origin HEAD"
+alias ypushf="git push -f -u origin HEAD"
 EOH
 }
