@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+source ${${(%):-%N}:A:h}/ruby/_func_asdf.sh
+
+function zshef::install() {
+    my::install
+}
+
+function zshef::update() {
+    my::install
+}
+
+function my::install() {
+    curl https://raw.githubusercontent.com/thisredone/rb/master/rb -o ~/mybin/rb && chmod +x ~/mybin/rb
+}
