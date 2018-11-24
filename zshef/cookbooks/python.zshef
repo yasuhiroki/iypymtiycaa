@@ -27,18 +27,12 @@ function zshef::install::debian() {
 }
 
 function zshef::install::osx() {
-    brew list python &>/dev/null || {
-        brew install python
-    }
-    brew list python3 &>/dev/null || {
-        brew install python3
-    }
+    zshef::util::os::mac::install "python"
     my::config::osx
 }
 
 function zshef::update::osx() {
-    brew reinstall python
-    brew reinstall python3
+    zshef::util::os::mac::update "python"
     my::config::osx
 }
 
