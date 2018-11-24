@@ -8,8 +8,8 @@ function zshef::install::osx() {
     zshef::util::mng::is_installed "mvim" || {
         brew tap macvim-dev/macvim
         brew install --HEAD macvim-dev/macvim/macvim
+        my::depends::osx
     }
-    my::depends::osx
 }
 
 function zshef::install::debian() {
@@ -20,14 +20,13 @@ function zshef::install::debian() {
         my::depends::debian
         my::make
     }
-    my::config::debian
 }
 
 function zshef::update::osx() {
     zshef::util::mng::is_installed "mvim" && {
         rm -rf /Users/yasuhiroki/Library/Caches/Homebrew/macvim--git
         brew tap macvim-dev/macvim
-        brew reinstall --HEAD macvim-dev/macvim/macvim
+        brew reinstall macvim-dev/macvim/macvim
     }
 }
 
@@ -39,7 +38,6 @@ function zshef::update::debian() {
         git pull
         my::make
     }
-    my::config::debian
 }
 
 function my::src::path() {
@@ -67,7 +65,7 @@ function my::depends::debian() {
     sudo apt install -y gettext libncurses5-dev libacl1-dev libgpm-dev lua5.2 liblua5.2-dev luajit libluajit-5.1 libperl-dev python-dev python3-dev ruby-dev ncurses-dev
 }
 
-function my::config::debian() {
+function zshef::config::debian() {
     echo "alias vim='/usr/local/bin/vim'" > ~/.iypymtiycaa/vimrc.sh
 }
 

@@ -8,8 +8,6 @@ function zshef::install::osx() {
     zshef::util::mng::is_installed "git" || {
         zshef::util::os::mac::install "git"
     }
-    my::config
-    my::config::osx
     my::ghq::install
     my::hub::install::osx
 }
@@ -22,13 +20,11 @@ function zshef::update::osx() {
     zshef::util::mng::is_installed "git" && {
         zshef::util::os::mac::update "git"
     }
-    my::config
-    my::config::osx
     my::ghq::update
     my::hub::update::osx
 }
 
-function my::config() {
+function zshef::config() {
     git config --global push.default simple
     git config --global core.autocrlf input
     echo "*~
@@ -52,7 +48,7 @@ function my::config::alias() {
     git config --global alias.find "log -p -G"
 }
 
-function my::config::osx() {
+function zshef::config::osx() {
     git config --global alias.done "!git log --pretty=format:'- [x] %s %h' origin/develop..HEAD | awk '\$0' | gtac"
 }
 
@@ -117,7 +113,7 @@ function my::hub::update::osx() {
 function my::hub::config() {
     local completions_dir="$HOME/.iypymtiycaa/zsh/completions/"
     mkdir -p ${completions_dir}
-    curl https://raw.githubusercontent.com/github/hub/master/etc/hub.zsh_completion -o ${completions_dir}_hub
+    curl -sSL https://raw.githubusercontent.com/github/hub/master/etc/hub.zsh_completion -o ${completions_dir}_hub
 
     git config --global alias.pr '!hub pull-request -a yasuhiroki -o'
     git config --global alias.prpr '!hub pull-request -F .github/PULL_REQUEST_TEMPLATE.md --edit -a yasuhiroki -o'

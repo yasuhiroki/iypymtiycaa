@@ -1,14 +1,14 @@
 #!/usr/bin/env zsh
 
 function zshef::install() {
-    my::_config
+    :
 }
 
 function zshef::update() {
-    my::_config
+    :
 }
 
-function my::_config() {
+function zshef::config() {
 cat <<EOH > ~/.iypymtiycaa/aliasrc.sh
 if type hub 1>/dev/null; then
     alias yukino=hub

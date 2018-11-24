@@ -1,26 +1,25 @@
 #!/usr/bin/env zsh
 
-source ${${(%):-%N}:A:h}/golang/_func_asdf.sh
+source ${${(%):-%N}:A:h}/asdf/_func.sh
 
 function zshef::install() {
-    my::install
-    my::config
-    my::bin::path
-    my::golang::dep
+    my::asdf::is_installed "go" || {
+        param=( \
+          "go" \
+          "1.11.1" \
+          "https://github.com/kennyp/asdf-golang.git" \
+        )
+
+        my::asdf::default_install ${param[@]}
+    }
 }
 
 function zshef::update() {
-    zshef::util::mng::is_installed "go" && {
-        my::config
-    }
-    my::bin::path
-    my::golang::dep
+    :
 }
 
-function my::bin::path() {
+function zshef::config() {
+    : > ~/.iypymtiycaa/$(my::asdf::rc::before::name)-golang.sh
+    echo 'export GOPATH=$HOME/go' >> ~/.iypymtiycaa/$(my::asdf::rc::before::name)-golang.sh
     echo "export PATH=\$HOME/go/bin:\$PATH" > ~/.iypymtiycaa/golangrc
-}
-
-function my::golang::dep() {
-    go get -u github.com/golang/dep/cmd/dep
 }

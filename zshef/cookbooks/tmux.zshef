@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 function zshef::install() {
-    my::config
+    :
 }
 
 function zshef::install::osx() {
@@ -9,7 +9,6 @@ function zshef::install::osx() {
         zshef::util::os::mac::install "reattach-to-user-namespace"
         zshef::util::os::mac::install "tmux"
     }
-    my::config::osx
     my::install::optional::osx
 }
 
@@ -17,8 +16,6 @@ function zshef::install::debian() {
     zshef::util::mng::is_installed "tmux" || {
         sudo apt -y install tmux
     }
-    [ $? != 0 ] && return $?
-    my::config::debian
 }
 
 function zshef::update() {
@@ -26,14 +23,12 @@ function zshef::update() {
         zshef::util::os::mac::update "reattach-to-user-namespace"
         zshef::util::os::mac::update "tmux"
     }
-    my::config
 }
 
 function zshef::update::osx() {
     zshef::util::mng::is_installed "tmux" && {
         zshef::util::os::mac::update "tmux"
     }
-    my::config::osx
     my::update::optional::osx
 }
 
@@ -42,21 +37,20 @@ function zshef::update::debian() {
         sudo apt -y upgrade tmux
     }
     [ $? != 0 ] && return $?
-    my::config::debian
 }
 
 
-function my::config() {
+function zshef::config() {
     my::config::copy "tmux.conf" "${HOME}/.tmux.conf"
     [ $? != 0 ] && return $?
     echo "alias tmux='tmux -2'" > ~/.iypymtiycaa/tmuxrc.sh
 }
 
-function my::config::osx() {
+function zshef::config::osx() {
     my::config::copy "tmux.conf.mac" "${HOME}/.tmux.conf.local"
 }
 
-function my::config::debian() {
+function zshef::config::debian() {
     my::config::copy "tmux.conf.ubuntu" "${HOME}/.tmux.conf.local"
 }
 

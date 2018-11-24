@@ -4,7 +4,6 @@ function zshef::install::osx() {
     zshef::util::mng::is_installed "gron" || {
         go get github.com/tomnomnom/gron
     }
-    my::config
 }
 
 function zshef::update::osx() {
@@ -12,10 +11,9 @@ function zshef::update::osx() {
         rm -rf ~/go/src/github.com/tomnomnom/gron/ ~/go/pkg/darwin_amd64/github.com/tomnomnom/gron/
         go get github.com/tomnomnom/gron
     }
-    my::config
 }
 
-function my::config() {
+function zshef::config() {
 cat <<EOH > ~/.iypymtiycaa/gronrc.sh
 alias norg="gron --ungron"
 alias ungron="gron --ungron"

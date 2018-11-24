@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 function zshef::install() {
-    _config
+    :
 }
 
 function zshef::install::osx() {
@@ -17,7 +17,7 @@ function zshef::install::debian() {
 }
 
 function zshef::update() {
-    _config
+    :
 }
 
 function zshef::update::osx() {
@@ -26,7 +26,7 @@ function zshef::update::osx() {
     }
 }
 
-function _config() {
+function zshef::config() {
     echo "*~
     *.swp
 

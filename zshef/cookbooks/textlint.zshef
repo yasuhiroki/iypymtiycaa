@@ -4,17 +4,15 @@ function zshef::install() {
     zshef::util::mng::is_installed "textlint" || {
         my::install::textlint
     }
-    my::config::textlint
 }
 
 function zshef::update() {
     zshef::util::mng::is_installed "textlint" && {
         my::install::textlint
     }
-    my::config::textlint
 }
 
-function my::config::textlint() {
+function zshef::config() {
 cat <<EOH > ~/.textlintrc
 {
   "rules": {

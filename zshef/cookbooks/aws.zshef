@@ -10,7 +10,6 @@ function zshef::install() {
     zshef::util::mng::is_installed "awslogs" || {
         my::install::awslogs
     }
-    my::config
 }
 
 function zshef::install::osx() {
@@ -29,7 +28,6 @@ function zshef::update() {
     zshef::util::mng::is_installed "awslogs" && {
         my::install::awslogs
     }
-    my::config
 }
 
 function zshef::update::osx() {
@@ -38,7 +36,7 @@ function zshef::update::osx() {
     }
 }
 
-function my::config() {
+function zshef::config() {
     zshef::util::mng::is_installed "aws_zsh_completer.sh" && {
         echo "source $(where aws_zsh_completer.sh)" > ~/.iypymtiycaa/awsclirc.sh
     }

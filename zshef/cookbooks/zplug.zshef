@@ -4,8 +4,6 @@ function zshef::install() {
     zshef::util::mng::is_installed "zplug" || {
         [ -d ~/.zplug ] || git clone https://github.com/zplug/zplug ~/.zplug
     }
-    [ $? != 0 ] && return $?
-    my::config
 }
 
 function zshef::update() {
@@ -15,10 +13,9 @@ function zshef::update() {
         git pull
         )
     }
-    my::config
 }
 
-function my::config() {
+function zshef::config() {
     local dir="${${(%):-%N}:A:h}/cookbooks/zsh"
 
     echo 'source ~/.zplug/init.zsh'  > ~/.zshrc

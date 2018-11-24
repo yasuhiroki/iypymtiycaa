@@ -1,15 +1,47 @@
 #!/usr/bin/env zsh
 
-source ${${(%):-%N}:A:h}/nodejs/_func_asdf.sh
+source ${${(%):-%N}:A:h}/asdf/_func.sh
 
 function zshef::install() {
-    my::install
+    # TODO: install gpg when use OSX
+    my::asdf::is_installed "nodejs" || {
+        param=(\
+          "nodejs"\
+          "8.11.3"\
+          "https://github.com/asdf-vm/asdf-nodejs.git"\
+          )
+
+        my::asdf::default_install ${param[@]}
+        [ $? != 0 ] && return $?
+    }
+
     my::install::modules
 }
 
 function zshef::update() {
     zshef::util::mng::is_installed "node" && {
-        my::config
         my::update::modules
     }
+}
+
+function my::npm::global::modules() {
+    echo eslint eslint-config-airbnb eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-import prettier prettier-eslint
+}
+
+function my::install::modules() {
+    zshef::util::mng::is_installed "npm" && {
+        npm install -g npm $(my::npm::global::modules)
+    }
+}
+
+function my::update::modules() {
+    zshef::util::mng::is_installed "npm" && {
+        npm update -g npm $(my::npm::global::modules)
+    }
+}
+
+function zshef::config() {
+    echo 'export NODE_PATH=`npm root -g`'       > ~/.iypymtiycaa/noderc.sh
+    echo 'export PATH="$HOME/.yarn/bin:$PATH"'  > ~/.iypymtiycaa/yarnrc.sh
+    echo '{ "extends": "airbnb" }'              > ~/.eslintrc
 }

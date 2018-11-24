@@ -28,15 +28,13 @@ function zshef::install::debian() {
 
 function zshef::install::osx() {
     zshef::util::os::mac::install "python"
-    my::config::osx
 }
 
 function zshef::update::osx() {
     zshef::util::os::mac::update "python"
-    my::config::osx
 }
 
-function my::config::osx() {
+function zshef::config::osx() {
 cat <<-EOH > ~/.iypymtiycaa/python.sh
 export PATH=/usr/local/opt/python/libexec/bin:\$PATH
 EOH

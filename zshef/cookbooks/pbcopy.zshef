@@ -4,11 +4,9 @@ function zshef::install::debian() {
     zshef::util::mng::is_installed "xsel" || {
         sudo apt -y install xsel
     }
-    [ $? != 0 ] && return $?
-    my::config::debian
 }
 
-function my::config::debian() {
+function zshef::config::debian() {
     echo "alias pbcopy='xsel --clipboard --input'" > ~/.iypymtiycaa/pbcopyrc.sh
 }
 

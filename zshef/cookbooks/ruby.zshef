@@ -1,20 +1,23 @@
 #!/usr/bin/env zsh
 
-source ${${(%):-%N}:A:h}/ruby/_func_asdf.sh
+source ${${(%):-%N}:A:h}/asdf/_func.sh
 
 function zshef::install() {
-    my::install
-    my::config
-    my::alias
+    my::asdf::is_installed "ruby" || {
+        local param=(\
+            "ruby" \
+            "2.5.1" \
+            "https://github.com/asdf-vm/asdf-ruby.git" \
+        )
+
+        my::asdf::default_install ${param[@]}
+    }
 }
 
 function zshef::update() {
-    zshef::util::mng::is_installed "ruby" && {
-        my::config
-    }
-    my::alias
+    :
 }
 
-function my::alias() {
+function zshef::config() {
     echo 'alias be="bundle exec"' > ~/.iypymtiycaa/rubyrc.sh
 }
