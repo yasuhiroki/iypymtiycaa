@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+function zshef::install::osx() {
+    which -a ctags | grep -q '/usr/local/bin/ctags' || {
+        brew tap universal-ctags/universal-ctags
+        brew install --HEAD universal-ctags
+    }
+}
+
+function zshef::update::osx() {
+    which -a ctags | grep -q '/usr/local/bin/ctags' && {
+        brew reinstall universal-ctags
+    }
+}
