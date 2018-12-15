@@ -1,25 +1,14 @@
 #!/usr/bin/env zsh
 
-function my::circleci::cli::url() {
-    echo "https://circle-downloads.s3.amazonaws.com/releases/build_agent_wrapper/circleci"
-}
-
-function my::circleci::cli::bin() {
-    mkdir -p $HOME/mybin &> /dev/null
-    echo "$HOME/mybin/circleci"
-}
-
 function zshef::install() {
     zshef::util::mng::is_installed "circleci" || {
-        curl -o $(my::circleci::cli::bin) $(my::circleci::cli::url)
-        chmod +x $(my::circleci::cli::bin)
+        curl -fLSs https://circle.ci/cli | DESTDIR="$HOME/mybin" bash
     }
 }
 
 function zshef::update() {
     zshef::util::mng::is_installed "circleci" && {
-        curl -o $(my::circleci::cli::bin) $(my::circleci::cli::url)
-        chmod +x $(my::circleci::cli::bin)
+        curl -fLSs https://circle.ci/cli | DESTDIR="$HOME/mybin" bash
     }
 }
 
