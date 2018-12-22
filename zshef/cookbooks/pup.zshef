@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+# pup: HTML パーサーコマンドラインツール
+# ex) cat index.html | pup 'meta'
+
+function zshef::install::osx() {
+    zshef::util::mng::is_installed "pup" || {
+        go get github.com/ericchiang/pup
+    }
+}
+
+function zshef::update::osx() {
+    zshef::util::mng::is_installed "pup" && {
+        rm -rf ~/go/src/github.com/ericchiang/pup/ ~/go/pkg/darwin_amd64/github.com/ericchiang/pup/ ~/go/bin/pup
+        go get github.com/ericchiang/pup
+    }
+}
