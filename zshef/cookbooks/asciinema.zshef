@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+function zshef::install::osx() {
+    zshef::util::mng::is_installed "asciinema" || {
+        zshef::util::os::mac::install "asciinema"
+    }
+}
+
+function zshef::update::osx() {
+    zshef::util::mng::is_installed "asciinema" && {
+        zshef::util::os::mac::update "asciinema"
+    }
+}
