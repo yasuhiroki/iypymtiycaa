@@ -19,14 +19,12 @@ function zshef::install::debian() {
 }
 
 function zshef::update() {
-    zshef::util::mng::is_installed "tmux" && {
-        zshef::util::os::mac::update "reattach-to-user-namespace"
-        zshef::util::os::mac::update "tmux"
-    }
+    :
 }
 
 function zshef::update::osx() {
     zshef::util::mng::is_installed "tmux" && {
+        zshef::util::os::mac::update "reattach-to-user-namespace"
         zshef::util::os::mac::update "tmux"
     }
     my::update::optional::osx
