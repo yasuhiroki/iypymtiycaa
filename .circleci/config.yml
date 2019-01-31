@@ -5,4 +5,11 @@ jobs:
       enabled: true
     steps:
       - checkout
-      - run: cd zshef; docker build -t yasuhiroki/fudebako-base .
+      - run:
+          command: |
+            cd zshef
+            docker build -t yasuhiroki/fudebako-base . |& tee log
+            if cat log | fgrep '[ZSHEF][ERROR]'; then
+              echo "ERROR in zshef run"
+              return 1
+            fi
