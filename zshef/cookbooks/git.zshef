@@ -46,6 +46,9 @@ function my::config::alias() {
     git config --global alias.fbr "!$(my::config::alias::fbr)"
     # diff を正規表現で検索
     git config --global alias.find "log -p -G"
+
+    # 現在のとあるバージョンを表示
+    git config --global alias.ver "!$(my::config::alias::ver)"
 }
 
 function zshef::config::osx() {
@@ -58,6 +61,10 @@ function my::config::alias::poi() {
 
 function my::config::alias::fbr() {
     echo 'f() { local branches branch; branches=$(git branch --all | grep -v HEAD) && branch=$(echo "$branches" | fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) && git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##"); }; f'
+}
+
+function my::config::alias::ver() {
+    echo "ruby -r'date' -e 'n=Date.today;y=Date.new(2018,1,23); puts \"v#{n.year - y.year}.%03d\" % (n - Date.new(n.year,1,23)).to_i'"
 }
 
 function my::config::commit_template() {
