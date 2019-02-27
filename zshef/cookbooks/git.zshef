@@ -53,7 +53,11 @@ function my::config::alias() {
 }
 
 function zshef::config::osx() {
-    git config --global alias.done "!git log --pretty=format:'- [x] %s %h' origin/develop..HEAD | awk '\$0' | gtac"
+    git config --global alias.done "!$(my::config::alias::done::osx)"
+}
+
+function my::config::alias::done::osx() {
+    echo "f() { git log --pretty=format:'- [x] %s %h' \${1:-origin/develop}..HEAD | awk '\$0' | gtac ; }; f"
 }
 
 function my::config::alias::poi() {
