@@ -36,6 +36,7 @@ function zshef::config() {
 
     my::config::alias
     my::config::commit_template
+    my::hub::config
 }
 
 function my::config::alias() {
@@ -122,8 +123,9 @@ function my::hub::config() {
     mkdir -p ${completions_dir}
     curl -sSL https://raw.githubusercontent.com/github/hub/master/etc/hub.zsh_completion -o ${completions_dir}_hub
 
-    git config --global alias.pr '!hub pull-request -a yasuhiroki -o'
     git config --global alias.prpr '!hub pull-request -F .github/PULL_REQUEST_TEMPLATE.md --edit -a yasuhiroki -o'
+    git config --global alias.prprpr '!hub pull-request -a yasuhiroki -o'
+    git config --global alias.brhead "!hub browse -- commit/\$(git log  -n1 --format='%H')"
     # Markdownのヘッダーがコメントアウト扱いになってしまうので
     # ref) https://github.com/github/hub/issues/1377
     git config --global core.commentchar ";"
