@@ -41,6 +41,8 @@ function zshef::config() {
 
 function my::config::alias() {
     git config --global alias.ri 'rebase -i'
+    git config --global alias.dl '!git branch -D'
+
     # 不要なブランチをポイする
     git config --global alias.poi "!$(my::config::alias::poi)"
     # ブランチをあいまい検索してcheckoutする
