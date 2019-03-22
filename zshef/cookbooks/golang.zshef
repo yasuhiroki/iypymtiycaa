@@ -13,14 +13,14 @@ function zshef::install() {
         my::asdf::default_install ${param[@]}
     }
 
-    zshef::util::mng::is_installed "golsp" || {
-        go get golang.org/x/tools/cmd/golsp
+    zshef::util::mng::is_installed "gopls" || {
+        go get golang.org/x/tools/cmd/gopls
     }
 }
 
 function zshef::update() {
-    zshef::util::mng::is_installed "golsp" && {
-        go get -u golang.org/x/tools/cmd/golsp
+    zshef::util::mng::is_installed "gopls" && {
+        go get -u golang.org/x/tools/cmd/gopls
     }
 }
 
