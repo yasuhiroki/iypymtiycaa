@@ -64,15 +64,15 @@ function my::download::osx::awsecscli::latest() {
 }
 
 function my::install::cfnlint() {
-    zshef::util::mng::is_installed "node" || {
-        zshef::util::log::error "Depends node"
+    zshef::util::mng::is_installed "python" || {
+        zshef::util::log::error "Depends python"
         return 1
     }
-    zshef::util::mng::is_installed "npm" || {
-        zshef::util::log::error "Depends npm"
+    zshef::util::mng::is_installed "pip" || {
+        zshef::util::log::error "Depends pip"
         return 1
     }
-    npm install -g cfn-lint
+    pip install cfn-lint
 }
 
 function my::install::awslogs() {
