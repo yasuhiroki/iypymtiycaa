@@ -2,7 +2,7 @@
 
 function my::asdf::is_installed() {
   local lang="$1"
-  asdf list ${lang} >/dev/null 2>&1
+  asdf list ${lang} |& grep -q -v No
 }
 
 function my::asdf::default_install() {
