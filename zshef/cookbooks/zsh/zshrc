@@ -8,6 +8,7 @@ zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-autosuggestions"
 
 zplug "yasuhiroki/zshef", use:init.sh
+zplug "yasuhiroki/tb", as:command, use:tb
 zplug "yasuhiroki/bttf-color-zsh"
 
 zplug 'molovo/revolver', as:command, use:revolver
