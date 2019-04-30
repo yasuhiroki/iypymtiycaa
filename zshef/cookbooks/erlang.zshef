@@ -12,7 +12,7 @@ function zshef::install() {
     my::asdf::is_installed "erlang" || {
         param=(\
           "erlang"\
-          "19.3"\
+          "21.3.7"\
           "https://github.com/asdf-vm/asdf-erlang.git"\
           )
 
