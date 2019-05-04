@@ -1,4 +1,6 @@
 #!/usr/bin/env zsh
+# > Record and share your terminal sessions, the right way
+# > https://asciinema.org/
 
 function zshef::install::osx() {
     zshef::util::mng::is_installed "asciinema" || {
