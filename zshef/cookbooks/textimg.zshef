@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+# textimg: Command to convert from color text (ANSI or 256) to image
+# ex) echo-sd | textimg -o sd.png
+
+function zshef::install::osx() {
+    zshef::util::mng::is_installed "textimg" || {
+        go get github.com/jiro4989/textimg
+    }
+}
+
+function zshef::update::osx() {
+    zshef::util::mng::is_installed "textimg" && {
+        rm -rf ~/go/src/github.com/jiro4989/textimg ~/go/pkg/darwin_amd64/github.com/jiro4989/textimg ~/go/bin/textimg
+        go get github.com/jiro4989/textimg
+    }
+}
