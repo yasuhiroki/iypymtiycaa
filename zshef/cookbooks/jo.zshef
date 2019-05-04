@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+# > JSON output from a shell
+# > https://github.com/jpmens/jo
+# example:
+#   $ jo a=hoge b=true "c=[1,null,3]"
+#   {"a":"hoge","b":true,"c":[1,null,3]}
+
+
+function zshef::install::osx() {
+    zshef::util::mng::is_installed "jo" || {
+        zshef::util::os::mac::install "jo"
+    }
+}
+
+function zshef::update::osx() {
+    zshef::util::mng::is_installed "jo" && {
+        zshef::util::os::mac::update "jo"
+    }
+}
