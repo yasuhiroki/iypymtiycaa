@@ -9,7 +9,7 @@ function zshef::install::osx() {
         zshef::util::os::mac::install "git"
     }
     my::ghq::install
-    my::hub::install::osx
+    my::hub::install
 }
 
 function zshef::update() {
@@ -21,7 +21,7 @@ function zshef::update::osx() {
         zshef::util::os::mac::update "git"
     }
     my::ghq::update
-    my::hub::update::osx
+    my::hub::update
 }
 
 function zshef::config() {
@@ -87,39 +87,29 @@ function my::config::commit_template() {
 }
 
 function my::ghq::install() {
-    zshef::util::mng::is_installed "go" || {
-        zshef::util::log::error "Depends golang"
-        return 1
-    }
     zshef::util::mng::is_installed "ghq" || {
-        go get github.com/motemen/ghq
+        zshef::util::lang::go::install github.com/motemen/ghq
     }
     git config --global ghq.root "~/ghq"
 }
 
 function my::ghq::update() {
-    zshef::util::mng::is_installed "go" || {
-        zshef::util::log::error "Depends golang"
-        return 1
-    }
     zshef::util::mng::is_installed "ghq" && {
-        go get -u github.com/motemen/ghq
+        zshef::util::lang::go::update github.com/motemen/ghq
     }
     git config --global ghq.root "~/ghq"
 }
 
-function my::hub::install::osx() {
+function my::hub::install() {
     zshef::util::mng::is_installed "hub" || {
-        # brew の hub は 2.9 なので 2.10 を入れたい
-        go get github.com/github/hub
+        zshef::util::lang::go::install github.com/github/hub
     }
     my::hub::config
 }
 
-function my::hub::update::osx() {
+function my::hub::update() {
     zshef::util::mng::is_installed "hub" && {
-        rm -rf ~/go/src/github.com/github/hub/ ~/go/pkg/darwin_amd64/github.com/github/hub/
-        go get github.com/github/hub
+        zshef::util::lang::go::update github.com/github/hub
     }
     my::hub::config
 }

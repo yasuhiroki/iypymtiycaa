@@ -1,20 +1,33 @@
 #!/usr/bin/env zsh
+# JSON を grep しやすいテキストに変換するツール
+# example:
+#   $ jo a=1 b=2 | gron
+#   json = {};
+#   json.a = 1;
+#   json.b = 2;
+
 
 function zshef::install::osx() {
     zshef::util::mng::is_installed "gron" || {
-        go get github.com/tomnomnom/gron
+        zshef::util::lang::go::install github.com/tomnomnom/gron
     }
 }
 
 function zshef::update::osx() {
     zshef::util::mng::is_installed "gron" && {
-        rm -rf ~/go/src/github.com/tomnomnom/gron/ ~/go/pkg/darwin_amd64/github.com/tomnomnom/gron/
-        go get github.com/tomnomnom/gron
+        zshef::util::lang::go::update github.com/tomnomnom/gron
     }
 }
 
 function zshef::config() {
 cat <<EOH > ~/.iypymtiycaa/gronrc.sh
+# gron 形式を JSON 形式に戻す
+# example:
+#   $ jo a=1 b=2 | gron | norg
+#   {
+#     "a": 1,
+#     "b": 2
+#   }
 alias norg="gron --ungron"
 alias ungron="gron --ungron"
 EOH

@@ -2,15 +2,14 @@
 
 function zshef::install::osx() {
     zshef::util::mng::is_installed "slackcat" || {
-        go get github.com/bcicen/slackcat
+        zshef::util::lang::go::install github.com/bcicen/slackcat
     }
     my::script
 }
 
 function zshef::update::osx() {
     zshef::util::mng::is_installed "slackcat" && {
-        rm -rf ~/go/src/github.com/bcicen/slackcat/ ~/go/pkg/darwin_amd64/github.com/bcicen/slackcat/ ~/go/bin/slackcat
-        go get github.com/bcicen/slackcat
+        zshef::util::lang::go::update github.com/bcicen/slackcat
     }
     my::script
 }
