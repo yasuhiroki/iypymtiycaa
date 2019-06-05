@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+# > kotlin
+
+function zshef::install::osx() {
+    zshef::util::mng::is_installed "kotlin" || {
+        zshef::util::os::mac::install "kotlin"
+    }
+
+    zshef::util::mng::is_installed "ktlint" || {
+        zshef::util::os::mac::install "ktlint"
+    }
+}
+
+function zshef::update::osx() {
+    zshef::util::mng::is_installed "kotlin" && {
+        zshef::util::os::mac::update "kotlin"
+    }
+
+    zshef::util::mng::is_installed "ktlint" && {
+        zshef::util::os::mac::update "ktlint"
+    }
+}
