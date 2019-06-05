@@ -33,6 +33,7 @@ function my::install::textlint() {
         return 1
     }
     npm install -g \
+        textlint \
         textlint-rule-preset-ja-technical-writing \
         textlint-rule-spellcheck-tech-word
 }
