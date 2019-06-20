@@ -20,9 +20,5 @@ function my::asdf::default_install() {
 }
 
 function my::asdf::rc::name() {
-  echo '02_asdfrc.sh'
-}
-
-function my::asdf::rc::before::name() {
-  echo '01_asdfrc.sh'
+  echo 'asdfrc.sh'
 }

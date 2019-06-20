@@ -39,8 +39,10 @@ function zshef::update() {
 }
 
 function zshef::config() {
-    : > ~/.iypymtiycaa/$(my::asdf::rc::name).sh
-    echo 'source ~/.asdf/asdf.sh' >> ~/.iypymtiycaa/$(my::asdf::rc::name).sh
-    echo 'source ~/.asdf/completions/asdf.bash' >> ~/.iypymtiycaa/$(my::asdf::rc::name).sh
+    local rc="${HOME}/.iypymtiycaa/$(my::asdf::rc::name)"
+    : > ${rc}
+    echo 'export GOPATH=$HOME/go' >> ${rc}
+    echo 'source ~/.asdf/asdf.sh' >> ${rc}
+    echo 'source ~/.asdf/completions/asdf.bash' >> ${rc}
 }
 
