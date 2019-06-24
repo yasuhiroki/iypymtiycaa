@@ -1,0 +1,33 @@
+#!/usr/bin/env zsh
+
+function zshef::install::osx() {
+    zshef::util::mng::is_installed "gsed" || {
+        zshef::util::os::mac::install "gnu-sed"
+    }
+
+    zshef::util::mng::is_installed "grep" || {
+        zshef::util::os::mac::install "grep"
+    }
+
+    zshef::util::mng::is_installed "gawk" || {
+        zshef::util::os::mac::install "gawk"
+    }
+}
+
+function zshef::update::osx() {
+    zshef::util::mng::is_installed "gsed" && {
+        zshef::util::os::mac::update "gnu-sed"
+    }
+
+    zshef::util::mng::is_installed "grep" && {
+        zshef::util::os::mac::update "grep"
+    }
+
+    zshef::util::mng::is_installed "gawk" && {
+        zshef::util::os::mac::update "gawk"
+    }
+}
+
+function zshef::config() {
+    :
+}
