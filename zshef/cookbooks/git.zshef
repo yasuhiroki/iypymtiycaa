@@ -59,7 +59,7 @@ function zshef::config::osx() {
 }
 
 function my::config::alias::done::osx() {
-    echo "f() { git log --pretty=format:'- [x] %s %h' \${1:-origin/develop}..HEAD | awk '\$0' | gtac ; }; f"
+    echo "f() { git log --pretty=format:'- [x] %s %h' \${1:-origin/develop}..HEAD | awk '\$0' | tac ; }; f"
 }
 
 function my::config::alias::poi() {
