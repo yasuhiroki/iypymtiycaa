@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+
+function zshef::install() {
+    :
+}
+
+function zshef::install::osx() {
+    zshef::util::mng::is_installed "identify" || {
+        zshef::util::os::mac::install "imagemagick"
+    }
+}
+
+function zshef::update() {
+    :
+}
+
+function zshef::update::osx() {
+    zshef::util::mng::is_installed "identify" && {
+        zshef::util::os::mac::update "imagemagick"
+    }
+}
