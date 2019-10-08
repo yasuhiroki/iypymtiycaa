@@ -41,15 +41,21 @@ function zshef::config() {
 }
 
 function my::config::alias() {
-    git config --global alias.ri 'rebase -i'
-    git config --global alias.dl '!git branch -D'
+    git config --global alias.ri    'rebase -i'
+    git config --global alias.riri  '!git ri'
+    git config --global alias.dl    'branch -D'
+    git config --global alias.dldl  '!git dl'
+    git config --global alias.te    'fetch -p'
+    git config --global alias.tete  '!git te'
+    git config --global alias.tette '!git te'
 
     # 不要なブランチをポイする
     git config --global alias.poi "!$(my::config::alias::poi)"
+    git config --global alias.poipoi '!git poi'
     # ブランチをあいまい検索してcheckoutする
-    git config --global alias.fbr "!$(my::config::alias::fbr)"
+    git config --global alias.oide "!$(my::config::alias::fbr)"
     # diff を正規表現で検索
-    git config --global alias.find "log -p -G"
+    git config --global alias.mikke "log -p -G"
 
     # 現在のとあるバージョンを表示
     git config --global alias.ver "!$(my::config::alias::ver)"
@@ -57,6 +63,8 @@ function my::config::alias() {
 
 function zshef::config::osx() {
     git config --global alias.done "!$(my::config::alias::done::osx)"
+    git config --global alias.owa "!git done"
+    git config --global alias.owa "!git done"
 }
 
 function my::config::alias::done::osx() {
@@ -72,7 +80,7 @@ function my::config::alias::fbr() {
 }
 
 function my::config::alias::ver() {
-    echo "ruby -r'date' -e 'n=Date.today;y=Date.new(2018,1,23); puts \"v#{n.year - y.year}.%03d\" % (n - Date.new(n.year,1,23)).to_i'"
+    echo "ruby -r'date' -e 'n=ARGV[0] ? Date.parse(ARGV[0]):Date.today;y=Date.new(2018,1,23); puts \"v#{n.year - y.year}.%03d\" % (n - Date.new(n.year,1,23)).to_i'"
 }
 
 function my::config::commit_template() {
@@ -123,7 +131,6 @@ function my::hub::config() {
     git config --global alias.prpr '!hub pull-request -F .github/PULL_REQUEST_TEMPLATE.md --edit -a yasuhiroki -o'
     git config --global alias.prn '!hub pull-request -a yasuhiroki -o'
     git config --global alias.eye '!hub issue -a yasuhiroki'
-    git config --global alias.brhead "!hub browse -- commit/\$(git log  -n1 --format='%H')"
     # Markdownのヘッダーがコメントアウト扱いになってしまうので
     # ref) https://github.com/github/hub/issues/1377
     git config --global core.commentchar ";"
