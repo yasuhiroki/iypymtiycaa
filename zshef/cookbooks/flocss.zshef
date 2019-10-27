@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 function zshef::install() {
+    mkdir -p ~/mybin
     curl -sSL $(my::url) -o ~/mybin/mkflocss && chmod +x ~/mybin/mkflocss
 }
 

@@ -5,10 +5,19 @@ function zshef::install::osx() {
         brew tap universal-ctags/universal-ctags
         brew install --HEAD universal-ctags
     }
+
+    my::y_ctags::install
 }
 
 function zshef::update::osx() {
     which -a ctags | grep -q '/usr/local/bin/ctags' && {
         brew reinstall universal-ctags
     }
+
+    my::y_ctags::install
+}
+
+function my::y_ctags::install() {
+    mkdir -p ~/mybin
+    curl -sSL https://gist.githubusercontent.com/yasuhiroki/4a2bd87e7dc96f76cabda993086fa485/raw/f9fb25c13c4cd29dc2a3b5f209cc6d60917e581e/y_ctags -o ~/mybin/y_ctags && chmod +x ~/mybin/y_ctags
 }
