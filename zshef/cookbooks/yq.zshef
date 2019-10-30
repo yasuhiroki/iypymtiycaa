@@ -1,27 +1,13 @@
 #!/usr/bin/env zsh
 
-function zshef::install::osx() {
-    zshef::util::mng::is_installed "jq" || {
-        zshef::util::os::mac::install "jq"
+function zshef::install() {
+    zshef::util::mng::is_installed "yq" || {
+        pip install -U yq
     }
 }
 
-function zshef::install::debian() {
-    zshef::util::mng::is_installed "jq" || {
-        sudo wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -O /usr/local/bin/jq
-        sudo chmod 755 /usr/local/bin/jq
-    }
-}
-
-function zshef::update::osx() {
-    zshef::util::mng::is_installed "jq" && {
-        zshef::util::os::mac::update "jq"
-    }
-}
-
-function zshef::update::debian() {
-    zshef::util::mng::is_installed "jq" && {
-        sudo wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -O /usr/local/bin/jq
-        sudo chmod 755 /usr/local/bin/jq
+function zshef::update() {
+    zshef::util::mng::is_installed "yq" && {
+        pip install -U yq
     }
 }
