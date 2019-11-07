@@ -14,10 +14,19 @@ function zshef::config() {
   "detachKeys": "ctrl-_,_"
 }
 EOH
-cat <<EOH > ~/.iypymtiycaa/docker.zsh
+
+    cat <<EOH > ~/.iypymtiycaa/docker.zsh
 function d::sh() {
   : \${1:?Need docker container id}
   docker exec -it \${1} /bin/sh
 }
 EOH
+}
+
+function zshef::config::osx() {
+    ! test -d /Applications/Docker.app/ || {
+        mkdir -p ~/.iypymtiycaa/zsh/completions
+        ln -f -s /Applications/Docker.app/Contents/Resources/etc/docker.zsh-completion ~/.iypymtiycaa/zsh/completions/_docker
+        ln -f -s /Applications/Docker.app/Contents/Resources/etc/docker-compose.zsh-completion ~/.iypymtiycaa/zsh/completions/_docker-compose
+    }
 }
