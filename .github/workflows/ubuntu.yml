@@ -1,0 +1,20 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install zsh
+      run: |
+        sudo apt install zsh
+    - name: Install zshef
+      run: |
+        curl https://raw.githubusercontent.com/yasuhiroki/zshef/master/install.sh | zsh
+    - name: zshef run
+      run: |
+        zsh .github/workflows/zshef_run.zsh
