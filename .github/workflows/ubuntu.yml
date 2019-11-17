@@ -17,4 +17,4 @@ jobs:
         curl https://raw.githubusercontent.com/yasuhiroki/zshef/master/install.sh | zsh
     - name: zshef run
       run: |
-        zsh .github/workflows/zshef_run.zsh
+        sudo zsh .github/workflows/zshef_run.zsh
