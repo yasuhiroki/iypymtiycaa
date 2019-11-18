@@ -72,7 +72,8 @@ function my::config::alias::fbr() {
 }
 
 function my::config::alias::ver() {
-    echo "ruby -r'date' -e 'n=ARGV[0] ? Date.parse(ARGV[0]):Date.today;y=Date.new(2018,1,23); puts \"v#{n.year - y.year}.%03d\" % (n - Date.new(n.year,1,23)).to_i'"
+    echo "ruby -r'date' -e 'n=ARGV[0] ? Date.parse(ARGV[0]):Date.today;y=Date.new(2018,1,23); fy=y.yday<=n.yday; puts \"v#{n.year - y.year - (fy ? 0:1)}.%03d\" % (n.yday - y.yday + (fy ? 0:Date.new(y.year, 12, 31).yday))'"
+
 }
 
 function my::config::commit_template() {
