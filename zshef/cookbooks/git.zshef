@@ -72,8 +72,7 @@ function my::config::alias::fbr() {
 }
 
 function my::config::alias::ver() {
-    echo "ruby -r'date' -e 'n=ARGV[0] ? Date.parse(ARGV[0]):Date.today;y=Date.new(2018,1,23); fy=y.yday<=n.yday; puts \"v#{n.year - y.year - (fy ? 0:1)}.%03d\" % (n.yday - y.yday + (fy ? 0:Date.new(y.year, 12, 31).yday))'"
-
+	echo "yage --age_yday '2018/01/23'"
 }
 
 function my::config::commit_template() {
