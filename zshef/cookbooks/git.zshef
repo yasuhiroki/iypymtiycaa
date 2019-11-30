@@ -51,6 +51,9 @@ function my::config::alias() {
 
     # 現在のとあるバージョンを表示
     git config --global alias.ver "!$(my::config::alias::ver)"
+
+    # CircleCI のページを表示
+    git config --global alias.ci "!open \$(git config --get remote.origin.url | sed 's/^.*github.com.//;s/.git$//;s|^|https://circleci.com/gh/|')"
 }
 
 function zshef::config::osx() {
