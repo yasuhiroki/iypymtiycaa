@@ -23,13 +23,16 @@ Swipe with three fingers
 - iTerm2
 - tmux
 - zsh
+  - zplug
 - vim
   - [my vimrc](https://github.com/yasuhiroki/vimrc)
+  - universal-ctags
 
 ### Git
 
 - git
 - hub
+- ghq
 - gina.vim
 
 ### Docker
@@ -49,6 +52,12 @@ Swipe with three fingers
 - pup (HTML)
 
 ## Development tools/tips
+
+- asdf (language version controll tool)
+  - ruby
+  - nodejs
+  - elixir (erlang)
+  - golang
 
 ### API Documentation
 
