@@ -4,20 +4,6 @@
 
 This repository is my tips and useful scripts for me.
 
-## My Macbook configuration
-
-### Keyboard
-
-![](./img/mac-pref-keyboard.png)
-
-Off `Search man Page Index in Terminal`, conflict with Android Stduio  
-![](img/mac-pref-keyboard-shortcut.png)
-
-### Tracpad
-
-Swipe with three fingers  
-![](img/mac-pref-tracpad.png)
-
 ## Terminal tools/tips
 
 - iTerm2
@@ -68,6 +54,23 @@ Swipe with three fingers
   - with ruby
     - [committee](https://github.com/interagent/committee)
     - [Ruby Kaigi 2019] [How to use OpenAPI3 for API developer](https://rubykaigi.org/2019/presentations/ota42y.html)
+
+## My Macbook configuration
+
+### Keyboard
+
+![](./img/mac-pref-keyboard.png)
+
+Off `Search man Page Index in Terminal`, conflict with Android Stduio  
+![](img/mac-pref-keyboard-shortcut.png)
+
+On `Use keyboard navigation to move focus between controls`  
+![](img/mac-pref-keyboard-navigation.png)
+
+### Tracpad
+
+Swipe with three fingers  
+![](img/mac-pref-tracpad.png)
 
 ---
 
