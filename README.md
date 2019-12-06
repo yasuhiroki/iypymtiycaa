@@ -9,18 +9,18 @@ This repository is my tips and useful scripts for me.
 - [iTerm2](https://iterm2.com/)
   - Profiles -> Colors -> Solarize Dark
   - Profiles -> Text -> Font -> Myrica M
-- tmux
+- [tmux](https://github.com/tmux/tmux)
 - zsh
-  - zplug
-- vim
+  - [zplug](https://github.com/zplug/zplug)
+- [vim](https://github.com/vim/vim)
   - [my vimrc](https://github.com/yasuhiroki/vimrc)
-  - universal-ctags
+  - [universal-ctags](https://github.com/universal-ctags/ctags)
 
 ### Git
 
-- git
-- hub
-- ghq
+- [git](https://github.com/git/git)
+- [hub](https://github.com/github/hub)
+- [ghq](https://github.com/motemen/ghq)
 - gina.vim
 
 ### Docker
@@ -29,15 +29,15 @@ This repository is my tips and useful scripts for me.
 
 ### Formetter / Parser
 
-- jq (JSON)
+- [jq](https://github.com/stedolan/jq) (JSON)
 - [gron](https://github.com/tomnomnom/gron) (Make JSON greppable)
-- jo (Create JSON from CLI)
+- [jo](https://github.com/jpmens/jo) (Create JSON from CLI)
   - ```bash
     $ jo a=1 b=2
     {"a":1,"b":2}
     ```
-- yq (YAML, extends jq)
-- pup (HTML)
+- [yq](https://github.com/kislyuk/yq) (YAML, extends jq)
+- [pup](https://github.com/ericchiang/pup) (HTML)
 
 ## Development tools/tips
 
