@@ -21,7 +21,7 @@ This repository is my tips and useful scripts for me.
 - [git](https://github.com/git/git)
 - [hub](https://github.com/github/hub)
 - [ghq](https://github.com/motemen/ghq)
-- gina.vim
+- [gina.vim](https://github.com/lambdalisue/gina.vim)
 
 ### Docker
 
@@ -41,7 +41,7 @@ This repository is my tips and useful scripts for me.
 
 ## Development tools/tips
 
-- asdf (language version controll tool)
+- [asdf](https://github.com/asdf-vm/asdf) (language version manager)
   - ruby
   - nodejs
   - elixir (erlang)
@@ -75,8 +75,6 @@ Swipe with three fingers
 ![](img/mac-pref-tracpad.png)
 
 ---
-
-Repository naming
 
 > If you put your mind to it, you can accomplish anything.
 >> Doc. Brown
