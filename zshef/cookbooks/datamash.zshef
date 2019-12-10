@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+# calculate mean, sstdev and so on tool
+# https://www.gnu.org/software/datamash/
+
+function zshef::install() {
+    zshef::util::mng::is_installed "datamash" || {
+        zshef::util::os::install "datamash"
+    }
+}
+
+function zshef::update() {
+    zshef::util::mng::is_installed "datamash" && {
+        zshef::util::os::update "datamash"
+    }
+}
