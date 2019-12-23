@@ -7,7 +7,7 @@ function zshef::install() {
     my::asdf::is_installed "nodejs" || {
         param=(\
           "nodejs"\
-          "10.15.0"\
+          "12.14.0"\
           "https://github.com/asdf-vm/asdf-nodejs.git"\
           )
 
