@@ -12,6 +12,7 @@ This repository is my tips and useful scripts for me.
 - [tmux](https://github.com/tmux/tmux)
 - zsh
   - [zplug](https://github.com/zplug/zplug)
+  - [zshef](https://github.com/yasuhiroki/zshef)
 - [vim](https://github.com/vim/vim)
   - [my vimrc](https://github.com/yasuhiroki/vimrc)
   - [universal-ctags](https://github.com/universal-ctags/ctags)
@@ -29,15 +30,18 @@ This repository is my tips and useful scripts for me.
 
 ### Formetter / Parser
 
-- [jq](https://github.com/stedolan/jq) (JSON)
-- [gron](https://github.com/tomnomnom/gron) (Make JSON greppable)
-- [jo](https://github.com/jpmens/jo) (Create JSON from CLI)
-  - ```bash
-    $ jo a=1 b=2
-    {"a":1,"b":2}
-    ```
-- [yq](https://github.com/kislyuk/yq) (YAML, extends jq)
-- [pup](https://github.com/ericchiang/pup) (HTML)
+- JSON
+  - [jq](https://github.com/stedolan/jq)
+  - [gron](https://github.com/tomnomnom/gron) (Make JSON greppable)
+  - [jo](https://github.com/jpmens/jo) (Create JSON from CLI)
+    - ```bash
+      $ jo a=1 b=2
+      {"a":1,"b":2}
+      ```
+- YAML
+  - [yq](https://github.com/kislyuk/yq) (extend jq)
+- HTML
+  - [pup](https://github.com/ericchiang/pup)
 
 ## Development tools/tips
 
@@ -49,7 +53,7 @@ This repository is my tips and useful scripts for me.
 
 ### API Documentation
 
-- OpenAPI (Swagger)
+- [OpenAPI](https://github.com/OAI/OpenAPI-Specification) (Swagger)
   - Stoplight studio
     - 3rd party app to edit openapi yaml
     - [my sample repository](https://github.com/yasuhiroki/stoplight-studio-sample)
