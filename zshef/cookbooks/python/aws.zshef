@@ -1,0 +1,67 @@
+#!/usr/bin/env zsh
+
+function zshef::install() {
+    zshef::util::mng::is_installed "aws" || {
+        my::install::awscli
+    }
+    zshef::util::mng::is_installed "cfn-lint" || {
+        my::install::cfnlint
+    }
+    zshef::util::mng::is_installed "awslogs" || {
+        my::install::awslogs
+    }
+}
+
+function zshef::update() {
+    zshef::util::mng::is_installed "aws" || {
+        my::install::awscli
+    }
+    zshef::util::mng::is_installed "cfn-lint" && {
+        my::install::cfnlint
+    }
+    zshef::util::mng::is_installed "awslogs" && {
+        my::install::awslogs
+    }
+}
+
+function zshef::config() {
+    zshef::util::mng::is_installed "aws_zsh_completer.sh" && {
+        echo "source $(where aws_zsh_completer.sh)" > ~/.iypymtiycaa/awsclirc.sh
+    }
+}
+
+function my::install::awscli() {
+    zshef::util::mng::is_installed "python" || {
+        zshef::util::log::error "Depends python"
+        return 1
+    }
+    zshef::util::mng::is_installed "pip" || {
+        zshef::util::log::error "Depends pip"
+        return 1
+    }
+    pip install -U awscli awsebcli
+}
+
+function my::install::cfnlint() {
+    zshef::util::mng::is_installed "python" || {
+        zshef::util::log::error "Depends python"
+        return 1
+    }
+    zshef::util::mng::is_installed "pip" || {
+        zshef::util::log::error "Depends pip"
+        return 1
+    }
+    pip install cfn-lint
+}
+
+function my::install::awslogs() {
+    zshef::util::mng::is_installed "python" || {
+        zshef::util::log::error "Depends python"
+        return 1
+    }
+    zshef::util::mng::is_installed "pip" || {
+        zshef::util::log::error "Depends pip"
+        return 1
+    }
+    pip install -U awslogs
+}

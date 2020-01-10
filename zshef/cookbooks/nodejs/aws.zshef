@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+
+function zshef::install() {
+    zshef::util::mng::is_installed "cdk" || {
+        my::install::awscdk
+    }
+}
+
+function zshef::update() {
+    zshef::util::mng::is_installed "cdk" && {
+        my::install::awscdk
+    }
+}
+
+function my::install::awscdk() {
+    npm -g install aws-cdk
+}
+

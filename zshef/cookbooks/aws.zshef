@@ -1,38 +1,8 @@
 #!/usr/bin/env zsh
 
-function zshef::install() {
-    zshef::util::mng::is_installed "aws" || {
-        my::install::awscli
-    }
-    zshef::util::mng::is_installed "cfn-lint" || {
-        my::install::cfnlint
-    }
-    zshef::util::mng::is_installed "awslogs" || {
-        my::install::awslogs
-    }
-    zshef::util::mng::is_installed "cdk" || {
-        my::install::awscdk
-    }
-}
-
 function zshef::install::osx() {
     zshef::util::mng::is_installed "ecs-cli" || {
         my::download::osx::awsecscli::latest
-    }
-}
-
-function zshef::update() {
-    zshef::util::mng::is_installed "aws" || {
-        my::install::awscli
-    }
-    zshef::util::mng::is_installed "cfn-lint" && {
-        my::install::cfnlint
-    }
-    zshef::util::mng::is_installed "awslogs" && {
-        my::install::awslogs
-    }
-    zshef::util::mng::is_installed "cdk" || {
-        my::install::awscdk
     }
 }
 
@@ -42,24 +12,6 @@ function zshef::update::osx() {
     }
 }
 
-function zshef::config() {
-    zshef::util::mng::is_installed "aws_zsh_completer.sh" && {
-        echo "source $(where aws_zsh_completer.sh)" > ~/.iypymtiycaa/awsclirc.sh
-    }
-}
-
-function my::install::awscli() {
-    zshef::util::mng::is_installed "python" || {
-        zshef::util::log::error "Depends python"
-        return 1
-    }
-    zshef::util::mng::is_installed "pip" || {
-        zshef::util::log::error "Depends pip"
-        return 1
-    }
-    pip install -U awscli awsebcli
-}
-
 function my::url::awsecscli::osx() {
     echo "https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-darwin-amd64"
 }
@@ -67,36 +19,4 @@ function my::url::awsecscli::osx() {
 function my::download::osx::awsecscli::latest() {
     curl $(my::url::awsecscli::osx)-latest -o ~/mybin/ecs-cli
     chmod 755 ~/mybin/ecs-cli
-}
-
-function my::install::cfnlint() {
-    zshef::util::mng::is_installed "python" || {
-        zshef::util::log::error "Depends python"
-        return 1
-    }
-    zshef::util::mng::is_installed "pip" || {
-        zshef::util::log::error "Depends pip"
-        return 1
-    }
-    pip install cfn-lint
-}
-
-function my::install::awslogs() {
-    zshef::util::mng::is_installed "python" || {
-        zshef::util::log::error "Depends python"
-        return 1
-    }
-    zshef::util::mng::is_installed "pip" || {
-        zshef::util::log::error "Depends pip"
-        return 1
-    }
-    pip install -U awslogs
-}
-
-function my::install::awscdk() {
-    zshef::util::mng::is_installed "npm" || {
-        zshef::util::log::error "Depends npm"
-        return 1
-    }
-    npm -g install aws-cdk
 }
