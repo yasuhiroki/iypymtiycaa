@@ -53,8 +53,8 @@ This repository is my tips and useful scripts for me.
 
 ### API Documentation
 
-- [OpenAPI](https://github.com/OAI/OpenAPI-Specification) (Swagger)
-  - Stoplight studio
+- [OpenAPI](https://github.com/OAI/OpenAPI-Specification)
+  - [Stoplight studio](https://stoplight.io/studio/)
     - 3rd party app to edit openapi yaml
     - [my sample repository](https://github.com/yasuhiroki/stoplight-studio-sample)
   - with ruby
