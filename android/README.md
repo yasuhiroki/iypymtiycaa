@@ -2,7 +2,7 @@
 
 ## settings.jar
 
-The settings.jar is exported from Android Studio.
+The settings.zip is exported from Android Studio.
 
 ### Plugin
 
@@ -15,4 +15,5 @@ The settings.jar is exported from Android Studio.
 |key|mapping|note|
 |---|---|---|
 |`^ + ⌥ + U`|`Find Usage`||
+|`^ + ⌘ + W`|`Toggle Terminal View`||
 

@@ -78,6 +78,10 @@ On `Use keyboard navigation to move focus between controls`
 Swipe with three fingers  
 ![](img/mac-pref-tracpad.png)
 
+## Android Studio
+
+[./android/README.md](./android/README.md)
+
 ---
 
 > If you put your mind to it, you can accomplish anything.
