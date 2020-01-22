@@ -51,6 +51,11 @@ This repository is my tips and useful scripts for me.
   - elixir (erlang)
   - golang
 
+### Documentation
+
+- ruby
+  - `ri`: CLI tool to read ruby document
+
 ### API Documentation
 
 - [OpenAPI](https://github.com/OAI/OpenAPI-Specification)
