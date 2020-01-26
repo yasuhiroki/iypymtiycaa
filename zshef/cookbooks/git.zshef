@@ -4,7 +4,6 @@ function zshef::install() {
     zshef::util::mng::is_installed "git" || {
         zshef::util::os::install "git"
     }
-    my::ghq::install
     my::hub::install
 }
 
@@ -12,7 +11,6 @@ function zshef::update() {
     zshef::util::mng::is_installed "git" && {
         zshef::util::os::update "git"
     }
-    my::ghq::update
     my::hub::update
 }
 
@@ -88,20 +86,6 @@ function my::config::commit_template() {
 ; docs: ドキュメントの追加修正
 ; misc: その他、ビルド環境の設定変更など (docker, circleci, rubocop)" > ~/.git_commit_template.md
     git config --global commit.template ~/.git_commit_template.md
-}
-
-function my::ghq::install() {
-    zshef::util::mng::is_installed "ghq" || {
-        zshef::util::lang::go::install github.com/motemen/ghq
-    }
-    git config --global ghq.root "~/ghq"
-}
-
-function my::ghq::update() {
-    zshef::util::mng::is_installed "ghq" && {
-        zshef::util::lang::go::update github.com/motemen/ghq
-    }
-    git config --global ghq.root "~/ghq"
 }
 
 function my::hub::install() {

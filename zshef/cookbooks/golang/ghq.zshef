@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+function zshef::install() {
+    zshef::util::mng::is_installed "ghq" || {
+        zshef::util::lang::go::install github.com/motemen/ghq
+    }
+    git config --global ghq.root "~/ghq"
+}
+
+function zshef::update() {
+    zshef::util::mng::is_installed "ghq" && {
+        zshef::util::lang::go::update github.com/motemen/ghq
+    }
+    git config --global ghq.root "~/ghq"
+}
