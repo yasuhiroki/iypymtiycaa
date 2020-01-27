@@ -4,14 +4,12 @@ function zshef::install() {
     zshef::util::mng::is_installed "git" || {
         zshef::util::os::install "git"
     }
-    my::hub::install
 }
 
 function zshef::update() {
     zshef::util::mng::is_installed "git" && {
         zshef::util::os::update "git"
     }
-    my::hub::update
 }
 
 function zshef::config() {
@@ -27,7 +25,6 @@ function zshef::config() {
 
     my::config::alias
     my::config::commit_template
-    my::hub::config
 }
 
 function my::config::alias() {
@@ -86,31 +83,4 @@ function my::config::commit_template() {
 ; docs: ドキュメントの追加修正
 ; misc: その他、ビルド環境の設定変更など (docker, circleci, rubocop)" > ~/.git_commit_template.md
     git config --global commit.template ~/.git_commit_template.md
-}
-
-function my::hub::install() {
-    zshef::util::mng::is_installed "hub" || {
-        zshef::util::lang::go::install github.com/github/hub
-    }
-    my::hub::config
-}
-
-function my::hub::update() {
-    zshef::util::mng::is_installed "hub" && {
-        zshef::util::lang::go::update github.com/github/hub
-    }
-    my::hub::config
-}
-
-function my::hub::config() {
-    local completions_dir="$HOME/.iypymtiycaa/zsh/completions/"
-    mkdir -p ${completions_dir}
-    curl -sSL https://raw.githubusercontent.com/github/hub/master/etc/hub.zsh_completion -o ${completions_dir}_hub
-
-    git config --global alias.prpr '!hub pull-request -F .github/PULL_REQUEST_TEMPLATE.md --edit -a yasuhiroki -o'
-    git config --global alias.prn '!hub pull-request -a yasuhiroki -o'
-    git config --global alias.eye '!hub issue -a yasuhiroki'
-    # Markdownのヘッダーがコメントアウト扱いになってしまうので
-    # ref) https://github.com/github/hub/issues/1377
-    git config --global core.commentchar ";"
 }
