@@ -9,7 +9,6 @@ function zshef::install::osx() {
         zshef::util::os::mac::install "reattach-to-user-namespace"
         zshef::util::os::mac::install "tmux"
     }
-    my::install::optional::osx
 }
 
 function zshef::install::debian() {
@@ -27,7 +26,6 @@ function zshef::update::osx() {
         zshef::util::os::mac::update "reattach-to-user-namespace"
         zshef::util::os::mac::update "tmux"
     }
-    my::update::optional::osx
 }
 
 function zshef::update::debian() {
@@ -63,16 +61,4 @@ function my::config::copy() {
     return 1
   }
   cp ${file} ${dest}
-}
-
-function my::install::optional::osx() {
-    zshef::util::mng::is_installed "tmux-xpanes" || {
-        zshef::util::os::mac::install "tmux-xpanes"
-    }
-}
-
-function my::update::optional::osx() {
-    zshef::util::mng::is_installed "tmux-xpanes" && {
-        zshef::util::os::mac::update "tmux-xpanes"
-    }
 }
