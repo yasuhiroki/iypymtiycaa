@@ -14,13 +14,13 @@ function zshef::install() {
     }
 
     zshef::util::mng::is_installed "gopls" || {
-        go get golang.org/x/tools/cmd/gopls
+        go get golang.org/x/tools/gopls
     }
 }
 
 function zshef::update() {
     zshef::util::mng::is_installed "gopls" && {
-        go get -u golang.org/x/tools/cmd/gopls
+        go get -u golang.org/x/tools/gopls
     }
 }
 
