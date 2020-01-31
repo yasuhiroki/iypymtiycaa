@@ -1,0 +1,25 @@
+#!/usr/bin/env zsh
+
+function zshef::install() {
+    zshef::util::mng::is_installed "firebase" || {
+        my::install::firebase
+    }
+}
+
+function zshef::update() {
+    zshef::util::mng::is_installed "firebase" && {
+        my::install::firebase
+    }
+}
+
+function my::install::firebase() {
+    zshef::util::mng::is_installed "node" || {
+        zshef::util::log::error "Depends node"
+        return 1
+    }
+    zshef::util::mng::is_installed "npm" || {
+        zshef::util::log::error "Depends npm"
+        return 1
+    }
+    npm install -g firebase-tools
+}
