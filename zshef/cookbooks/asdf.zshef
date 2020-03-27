@@ -43,6 +43,5 @@ function zshef::config() {
     : > ${rc}
     echo 'export GOPATH=$HOME/go' >> ${rc}
     echo 'source ~/.asdf/asdf.sh' >> ${rc}
-    echo 'source ~/.asdf/completions/asdf.bash' >> ${rc}
 }
 
