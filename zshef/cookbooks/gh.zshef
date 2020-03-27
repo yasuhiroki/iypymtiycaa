@@ -1,0 +1,27 @@
+#!/usr/bin/env zsh
+
+function zshef::install() {
+    :
+}
+
+function zshef::install::osx() {
+    zshef::util::mng::is_installed "gh" || {
+        zshef::util::os::mac::install "github/gh/gh"
+    }
+}
+
+function zshef::update() {
+    :
+}
+
+function zshef::update::osx() {
+    zshef::util::mng::is_installed "gh" && {
+        zshef::util::os::mac::update "github/gh/gh"
+    }
+}
+
+function zshef::config() {
+    zshef::util::mng::is_installed "gh" && {
+        gh completion -s zsh > ~/.iypymtiycaa/zsh/completions/_gh
+    }
+}
