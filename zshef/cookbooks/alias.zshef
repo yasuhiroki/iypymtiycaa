@@ -22,5 +22,7 @@ fi
 
 alias ypush="git push -u origin HEAD"
 alias ypushf="git push -f -u origin HEAD"
+
+alias kc="kubectl"
 EOH
 }
