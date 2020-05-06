@@ -35,6 +35,8 @@ export HISTFILE=${HOME}/.zsh_history
 export HISTSIZE=10000
 export SAVEHIST=100000
 
+typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
+
 stty stop undef
 stty start undef
 
