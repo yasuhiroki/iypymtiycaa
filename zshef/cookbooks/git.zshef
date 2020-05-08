@@ -28,21 +28,17 @@ function zshef::config() {
 }
 
 function my::config::alias() {
-    git config --global alias.ri    'rebase -i'
-    git config --global alias.riri  '!git ri'
-    git config --global alias.dl    'branch -D'
-    git config --global alias.dldl  '!git dl'
-    git config --global alias.te    'fetch -p'
-    git config --global alias.tete  '!git te'
-    git config --global alias.tette '!git te'
+    git config --global alias.ri 'rebase -i'
+    git config --global alias.dl 'branch -D'
+    git config --global alias.fp 'fetch -p'
+    git config --global alias.fixup 'commit --fixup'
 
     # 不要なブランチをポイする
     git config --global alias.poi "!$(my::config::alias::poi)"
-    git config --global alias.poipoi '!git poi'
     # ブランチをあいまい検索してcheckoutする
     git config --global alias.oide "!$(my::config::alias::fbr)"
     # diff を正規表現で検索
-    git config --global alias.mikke "log -p -G"
+    git config --global alias.look "log -p -G"
 
     # 現在のとあるバージョンを表示
     git config --global alias.ver "!$(my::config::alias::ver)"
@@ -53,12 +49,10 @@ function my::config::alias() {
 
 function zshef::config::osx() {
     git config --global alias.done "!$(my::config::alias::done::osx)"
-    git config --global alias.owa "!git done"
-    git config --global alias.owa "!git done"
 }
 
 function my::config::alias::done::osx() {
-    echo "f() { git log --pretty=format:'- [x] %s %h' \${1:-origin/develop}..HEAD | awk '\$0' | tac ; }; f"
+    echo "f() { git log --pretty=format:'- [x] %s %h' \${1:-origin/develop}..\${2:-HEAD} | awk '\$0' | tac ; }; f"
 }
 
 function my::config::alias::poi() {
