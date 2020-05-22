@@ -1,3 +1,6 @@
+export LC_TIME="C"
+export LANG="ja_JP.UTF-8"
+
 export DYLD_LIBRARY_PATH="/usr/local/opt/openssl/lib:$DYLD_LIBRARY_PATH"
 
 alias ls='ls -F --color'
