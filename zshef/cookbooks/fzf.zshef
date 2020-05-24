@@ -5,8 +5,6 @@ function zshef::install() {
         git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
         ~/.fzf/install --all --no-update-rc
     }
-    [ $? != 0 ] && return $?
-    my::_config
 }
 
 function zshef::update() {
@@ -19,11 +17,9 @@ function zshef::update() {
         ~/.fzf/install --all --no-update-rc
         )
     }
-    [ $? != 0 ] && return $?
-    my::_config
 }
 
-function my::_config() {
+function zshef::config() {
 cat <<EOH > ~/.iypymtiycaa/fzfrc.sh
 export FZF_DEFAULT_OPTS='--reverse'
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
