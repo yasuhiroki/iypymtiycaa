@@ -25,8 +25,8 @@ else
 fi
 
 fpath+=(~/.iypymtiycaa/zsh/completions/)
-autoload -U compinit
-compinit -C
+autoload bashcompinit && bashcompinit
+autoload -U compinit && compinit -C
 
 export EDITOR=vim
 export PATH="$HOME/mybin:$PATH"
