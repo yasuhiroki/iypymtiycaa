@@ -43,6 +43,5 @@ function my::update::modules() {
 function zshef::config() {
     echo 'export NODE_PATH=`npm root -g`'       > ~/.iypymtiycaa/noderc.sh
     npm completion                             >> ~/.iypymtiycaa/noderc.sh
-    echo 'export PATH="$HOME/.yarn/bin:$PATH"'  > ~/.iypymtiycaa/yarnrc.sh
     echo '{ "extends": "airbnb" }'              > ~/.eslintrc
 }
