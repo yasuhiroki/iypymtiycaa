@@ -29,7 +29,7 @@ autoload bashcompinit && bashcompinit
 autoload -U compinit && compinit -C
 
 export EDITOR=vim
-export PATH="$HOME/mybin:$PATH"
+export PATH="$HOME/mybin:/usr/local/sbin:$PATH"
 
 setopt share_history
 setopt hist_ignore_dups
