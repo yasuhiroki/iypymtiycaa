@@ -7,10 +7,10 @@ function zshef::install() {
 }
 
 function zshef::update() {
-    zshef::util::mng::is_installed "zplug" && {
+    [ ! -d ~/.zplug ] || {
         (
-        cd ~/.zplug
-        git pull
+            cd ~/.zplug
+            git pull
         )
     }
 }
