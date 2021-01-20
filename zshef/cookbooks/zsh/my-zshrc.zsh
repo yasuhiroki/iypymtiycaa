@@ -3,27 +3,6 @@ export LANG="ja_JP.UTF-8"
 
 export DYLD_LIBRARY_PATH="/usr/local/opt/openssl/lib:$DYLD_LIBRARY_PATH"
 
-alias ls='ls -F --color'
-
-[[ $(uname) =~ "Darwin" ]] && {
-  alias ls='ls -GF'
-  alias gls='gls -F --color'
-}
-
-alias ll='ls -l'
-alias la='ls -a'
-alias yy='fc -ln -1 | pbcopy'
-alias taketemp='cd "$(mktemp -d)"'
-
-if which python3 > /dev/null; then
-  alias serve='python3 -m http.server'
-elif which python2 > /dev/null; then
-  alias serve='python -m SimpleHTTPServer'
-else
-  # brew の default python が python3 となったため
-  alias serve='python -m http.server'
-fi
-
 fpath+=(~/.iypymtiycaa/zsh/completions/)
 autoload bashcompinit && bashcompinit
 autoload -U compinit && compinit -C
