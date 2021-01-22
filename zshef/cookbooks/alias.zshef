@@ -9,7 +9,7 @@ function zshef::update() {
 }
 
 function zshef::config() {
-cat <<EOH > ~/.iypymtiycaa/aliasrc.sh
+cat <<EOH > ~/.zshenv
 if type hub 1>/dev/null; then
     alias yukino=hub
     alias yukky=hub
@@ -44,5 +44,5 @@ zshef::config::for_vim
 function zshef::config::for_vim() {
     # vim の ! コマンドでも alias が使えるようにする
     echo "shopt -s expan_aliases"  > ~/.vim/alias_for_vim.sh
-    cat ~/.iypymtiycaa/aliasrc.sh >> ~/.vim/alias_for_vim.sh
+    cat ~/.zshenv >> ~/.vim/alias_for_vim.sh
 }
