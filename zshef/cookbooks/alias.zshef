@@ -43,6 +43,6 @@ zshef::config::for_vim
 
 function zshef::config::for_vim() {
     # vim の ! コマンドでも alias が使えるようにする
-    echo "shopt -s expan_aliases"  > ~/.vim/alias_for_vim.sh
+    echo "shopt -s expand_aliases"  > ~/.vim/alias_for_vim.sh
     cat ~/.zshenv >> ~/.vim/alias_for_vim.sh
 }
