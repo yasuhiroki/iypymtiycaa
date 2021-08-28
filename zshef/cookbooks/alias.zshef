@@ -10,15 +10,9 @@ function zshef::update() {
 
 function zshef::config() {
 cat <<EOH > ~/.zshenv
-if type hub 1>/dev/null; then
-    alias yukino=hub
-    alias yukky=hub
-    alias yuki=hub
-else
-    alias yukino=git
-    alias yukky=git
-    alias yuki=git
-fi
+alias yukino=git
+alias yukky=git
+alias yuki=git
 
 alias ypush="git push -u origin HEAD"
 alias ypushf="git push -f -u origin HEAD"
