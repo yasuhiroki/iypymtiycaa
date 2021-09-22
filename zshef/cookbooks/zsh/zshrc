@@ -9,6 +9,7 @@ zplug "zsh-users/zsh-autosuggestions"
 
 zplug "yasuhiroki/zshef", use:init.sh
 zplug "yasuhiroki/tb", as:command, use:tb
+zplug "yasuhiroki/mask", as:command, use:mask
 zplug "yasuhiroki/bttf-color-zsh"
 
 zplug 'marzocchi/zsh-notify'
