@@ -4,12 +4,12 @@
 
 function zshef::install::osx() {
     zshef::util::mng::is_installed "textimg" || {
-        zshef::util::lang::go::install github.com/jiro4989/textimg
+        zshef::util::lang::go::install github.com/jiro4989/textimg@latest
     }
 }
 
 function zshef::update::osx() {
     zshef::util::mng::is_installed "textimg" && {
-        zshef::util::lang::go::update github.com/jiro4989/textimg
+        zshef::util::lang::go::update github.com/jiro4989/textimg@latest
     }
 }

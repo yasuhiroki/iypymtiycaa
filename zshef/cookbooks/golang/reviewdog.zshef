@@ -2,12 +2,12 @@
 
 function zshef::install() {
     zshef::util::mng::is_installed "reviewdog" || {
-        zshef::util::lang::go::install github.com/haya14busa/reviewdog/cmd/reviewdog
+        zshef::util::lang::go::install github.com/haya14busa/reviewdog/cmd/reviewdog@latest
     }
 }
 
 function zshef::update() {
     zshef::util::mng::is_installed "reviewdog" && {
-        zshef::util::lang::go::update github.com/haya14busa/reviewdog/cmd/reviewdog
+        zshef::util::lang::go::update github.com/haya14busa/reviewdog/cmd/reviewdog@latest
     }
 }

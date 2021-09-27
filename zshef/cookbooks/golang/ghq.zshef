@@ -2,14 +2,14 @@
 
 function zshef::install() {
     zshef::util::mng::is_installed "ghq" || {
-        zshef::util::lang::go::install github.com/motemen/ghq
+        zshef::util::lang::go::install github.com/motemen/ghq@latest
     }
     git config --global ghq.root "~/ghq"
 }
 
 function zshef::update() {
     zshef::util::mng::is_installed "ghq" && {
-        zshef::util::lang::go::update github.com/motemen/ghq
+        zshef::util::lang::go::update github.com/motemen/ghq@latest
     }
     git config --global ghq.root "~/ghq"
 }

@@ -9,13 +9,13 @@
 
 function zshef::install::osx() {
     zshef::util::mng::is_installed "gron" || {
-        zshef::util::lang::go::install github.com/tomnomnom/gron
+        zshef::util::lang::go::install github.com/tomnomnom/gron@latest
     }
 }
 
 function zshef::update::osx() {
     zshef::util::mng::is_installed "gron" && {
-        zshef::util::lang::go::update github.com/tomnomnom/gron
+        zshef::util::lang::go::update github.com/tomnomnom/gron@latest
     }
 }
 

@@ -4,12 +4,12 @@
 
 function zshef::install::osx() {
     zshef::util::mng::is_installed "pup" || {
-        zshef::util::lang::go::install github.com/ericchiang/pup
+        zshef::util::lang::go::install github.com/ericchiang/pup@latest
     }
 }
 
 function zshef::update::osx() {
     zshef::util::mng::is_installed "pup" && {
-        zshef::util::lang::go::update github.com/ericchiang/pup
+        zshef::util::lang::go::update github.com/ericchiang/pup@latest
     }
 }

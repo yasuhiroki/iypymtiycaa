@@ -3,14 +3,14 @@
 
 function zshef::install::osx() {
     zshef::util::mng::is_installed "mmv" || {
-        zshef::util::lang::go::install github.com/itchyny/mmv/cmd/mmv
+        zshef::util::lang::go::install github.com/itchyny/mmv/cmd/mmv@latest
 
     }
 }
 
 function zshef::update::osx() {
     zshef::util::mng::is_installed "mmv" && {
-        zshef::util::lang::go::update github.com/itchyny/mmv/cmd/mmv
+        zshef::util::lang::go::update github.com/itchyny/mmv/cmd/mmv@latest
     }
 }
 
