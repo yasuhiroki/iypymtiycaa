@@ -11,6 +11,10 @@ function zshef::install::osx() {
 }
 
 function zshef::update::osx() {
+    zshef::util::mng::is_installed "aws" && {
+        curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+        sudo installer -pkg AWSCLIV2.pkg -target /
+    }
     zshef::util::mng::is_installed "ecs-cli" && {
         my::download::osx::awsecscli::latest
     }
