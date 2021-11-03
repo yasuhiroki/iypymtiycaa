@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
 function zshef::install::osx() {
-    brew install vivaldi
+    zshef::util::os::mac::is_installed "vivaldi" || {
+        zshef::util::os::mac::install "vivaldi"
+    }
 }
