@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+function zshef::install::osx() {
+    zshef::util::os::mac::is_installed "google-chrome" || {
+        zshef::util::os::mac::install "google-chrome"
+    }
+}
+
