@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+function zshef::install::osx() {
+    brew tap homebrew/cask
+}
+
+function zshef::update::osx() {
+    :
+}
+
+function zshef::config() {
+    :
+}
+
