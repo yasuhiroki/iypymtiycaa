@@ -5,8 +5,8 @@ set -eu
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || brew -v
 
 mkdir -p ~/ghq/github.com/yasuhiroki/
-git clone git@github.com:yasuhiroki/iypymtiycaa ~/ghq/github.com/yasuhiroki/
-git clone git@github.com:yasuhiroki/zshef ~/ghq/github.com/yasuhiroki/
+git clone git@github.com:yasuhiroki/iypymtiycaa ~/ghq/github.com/yasuhiroki/iypymtiycaa
+git clone git@github.com:yasuhiroki/zshef ~/ghq/github.com/yasuhiroki/zshef
 
 mkdir -p ~/.iypymtiycaa
 mkdir -p ~/mybin
