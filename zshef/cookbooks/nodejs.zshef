@@ -5,6 +5,8 @@ source ${${(%):-%N}:A:h}/asdf/_func.sh
 function zshef::install() {
     # TODO: install gpg when use OSX
     my::asdf::is_installed "nodejs" || {
+        zshef::util::os::mac::install "gnupg"
+        
         param=(\
           "nodejs"\
           "14.16.0"\
