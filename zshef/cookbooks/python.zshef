@@ -36,6 +36,6 @@ function zshef::update::osx() {
 
 function zshef::config::osx() {
 cat <<-EOH > ~/.iypymtiycaa/python.sh
-export PATH=/usr/local/opt/python/libexec/bin:\$PATH
+export PATH=$(brew --prefix)/opt/python/libexec/bin:\$PATH
 EOH
 }
