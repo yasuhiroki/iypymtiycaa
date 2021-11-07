@@ -78,6 +78,9 @@ Off `Search man Page Index in Terminal`, conflict with Android Stduio
 On `Use keyboard navigation to move focus between controls`  
 ![](img/mac-pref-keyboard-navigation.png)
 
+Off `Live Conversion`  
+![](img/mac-pref-keyboard-live-conversion.png)
+
 ### Tracpad
 
 Swipe with three fingers  
