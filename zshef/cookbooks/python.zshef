@@ -35,9 +35,9 @@ function zshef::update::osx() {
 }
 
 function zshef::config::osx() {
-cat <<-EOH > ~/.iypymtiycaa/python.sh
-if [[ ! "\$PATH" == *$(brew --prefix)/opt/python/libexec/bin* ]]; then
-  export PATH="$(brew --prefix)/opt/python/libexec/bin:\$PATH"
-fi
+    cat <<EOH > ~/.iypymtiycaa/pythonrc.sh
+path=("\$(brew --prefix)/opt/python/libexec/bin" \$path)
+export PATH
+EOH
 EOH
 }

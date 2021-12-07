@@ -8,12 +8,6 @@ autoload bashcompinit && bashcompinit
 autoload -U compinit && compinit -C
 
 export EDITOR=vim
-if [[ ! "$PATH" == */usr/local/sbin* ]]; then
-  export PATH="/usr/local/sbin:$PATH"
-fi
-if [[ ! "$PATH" == *$HOME/mybin* ]]; then
-  export PATH="$HOME/mybin:$PATH"
-fi
 
 setopt share_history
 setopt hist_ignore_dups

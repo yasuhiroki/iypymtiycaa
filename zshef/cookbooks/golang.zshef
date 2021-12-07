@@ -27,9 +27,8 @@ function zshef::update() {
 }
 
 function zshef::config() {
-cat <<EOH > ~/.iypymtiycaa/golangrc.sh
-if [[ ! "\$PATH" == *\$HOME/go/bin* ]]; then
-  export PATH="\$HOME/go/bin:\$PATH"
-fi
+    cat <<EOH > ~/.iypymtiycaa/golangrc.sh
+path=("\$HOME/go/bin" \$path)
+export PATH
 EOH
 }
