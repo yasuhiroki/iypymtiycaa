@@ -1,6 +1,10 @@
 #!/usr/bin/env zsh
 
 function zshef::install::osx() {
+    zshef::util::mng::is_installed "gcat" || {
+        zshef::util::os::mac::install "coreutils"
+    }
+
     zshef::util::mng::is_installed "gsed" || {
         zshef::util::os::mac::install "gnu-sed"
     }
@@ -15,6 +19,10 @@ function zshef::install::osx() {
 }
 
 function zshef::update::osx() {
+    zshef::util::mng::is_installed "gcat" && {
+        zshef::util::os::mac::update "coreutils"
+    }
+
     zshef::util::mng::is_installed "gsed" && {
         zshef::util::os::mac::update "gnu-sed"
     }
