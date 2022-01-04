@@ -12,6 +12,8 @@ export EDITOR=vim
 setopt share_history
 setopt hist_ignore_dups
 setopt hist_ignore_all_dups
+setopt hist_reduce_blanks
+setopt hist_ignore_space
 export HISTFILE=${HOME}/.zsh_history
 export HISTSIZE=10000
 export SAVEHIST=100000
