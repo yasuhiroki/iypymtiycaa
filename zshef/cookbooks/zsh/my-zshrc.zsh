@@ -8,6 +8,7 @@ autoload bashcompinit && bashcompinit
 autoload -U compinit && compinit -C
 
 export EDITOR=vim
+export LESS='-i -M -R'
 
 setopt share_history
 setopt hist_ignore_dups
