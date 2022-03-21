@@ -39,5 +39,4 @@ function zshef::config::osx() {
 path=("\$(brew --prefix)/opt/python/libexec/bin" \$path)
 export PATH
 EOH
-EOH
 }
