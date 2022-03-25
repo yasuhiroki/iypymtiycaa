@@ -1,0 +1,11 @@
+export ENHANCD_COMMAND='cd'
+zmodule "b4b4r07/enhancd"
+
+zmodule "zsh-users/zsh-syntax-highlighting"
+zmodule "zsh-users/zsh-completions" -f src
+zmodule "zsh-users/zsh-autosuggestions"
+
+zmodule "yasuhiroki/zshef" -s init.sh
+zmodule "yasuhiroki/tb" -c 'path+=({}); export PATH'
+zmodule "yasuhiroki/mask" -c 'path+=({}); export PATH'
+zmodule "yasuhiroki/bttf-color-zsh" -s bttf.plugin.zsh
