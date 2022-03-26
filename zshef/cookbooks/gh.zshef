@@ -26,6 +26,6 @@ function zshef::config() {
     }
 
     git config --global alias.eye "!gh issue list -a yasuhiroki --json title,number,body -q '.[]|\"#\" + (.number|tostring) + \" \" + .title'"
-    git config --global alias.prpr '!prpr() { local t="$(mktemp).md"; echo "PullRequest title" > "$t"; vim "$t"; local f="$(mktemp).md"; cp "$(git rev-parse --show-toplevel)/.github/PULL_REQUEST_TEMPLATE.md" "$f" || true; vim "$f"; gh pr create -w -a @me -t "$(head -n1 "${t}")" -F "${f}"; }; prpr'
+    git config --global alias.prpr '!prpr() { local t="$(mktemp).md"; echo "PullRequest title" > "$t"; vim "$t"; local f="$(mktemp).md"; cp "$(git rev-parse --show-toplevel)/.github/PULL_REQUEST_TEMPLATE.md" "$f" || true; vim "$f"; gh pr create -w -a @me -t "$(head -n1 "${t}")" -F "${f}" ${@} ; }; prpr'
 }
 
