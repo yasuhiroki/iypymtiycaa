@@ -13,6 +13,7 @@ cat <<EOH > ~/.zshenv
 alias yukino=git
 alias yukky=git
 alias yuki=git
+alias yk=git
 
 alias ypush="git push -u origin HEAD"
 alias ypushf="git push -f -u origin HEAD"
