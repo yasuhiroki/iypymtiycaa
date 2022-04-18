@@ -9,7 +9,7 @@ function zshef::install() {
         
         param=(\
           "nodejs"\
-          "14.16.0"\
+          "lts"\
           "https://github.com/asdf-vm/asdf-nodejs.git"\
           )
 
