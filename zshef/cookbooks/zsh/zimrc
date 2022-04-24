@@ -8,4 +8,5 @@ zmodule "zsh-users/zsh-autosuggestions"
 zmodule "yasuhiroki/zshef" -s init.sh
 zmodule "yasuhiroki/tb" -c 'path+=({}); export PATH'
 zmodule "yasuhiroki/mask" -c 'path+=({}); export PATH'
+zmodule "yasuhiroki/coln" -c 'path+=({}); export PATH'
 zmodule "yasuhiroki/bttf-color-zsh" -s bttf.plugin.zsh
