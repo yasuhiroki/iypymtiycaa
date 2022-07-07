@@ -23,6 +23,9 @@ function zshef::config() {
     git config --global rebase.autostash true
     git config --global rebase.autosquash true
     git config --global sequence.editor $(which vim)
+    git config --global mergetool.prompt false
+    git config --global merge.conflictstyle diff3
+    git config --global merge.tool vimdiff
 
     my::config::alias
     my::config::commit_template
