@@ -6,7 +6,7 @@ function zshef::install() {
 
 function zshef::install::osx() {
     zshef::util::mng::is_installed "gh" || {
-        zshef::util::os::mac::install "github/gh/gh"
+        zshef::util::os::mac::install "gh"
     }
 }
 
@@ -16,7 +16,7 @@ function zshef::update() {
 
 function zshef::update::osx() {
     zshef::util::mng::is_installed "gh" && {
-        zshef::util::os::mac::update "github/gh/gh"
+        zshef::util::os::mac::update "gh"
     }
 }
 
