@@ -6,8 +6,7 @@ function zshef::install() {
 
 function zshef::install::osx() {
     zshef::util::mng::is_installed "mvim" || {
-        brew tap macvim-dev/macvim
-        brew install --HEAD macvim-dev/macvim/macvim
+        zshef::util::os::mac::install "macvim"
         my::depends::osx
     }
 }
@@ -24,9 +23,7 @@ function zshef::install::debian() {
 
 function zshef::update::osx() {
     zshef::util::mng::is_installed "mvim" && {
-        rm -rf /Users/yasuhiroki/Library/Caches/Homebrew/macvim--git
-        brew tap macvim-dev/macvim
-        brew reinstall macvim-dev/macvim/macvim
+        zshef::util::os::mac::update "macvim"
     }
 }
 
