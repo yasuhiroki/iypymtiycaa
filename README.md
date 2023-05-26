@@ -11,7 +11,7 @@ This repository is my tips and useful scripts for me.
   - Profiles -> Text -> Font -> Myrica M
 - [tmux](https://github.com/tmux/tmux)
 - zsh
-  - [zplug](https://github.com/zplug/zplug)
+  - [zimfw](https://github.com/zimfw/zimfw)
   - [zshef](https://github.com/yasuhiroki/zshef)
 - [vim](https://github.com/vim/vim)
   - [my vimrc](https://github.com/yasuhiroki/vimrc)
@@ -20,13 +20,12 @@ This repository is my tips and useful scripts for me.
 ### Git
 
 - [git](https://github.com/git/git)
-- [hub](https://github.com/github/hub)
-- [ghq](https://github.com/motemen/ghq)
+- [gh](https://github.com/cli/cli)
 - [gina.vim](https://github.com/lambdalisue/gina.vim)
 
 ### Docker
 
-- docker-compose
+- Docker Desktop for Mac
 
 ### Formetter / Parser
 
@@ -48,8 +47,11 @@ This repository is my tips and useful scripts for me.
 - [asdf](https://github.com/asdf-vm/asdf) (language version manager)
   - ruby
   - nodejs
-  - elixir (erlang)
   - golang
+
+## Productivity tools/tips
+
+- [Raycast](https://www.raycast.com)
 
 ### Documentation
 
