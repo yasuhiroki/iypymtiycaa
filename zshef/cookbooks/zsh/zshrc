@@ -24,7 +24,7 @@ typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
 stty stop undef
 stty start undef
 
-set -o emacs
+bindkey -e
 
 # zimfw
 export ZIM_HOME=~/.zim
