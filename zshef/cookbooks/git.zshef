@@ -68,7 +68,7 @@ function my::config::alias::fbr() {
 }
 
 function my::config::alias::ver() {
-	echo "yage --age_yday '2018/01/23'"
+    echo 'f() { which yk-ver > /dev/null || { echo "should be download yk-ver.sh from gist"; exit 1; }; yk-ver "$1"; }; f'
 }
 
 function my::config::commit_template() {
