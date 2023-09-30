@@ -6,10 +6,10 @@ function zshef::install() {
     # TODO: install gpg when use OSX
     my::asdf::is_installed "nodejs" || {
         zshef::util::os::mac::install "gnupg"
-        
+
         param=(\
           "nodejs"\
-          "lts"\
+          "18.18.0"\
           "https://github.com/asdf-vm/asdf-nodejs.git"\
           )
 
