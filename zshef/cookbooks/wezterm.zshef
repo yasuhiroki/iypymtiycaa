@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 
 function zshef::config() {
-    my::config::copy "wezterm.lua" "${HOME}/.wezterm.lua"
+    local dir="${${(%):-%N}:A:h}/cookbooks/wezterm"
+    cp ${dir}/wezterm.lua ~/.wezterm.lua
 }
