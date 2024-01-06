@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+function zshef::config() {
+    my::config::copy "wezterm.lua" "${HOME}/.wezterm.lua"
+}
