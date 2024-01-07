@@ -6,10 +6,7 @@ This repository is my tips and useful scripts for me.
 
 ## Terminal tools/tips
 
-- [iTerm2](https://iterm2.com/)
-  - Profiles -> Colors -> Solarize Dark
-  - Profiles -> Text -> Font -> Myrica M
-- [tmux](https://github.com/tmux/tmux)
+- [WezTerm](https://github.com/wez/wezterm)
 - zsh
   - [zimfw](https://github.com/zimfw/zimfw)
   - [zshef](https://github.com/yasuhiroki/zshef)
