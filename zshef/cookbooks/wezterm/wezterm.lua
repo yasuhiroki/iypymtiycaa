@@ -13,6 +13,12 @@ wezterm.on("update-right-status", function(window, pane)
     }))
 end)
 
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+    local cwd = tab.active_pane.current_working_dir
+    local basename = string.gsub(cwd, "(.*/)(.*/)(.*)", "%2%3")
+    return tab.tab_index .. ': ' .. basename
+end)
+
 config.window_padding = {
     left = 2,
     top = 0,
