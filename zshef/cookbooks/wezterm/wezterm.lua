@@ -6,6 +6,13 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+wezterm.on("update-right-status", function(window, pane)
+    local date = wezterm.strftime("%H:%M:%S")
+    window:set_right_status(wezterm.format({
+        { Text = '[' .. date .. '] ' },
+    }))
+end)
+
 config.window_padding = {
     left = 2,
     top = 0,
