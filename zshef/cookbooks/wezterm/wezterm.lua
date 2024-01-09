@@ -16,7 +16,7 @@ end)
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
     local cwd = tab.active_pane.current_working_dir
     local basename = string.gsub(cwd, "(.*/)(.*/)(.*)", "%2%3")
-    return tab.tab_index .. ': ' .. basename
+    return tab.tab_index + 1 .. ': ' .. basename
 end)
 
 config.window_padding = {
@@ -36,6 +36,15 @@ config.keys = {
     { key = "c", mods = "LEADER", action = act { SpawnTab = "CurrentPaneDomain" } },
     { key = 'n', mods = 'LEADER', action = act.ActivateTabRelative(1)  },
     { key = 'p', mods = 'LEADER', action = act.ActivateTabRelative(-1) },
+    { key = '1', mods = 'LEADER', action = act.ActivateTab(0) },
+    { key = '2', mods = 'LEADER', action = act.ActivateTab(1) },
+    { key = '3', mods = 'LEADER', action = act.ActivateTab(2) },
+    { key = '4', mods = 'LEADER', action = act.ActivateTab(3) },
+    { key = '5', mods = 'LEADER', action = act.ActivateTab(4) },
+    { key = '6', mods = 'LEADER', action = act.ActivateTab(5) },
+    { key = '7', mods = 'LEADER', action = act.ActivateTab(6) },
+    { key = '8', mods = 'LEADER', action = act.ActivateTab(7) },
+    { key = '9', mods = 'LEADER', action = act.ActivateTab(8) },
 
     -- Pane
     { key = "s", mods = "LEADER", action = act { SplitVertical = { domain  = "CurrentPaneDomain" } } },
