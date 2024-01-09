@@ -28,6 +28,7 @@ config.window_padding = {
 config.color_scheme = 'Solarized Dark - Patched'
 config.leader = { key = 'q', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.font = wezterm.font("Monaco")
+config.macos_forward_to_ime_modifier_mask = "SHIFT|CTRL"
 config.keys = {
     { key = "a", mods = "CMD|SHIFT", action = act.ActivateCommandPalette },
 
