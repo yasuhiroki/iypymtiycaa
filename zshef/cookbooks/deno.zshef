@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+source ${${(%):-%N}:A:h}/asdf/_func.sh
+
+function zshef::install() {
+    my::asdf::is_installed "deno" || {
+        local param=(\
+            "deno" \
+            "latest" \
+            "https://github.com/asdf-community/asdf-deno.git" \
+        )
+        my::asdf::default_install ${param[@]}
+    }
+}
+
+function zshef::update() {
+    :
+}
+
+function zshef::config() {
+    :
+}
+
