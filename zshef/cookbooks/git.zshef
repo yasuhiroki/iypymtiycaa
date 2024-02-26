@@ -49,6 +49,9 @@ function my::config::alias() {
 
     # CircleCI のページを表示
     git config --global alias.ci "!open \$(git config --get remote.origin.url | sed 's/^.*github.com.//;s/.git$//;s|^|https://circleci.com/gh/|')"
+
+    # #1234 から issue の url link を [:octocat:Link](LINK) という文字列で生成
+    git config --global alias.tolink "!$(my::config::alias::tolink)"
 }
 
 function zshef::config::osx() {
@@ -69,6 +72,10 @@ function my::config::alias::fbr() {
 
 function my::config::alias::ver() {
     echo 'f() { which yk-ver > /dev/null || { echo "should be download yk-ver.sh from gist"; exit 1; }; yk-ver "$1"; }; f'
+}
+
+function my::config::alias::tolink() {
+    echo 'f() { local repo_url=$(git config --get remote.origin.url | sed "s|^.*\(github.com.*\)|https://\1|"); sed "s|#\([0-9]\{1,\}$\)|[:octocat:Link](${repo_url}/issues/\1)|"; }; f'
 }
 
 function my::config::commit_template() {
