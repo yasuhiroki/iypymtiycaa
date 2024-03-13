@@ -9,7 +9,7 @@ function zshef::install() {
 
         param=(\
           "nodejs"\
-          "18.18.0"\
+          "20.11.1"\
           "https://github.com/asdf-vm/asdf-nodejs.git"\
           )
 
