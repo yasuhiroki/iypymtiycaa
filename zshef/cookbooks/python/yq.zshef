@@ -2,12 +2,12 @@
 
 function zshef::install() {
     zshef::util::mng::is_installed "yq" || {
-        pip install -U yq
+        pip install -U yq --break-system-packages
     }
 }
 
 function zshef::update() {
     zshef::util::mng::is_installed "yq" && {
-        pip install -U yq
+        pip install -U yq --break-system-packages
     }
 }
