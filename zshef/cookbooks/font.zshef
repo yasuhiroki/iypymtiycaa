@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+
+function zshef::install() {
+    :
+}
+
+function zshef::install::osx() {
+    zshef::util::os::mac::install "font-hackgen" || {
+        zshef::util::os::mac::install "font-hackgen"
+    }
+}
+
+function zshef::update() {
+    :
+}
+
+function zshef::update::osx() {
+    zshef::util::os::mac::install "font-hackgen" && {
+        zshef::util::os::mac::update "font-hackgen"
+    }
+}
+
