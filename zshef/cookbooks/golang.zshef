@@ -4,7 +4,7 @@ source ${${(%):-%N}:A:h}/asdf/_func.sh
 
 function zshef::install() {
     local lang="go"
-    local ver="1.17.1"
+    local ver="1.22.4"
     my::asdf::is_installed "${lang}" "${ver}" || {
         param=( \
           "${lang}" \
