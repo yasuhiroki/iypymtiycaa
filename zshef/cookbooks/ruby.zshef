@@ -3,10 +3,10 @@
 source ${${(%):-%N}:A:h}/asdf/_func.sh
 
 function zshef::install() {
-    my::asdf::is_installed "ruby" || {
+   my::asdf::is_installed "ruby" || {
         local param=(\
             "ruby" \
-            "3.2.2" \
+            "3.3.2" \
             "https://github.com/asdf-vm/asdf-ruby.git" \
         )
 
@@ -15,7 +15,7 @@ function zshef::install() {
         export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig"
 
         my::asdf::default_install ${param[@]}
-    }
+   }
 }
 
 function zshef::update() {
