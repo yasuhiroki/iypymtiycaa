@@ -3,10 +3,12 @@
 source ${${(%):-%N}:A:h}/asdf/_func.sh
 
 function zshef::install() {
-   my::asdf::is_installed "ruby" || {
-        local param=(\
-            "ruby" \
-            "3.3.2" \
+    local lang="ruby"
+    local ver="3.3.2"
+    my::asdf::is_installed "${lang}" "${ver}" || {
+        param=( \
+            "${lang}" \
+            "${ver}" \
             "https://github.com/asdf-vm/asdf-ruby.git" \
         )
 

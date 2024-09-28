@@ -4,14 +4,14 @@ source ${${(%):-%N}:A:h}/asdf/_func.sh
 
 function zshef::install() {
     # TODO: install gpg when use OSX
-    my::asdf::is_installed "nodejs" || {
-        zshef::util::os::mac::install "gnupg"
-
-        param=(\
-          "nodejs"\
-          "20.11.1"\
-          "https://github.com/asdf-vm/asdf-nodejs.git"\
-          )
+    local lang="nodejs"
+    local ver="20.11.1"
+    my::asdf::is_installed "${lang}" "${ver}" || {
+        param=( \
+            "${lang}" \
+            "${ver}" \
+            "https://github.com/asdf-vm/asdf-nodejs.git"\
+        )
 
         my::asdf::default_install ${param[@]}
         [ $? != 0 ] && return $?
