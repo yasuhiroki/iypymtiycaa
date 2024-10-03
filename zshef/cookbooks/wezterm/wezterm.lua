@@ -19,6 +19,15 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
     return tab.tab_index + 1 .. ': ' .. basename
 end)
 
+local function active_copy_mode()
+    return wezterm.action_callback(function(window, pane, _)
+        window:perform_action(act.ActivateCopyMode, pane)
+        wezterm.sleep_ms(100)
+        window:perform_action(act.CopyMode("ClearSelectionMode"), pane)
+        window:perform_action(act.ClearSelection, pane)
+    end)
+end
+
 config.window_padding = {
     left = 2,
     top = 0,
@@ -26,6 +35,14 @@ config.window_padding = {
     bottom = 0,
 }
 config.color_scheme = 'Solarized Dark - Patched'
+config.colors = {
+    selection_fg = '#ffffff',
+    selection_bg = 'rgba(114,84,179,0.75)',
+    copy_mode_active_highlight_fg = { Color = '#ffffff' },
+    copy_mode_active_highlight_bg = { Color = 'rgba(114,84,179,0.75)' },
+    copy_mode_inactive_highlight_fg = { Color = 'rgba(128,128,128,1)' },
+    copy_mode_inactive_highlight_bg = { Color = 'rgba(114,84,179,0.5)' },
+}
 config.leader = { key = 'q', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.font = wezterm.font("HackGen35")
 config.macos_forward_to_ime_modifier_mask = "SHIFT|CTRL"
@@ -66,11 +83,7 @@ config.keys = {
     {
         key = "[",
         mods = "LEADER",
-        action = act.Multiple {
-            act.CopyMode("ClearSelectionMode"),
-            act.ActivateCopyMode,
-            act.ClearSelection
-        }
+        action = active_copy_mode()
     },
 }
 
@@ -180,7 +193,6 @@ config.key_tables = {
 			key = "Enter",
 			mods = "NONE",
 			action = act.Multiple {
-				act.CopyMode("ClearSelectionMode"),
 				act.ActivateCopyMode,
 			},
 		},
@@ -195,6 +207,8 @@ config.key_tables = {
         { key = 'PageDown', mods = 'NONE', action = act.CopyMode('NextMatchPage') },
         { key = 'UpArrow', mods = 'NONE', action = act.CopyMode('PriorMatch') },
         { key = 'DownArrow', mods = 'NONE', action = act.CopyMode('NextMatch') },
+        { key = 'h', mods = 'CTRL', action = act.SendKey { key = 'Backspace' } },
+        { key = 'w', mods = 'CTRL', action = act.CopyMode('ClearPattern') },
     }
 }
 return config
