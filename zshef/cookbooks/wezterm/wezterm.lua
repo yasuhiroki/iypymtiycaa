@@ -7,9 +7,13 @@ if wezterm.config_builder then
 end
 
 wezterm.on("update-right-status", function(window, pane)
-    local date = wezterm.strftime("%H:%M:%S")
+    local local_date = wezterm.strftime("%F %H:%M:%S")
+    local utc_date = wezterm.strftime_utc("%F %H:%M UTC")
     window:set_right_status(wezterm.format({
-        { Text = '[' .. date .. '] ' },
+        { Foreground = { Color = "grey" } },
+        { Text = '(' .. utc_date .. ') ' },
+        'ResetAttributes',
+        { Text = local_date .. '    ' },
     }))
 end)
 
