@@ -70,17 +70,73 @@ config.keys = {
     -- Pane
     { key = "s", mods = "LEADER", action = act { SplitVertical = { domain  = "CurrentPaneDomain" } } },
     { key = "v", mods = "LEADER", action = act { SplitHorizontal = { domain  = "CurrentPaneDomain" } } },
-    { key = "h", mods = "LEADER", action = act { ActivatePaneDirection = "Left" } },
-    { key = "j", mods = "LEADER", action = act { ActivatePaneDirection = "Down" } },
-    { key = "k", mods = "LEADER", action = act { ActivatePaneDirection = "Up" } },
-    { key = "l", mods = "LEADER", action = act { ActivatePaneDirection = "Right" } },
-    { key = "H", mods = "LEADER|SHIFT", action = act { AdjustPaneSize = { "Left", 5 } } },
-    { key = "J", mods = "LEADER|SHIFT", action = act { AdjustPaneSize = { "Down", 5 } } },
-    { key = "K", mods = "LEADER|SHIFT", action = act { AdjustPaneSize = { "Up", 5 } } },
-    { key = "L", mods = "LEADER|SHIFT", action = act { AdjustPaneSize = { "Right", 5 } } },
     { key = "x", mods = "LEADER", action = act { CloseCurrentPane = { confirm = true } } },
     { key = "{", mods = "LEADER", action = act.RotatePanes 'Clockwise' },
     { key = "}", mods = "LEADER", action = act.RotatePanes 'CounterClockwise' },
+    {
+        key = 'h',
+        mods = 'LEADER',
+        action = act.Multiple {
+            act { ActivatePaneDirection = "Left" },
+            act.ActivateKeyTable { name = 'activate_pane_left', one_shot = false, timeout_milliseconds = 400, until_unknown = true }
+        },
+    },
+    {
+        key = 'j',
+        mods = 'LEADER',
+        action = act.Multiple {
+            act { ActivatePaneDirection = "Down" },
+            act.ActivateKeyTable { name = 'activate_pane_down', one_shot = false, timeout_milliseconds = 400, until_unknown = true }
+        },
+    },
+    {
+        key = 'k',
+        mods = 'LEADER',
+        action = act.Multiple {
+            act { ActivatePaneDirection = "Up" },
+            act.ActivateKeyTable { name = 'activate_pane_up', one_shot = false, timeout_milliseconds = 400, until_unknown = true }
+        },
+    },
+    {
+        key = 'l',
+        mods = 'LEADER',
+        action = act.Multiple {
+            act { ActivatePaneDirection = "Right" },
+            act.ActivateKeyTable { name = 'activate_pane_right', one_shot = false, timeout_milliseconds = 400, until_unknown = true }
+        },
+    },
+    {
+        key = 'h',
+        mods = 'LEADER|SHIFT',
+        action = act.Multiple {
+            act { AdjustPaneSize = { "Left", 1 } },
+            act.ActivateKeyTable { name = 'resize_pane_left', one_shot = false, timeout_milliseconds = 400 },
+        }
+    },
+    {
+        key = 'j',
+        mods = 'LEADER|SHIFT',
+        action = act.Multiple {
+            act { AdjustPaneSize = { "Down", 1 } },
+            act.ActivateKeyTable { name = 'resize_pane_down', one_shot = false, timeout_milliseconds = 400 },
+        }
+    },
+    {
+        key = 'k',
+        mods = 'LEADER|SHIFT',
+        action = act.Multiple {
+            act { AdjustPaneSize = { "Up", 1 } },
+            act.ActivateKeyTable { name = 'resize_pane_up', one_shot = false, timeout_milliseconds = 400 },
+        },
+    },
+    {
+        key = 'l',
+        mods = 'LEADER|SHIFT',
+        action = act.Multiple {
+            act { AdjustPaneSize = { "Right", 1 } },
+            act.ActivateKeyTable { name = 'resize_pane_right', one_shot = false, timeout_milliseconds = 400 },
+        }
+    },
 
     -- Copy Mode
     { key = "/", mods = "LEADER", action = act.Search("CurrentSelectionOrEmptyString") },
@@ -91,7 +147,32 @@ config.keys = {
     },
 }
 
+active_pane_actions = {
+    { key = "h", action = act { ActivatePaneDirection = "Left" } },
+    { key = "j", action = act { ActivatePaneDirection = "Down" } },
+    { key = "k", action = act { ActivatePaneDirection = "Up" } },
+    { key = "l", action = act { ActivatePaneDirection = "Right" } },
+}
+
 config.key_tables = {
+    activate_pane_left = active_pane_actions,
+    activate_pane_down = active_pane_actions,
+    activate_pane_up = active_pane_actions,
+    activate_pane_right = active_pane_actions,
+
+    resize_pane_left = {
+        { key = "h", mods = "SHIFT", action = act { AdjustPaneSize = { "Left", 2 } } },
+    },
+    resize_pane_down = {
+        { key = "j", mods = "SHIFT", action = act { AdjustPaneSize = { "Down", 2 } } },
+    },
+    resize_pane_up = {
+        { key = "k", mods = "SHIFT", action = act { AdjustPaneSize = { "Up", 2 } } },
+    },
+    resize_pane_right = {
+        { key = "l", mods = "SHIFT", action = act { AdjustPaneSize = { "Right", 2 } } },
+    },
+
     copy_mode = {
         { key = '$', mods = 'NONE', action = act.CopyMode('MoveToEndOfLineContent') },
         { key = '$', mods = 'SHIFT', action = act.CopyMode('MoveToEndOfLineContent') },
