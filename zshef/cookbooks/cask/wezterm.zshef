@@ -2,6 +2,6 @@
 
 function zshef::install::osx() {
     zshef::util::os::mac::is_installed "wezterm" || {
-        zshef::util::os::mac::install "wezterm"
+        zshef::util::os::mac::install "wezterm@nightly"
     }
 }
