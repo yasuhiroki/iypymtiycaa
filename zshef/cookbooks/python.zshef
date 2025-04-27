@@ -28,10 +28,12 @@ function zshef::install::debian() {
 
 function zshef::install::osx() {
     zshef::util::os::mac::install "python"
+    zshef::util::os::mac::install "uv"
 }
 
 function zshef::update::osx() {
     zshef::util::os::mac::update "python"
+    zshef::util::os::mac::update "uv"
 }
 
 function zshef::config::osx() {
