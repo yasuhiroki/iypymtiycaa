@@ -7,6 +7,9 @@ function zshef::install::osx() {
     zshef::util::mng::is_installed "ecs-cli" || {
         my::download::osx::awsecscli::latest
     }
+    zshef::util::mng::is_installed "sam" || {
+        zshef::util::os::mac::install "aws-sam-cli"
+    }
 }
 
 function zshef::update::osx() {
@@ -15,6 +18,9 @@ function zshef::update::osx() {
     }
     zshef::util::mng::is_installed "ecs-cli" && {
         my::download::osx::awsecscli::latest
+    }
+    zshef::util::mng::is_installed "sam" && {
+        zshef::util::os::mac::update "aws-sam-cli"
     }
 }
 
