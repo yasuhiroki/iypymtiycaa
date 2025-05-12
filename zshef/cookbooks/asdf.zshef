@@ -42,6 +42,8 @@ function zshef::config() {
     local rc="${HOME}/.iypymtiycaa/$(my::asdf::rc::name)"
     : > ${rc}
     echo 'export GOPATH=$HOME/go' >> ${rc}
-    echo 'source ~/.asdf/asdf.sh' >> ${rc}
+    echo 'eval $(asdf info | grep "^ASDF_DATA_DIR=")' >> ${rc}
+    echo 'path=($ASDF_DATA_DIR/shims $path)' >> ${rc}
+    echo 'export PATH' >> ${rc}
 }
 
