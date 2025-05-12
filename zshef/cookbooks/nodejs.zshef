@@ -5,7 +5,7 @@ source ${${(%):-%N}:A:h}/asdf/_func.sh
 function zshef::install() {
     # TODO: install gpg when use OSX
     local lang="nodejs"
-    local ver="20.11.1"
+    local ver="22.15.0"
     my::asdf::is_installed "${lang}" "${ver}" || {
         param=( \
             "${lang}" \
