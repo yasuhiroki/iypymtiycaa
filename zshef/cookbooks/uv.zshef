@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+function zshef::install::osx() {
+    zshef::util::mng::is_installed "uv" || {
+        zshef::util::os::mac::install "uv"
+    }
+}
+
+function zshef::update::osx() {
+    zshef::util::mng::is_installed "uv" && {
+        zshef::util::os::mac::update "uv"
+    }
+}
+
