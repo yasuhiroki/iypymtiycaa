@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+function zshef::install::osx() {
+    zshef::util::os::mac::is_installed "slack-cli" || {
+        zshef::util::os::mac::install "slack-cli"
+    }
+}
+
+
+function zshef::update::osx() {
+    zshef::util::mng::is_installed "slack-cli" || {
+        zshef::util::os::mac::install "slack-cli"
+    }
+}
