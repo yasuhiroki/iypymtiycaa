@@ -67,7 +67,7 @@ function my::config::alias::done::osx() {
 }
 
 function my::config::alias::poi() {
-    echo 'git branch -D ''$(git branch --merged | grep -v '"'^*'"')'
+    echo 'git branch -D ''$(git branch --merged | grep -v '"'^*'"' | grep -v '"'^+'"')'
 }
 
 function my::config::alias::fbr() {
