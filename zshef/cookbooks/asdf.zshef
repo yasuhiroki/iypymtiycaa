@@ -4,37 +4,13 @@ source ${${(%):-%N}:A:h}/asdf/_func.sh
 
 function zshef::install() {
     zshef::util::mng::is_installed "asdf" || {
-        git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+        zshef::util::os::install "asdf"
     }
-}
-
-function zshef::install::osx() {
-    zshef::util::mng::is_installed "asdf" || {
-        zshef::install::depends::osx
-    }
-}
-
-function zshef::install::debian() {
-    zshef::util::mng::is_installed "asdf" || {
-        zshef::install::depends::debian
-    }
-}
-
-function zshef::install::depends::osx() {
-    for m in coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc
-    do
-        zshef::util::os::mac::install "$m"
-    done
-}
-
-function zshef::install::depends::debian() {
-    sudo apt -y install automake autoconf libreadline-dev libncurses-dev libssl-dev libyaml-dev libxslt-dev libffi-dev libtool unixodbc-dev
 }
 
 function zshef::update() {
     zshef::util::mng::is_installed "asdf" && {
-        asdf update --head
-        asdf plugin-update --all
+        zshef::util::os::update "asdf"
     }
 }
 
