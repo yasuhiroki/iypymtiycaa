@@ -2,9 +2,11 @@
 
 source ${${(%):-%N}:A:h}/asdf/_func.sh
 
-function zshef::install() {
+function zshef::install::osx() {
+    zshef::util::os::mac::install "libffi"
+
     local lang="ruby"
-    local ver="3.3.2"
+    local ver="3.4.5"
     my::asdf::is_installed "${lang}" "${ver}" || {
         param=( \
             "${lang}" \
@@ -18,8 +20,9 @@ function zshef::install() {
 
         my::asdf::default_install ${param[@]}
    }
-}
 
+   gem install rubocop ruby-lsp
+}
 function zshef::update() {
     :
 }
