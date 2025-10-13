@@ -6,6 +6,8 @@ export DYLD_LIBRARY_PATH="/usr/local/opt/openssl/lib:$DYLD_LIBRARY_PATH"
 fpath+=(~/.iypymtiycaa/zsh/completions/)
 autoload -U bashcompinit && bashcompinit
 autoload -U compinit && compinit -C
+autoload -Uz edit-command-line
+zle -N edit-command-line
 
 export EDITOR=vim
 export LESS='-i -M -R'
@@ -25,6 +27,7 @@ stty stop undef
 stty start undef
 
 bindkey -e
+bindkey '^xe' edit-command-line
 
 # zimfw
 export ZIM_HOME=~/.zim
