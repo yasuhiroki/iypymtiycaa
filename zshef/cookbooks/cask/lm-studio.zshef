@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+function zshef::install::osx() {
+    zshef::util::os::mac::is_installed "lm-studio" || {
+        zshef::util::os::mac::install "lm-studio"
+    }
+}
+
+function zshef::config() {
+    echo 'path=("$HOME/.lmstudio/bin" $path)' > ~/.iypymtiycaa/lm-studio.zsh
+}
