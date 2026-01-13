@@ -46,10 +46,6 @@ This repository is my tips and useful scripts for me.
   - nodejs
   - golang
 
-## Productivity tools/tips
-
-- [Raycast](https://www.raycast.com)
-
 ### Documentation
 
 - ruby
