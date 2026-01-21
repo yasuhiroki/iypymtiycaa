@@ -1,0 +1,31 @@
+#!/usr/bin/env zsh
+
+function zshef::install() {
+    zshef::util::mng::is_installed "commitlint" || {
+        my::install::commitlint
+    }
+}
+
+function zshef::update() {
+    zshef::util::mng::is_installed "commitlint" && {
+        my::install::commitlint
+    }
+}
+
+function zshef::config() {
+    echo "extends: ['@commitlint/config-conventional']" > ~/.commitlintrc.yaml
+}
+
+function my::install::commitlint() {
+    zshef::util::mng::is_installed "node" || {
+        zshef::util::log::error "Depends node"
+        return 1
+    }
+    zshef::util::mng::is_installed "npm" || {
+        zshef::util::log::error "Depends npm"
+        return 1
+    }
+    npm install --force -g \
+        @commitlint/cli \
+        @commitlint/config-conventional
+}
