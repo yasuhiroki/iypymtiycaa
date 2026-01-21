@@ -85,13 +85,25 @@ function my::config::alias::tolink() {
 function my::config::commit_template() {
     echo "
 
-# feature: 機能の追加
-# bug: バグの修正
-# style: コーディングスタイルの修正 (機能・パフォーマンスの変更は含まない)
-# refactor: リファクタ
-# perf: パフォーマンスの改善
-# test: テストの追加・修正
-# docs: ドキュメントの追加修正
-# misc: その他、ビルド環境の設定変更など (docker, circleci, rubocop)" > ~/.git_commit_template.md
+# feat: 新機能の追加
+# fix: バグの修正
+# style: コードの意味に影響を与えない変更 (空白、フォーマット、セミコロンなど)
+# refactor: バグ修正や機能追加を含まないコードの変更
+# perf: パフォーマンスを向上させるためのコード変更
+# test: 不足しているテストの追加や既存のテストの修正
+# docs: ドキュメントのみの変更
+# build: ビルドシステムや外部依存関係に影響を及ぼす変更 (npm, gem, dockerなど)
+# ci: CI用の設定ファイルやスクリプトの変更 (circleci, github actionsなど)
+# chore: ソースコードやテストファイルに変更を加えない、その他の変更 (rubocopなど)
+#
+#
+# (example)
+#
+# ~~~
+# feat: allow provided config object to extend other configs
+#
+# BREAKING CHANGE: \`extends\` key in config file is now used for extending other config files
+# ~~~
+" > ~/.git_commit_template.md
     git config --global commit.template ~/.git_commit_template.md
 }
