@@ -61,6 +61,17 @@ This repository is my tips and useful scripts for me.
     - [committee](https://github.com/interagent/committee)
     - [Ruby Kaigi 2019] [How to use OpenAPI3 for API developer](https://rubykaigi.org/2019/presentations/ota42y.html)
 
+## Chrome extension
+
+### Vimium
+
+Custom key mappings
+
+```
+map <C-d> scrollPageDown
+map <C-u> scrollPageUp
+```
+
 ## My Macbook configuration
 
 ### Keyboard
