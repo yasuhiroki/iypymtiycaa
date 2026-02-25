@@ -27,7 +27,7 @@ function zshef::update() {
 }
 
 function my::npm::global::modules() {
-    echo eslint eslint-config-airbnb eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-import prettier prettier-eslint
+    echo @biomejs/biome
 }
 
 function my::install::modules() {
@@ -45,5 +45,4 @@ function my::update::modules() {
 function zshef::config() {
     echo 'export NODE_PATH=`npm root -g`'       > ~/.iypymtiycaa/noderc.sh
     npm completion                             >> ~/.iypymtiycaa/noderc.sh
-    echo '{ "extends": "airbnb" }'              > ~/.eslintrc
 }
