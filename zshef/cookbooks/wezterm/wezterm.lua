@@ -17,6 +17,39 @@ wezterm.on("update-right-status", function(window, pane)
     }))
 end)
 
+wezterm.on('window-config-reloaded', function(window, pane)
+  window:toast_notification('wezterm', 'configuration reloaded!', nil, 4000)
+end)
+
+local function is_github_copilot_process(pane)
+  local process = pane:get_foreground_process_info()
+  if not process or not process.argv then
+    return false
+  end
+  for _, arg in ipairs(process.argv) do
+    if arg:match("copilot$") then
+      return true
+    end
+  end
+
+  return false
+end
+
+wezterm.on('bell', function(window, pane)
+  if is_github_copilot_process(pane) then
+    local tab = pane:tab()
+    local pane_title = pane:get_title()
+
+    local msg = string.format(
+      '%d: %s',
+      pane:tab():tab_id(),
+      pane:get_title()
+    )
+
+    window:toast_notification('copilot sounds bell', msg, nil, 4000)
+  end
+end)
+
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
     local cwd = tab.active_pane.current_working_dir.path
     local basename = string.gsub(cwd, "(.*/)(.*/)(.*)", "%2%3")
