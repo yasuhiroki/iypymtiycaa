@@ -37,9 +37,6 @@ end
 
 wezterm.on('bell', function(window, pane)
   if is_github_copilot_process(pane) then
-    local tab = pane:tab()
-    local pane_title = pane:get_title()
-
     local msg = string.format(
       '%d: %s',
       pane:tab():tab_id(),
