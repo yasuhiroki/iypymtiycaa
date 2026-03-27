@@ -4,11 +4,19 @@ function zshef::install() {
     zshef::util::mng::is_installed "git" || {
         zshef::util::os::install "git"
     }
+
+    zshef::util::mng::is_installed "worktrunk" || {
+        zshef::util::os::install "wt"
+    }
 }
 
 function zshef::update() {
     zshef::util::mng::is_installed "git" && {
         zshef::util::os::update "git"
+    }
+
+    zshef::util::mng::is_installed "worktrunk" && {
+        zshef::util::os::update "wt"
     }
 }
 
@@ -53,6 +61,9 @@ function my::config::alias() {
 
     # #1234 から issue の url link を [:octocat:Link](LINK) という文字列で生成
     git config --global alias.tolink "!$(my::config::alias::tolink)"
+
+    # worktrunk を使う
+    git config --global alias.wt '!wt'
 }
 
 function zshef::config::osx() {
