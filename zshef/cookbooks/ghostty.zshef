@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+function zshef::config() {
+    local dir="${${(%):-%N}:A:h}/cookbooks/ghostty"
+    mkdir -p ~/.config/ghostty/
+    cp ${dir}/config ~/.config/ghostty/
+}
