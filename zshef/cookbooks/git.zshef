@@ -34,6 +34,8 @@ function zshef::config() {
     my::config::gitignore
     my::config::alias
     my::config::commit_template
+
+    my::config::worktrunk
 }
 
 function my::config::gitignore() {
@@ -114,4 +116,11 @@ function my::config::commit_template() {
 # ~~~
 " > ~/.git_commit_template.md
     git config --global commit.template ~/.git_commit_template.md
+}
+
+function my::config::worktrunk() {
+    mkdir -p ~/.config/worktrunk/
+
+    local dir="${${(%):-%N}:A:h}/cookbooks/worktrunk"
+    cp ${dir}/config.toml ~/.config/worktrunk/
 }
