@@ -5,8 +5,8 @@ function zshef::install() {
         zshef::util::os::install "git"
     }
 
-    zshef::util::mng::is_installed "worktrunk" || {
-        zshef::util::os::install "wt"
+    zshef::util::mng::is_installed "wt" || {
+        zshef::util::os::install "worktrunk"
     }
 }
 
@@ -15,8 +15,8 @@ function zshef::update() {
         zshef::util::os::update "git"
     }
 
-    zshef::util::mng::is_installed "worktrunk" && {
-        zshef::util::os::update "wt"
+    zshef::util::mng::is_installed "wt" && {
+        zshef::util::os::update "worktrunk"
     }
 }
 
