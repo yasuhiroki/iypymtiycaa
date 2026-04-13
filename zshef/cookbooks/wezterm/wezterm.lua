@@ -62,6 +62,7 @@ local function active_copy_mode()
     end)
 end
 
+config.window_decorations = "RESIZE"
 config.window_padding = {
     left = 2,
     top = 0,
