@@ -5,3 +5,10 @@ function zshef::install::osx() {
         zshef::util::os::mac::install "karabiner-elements"
     }
 }
+
+function zshef::config::osx() {
+    local dir="${${(%):-%N}:A:h}/cookbooks/karabiner"
+    mkdir ~/.config/karabiner/
+    cp ${dir}/karabiner.json ~/.config/karabiner/
+}
+
