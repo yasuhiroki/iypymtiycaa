@@ -21,29 +21,32 @@ wezterm.on('window-config-reloaded', function(window, pane)
   window:toast_notification('wezterm', 'configuration reloaded!', nil, 4000)
 end)
 
-local function is_github_copilot_process(pane)
+local function get_ai_agent_process(pane)
   local process = pane:get_foreground_process_info()
   if not process or not process.argv then
-    return false
+    return nil
   end
   for _, arg in ipairs(process.argv) do
     if arg:match("copilot$") then
-      return true
+      return "copilot"
+    elseif arg:match("agy$") then
+      return "agy"
     end
   end
 
-  return false
+  return nil
 end
 
 wezterm.on('bell', function(window, pane)
-  if is_github_copilot_process(pane) then
+  local ai_agent = get_ai_agent_process(pane)
+
+  if ai_agent ~= nil then
     local msg = string.format(
       '%d: %s',
-      pane:tab():tab_id(),
+      pane:tab():get_index(),
       pane:get_title()
     )
-
-    window:toast_notification('copilot sounds bell', msg, nil, 4000)
+    window:toast_notification('AI agent sounds bell', msg, nil, 4000)
   end
 end)
 
