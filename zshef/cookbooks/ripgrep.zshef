@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+function zshef::install::osx() {
+    zshef::util::mng::is_installed "rg" || {
+        zshef::util::os::mac::install "ripgrep"
+    }
+}
+
+function zshef::update::osx() {
+    zshef::util::mng::is_installed "rg" && {
+        zshef::util::os::mac::update "ripgrep"
+    }
+}
+
