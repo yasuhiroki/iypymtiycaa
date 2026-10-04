@@ -14,6 +14,7 @@ This repository is my tips and useful scripts for me.
   - [my vimrc](https://github.com/yasuhiroki/vimrc)
   - [universal-ctags](https://github.com/universal-ctags/ctags)
 - [ripgrep](https://github.com/burntsushi/ripgrep)
+- [ast-grep](https://github.com/ast-grep/ast-grep)
 
 ### Git
 

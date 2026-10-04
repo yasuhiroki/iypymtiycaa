@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+
+function zshef::install::osx() {
+    zshef::util::mng::is_installed "ast-grep" || {
+        zshef::util::os::mac::install "ast-grep"
+    }
+}
+
+function zshef::update::osx() {
+    zshef::util::mng::is_installed "ast-grep" && {
+        zshef::util::os::mac::update "ast-grep"
+    }
+}
+
+function zshef::config() {
+    ast-grep completions zsh > ~/.iypymtiycaa/ast-grep.sh
+}
+
