@@ -13,6 +13,7 @@ This repository is my tips and useful scripts for me.
 - [vim](https://github.com/vim/vim)
   - [my vimrc](https://github.com/yasuhiroki/vimrc)
   - [universal-ctags](https://github.com/universal-ctags/ctags)
+- [ripgrep](https://github.com/burntsushi/ripgrep)
 
 ### Git
 
