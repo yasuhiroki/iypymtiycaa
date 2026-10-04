@@ -11,6 +11,7 @@ zmodule "yasuhiroki/mask" -c 'path+=({}); export PATH'
 zmodule "yasuhiroki/coln" -c 'path+=({}); export PATH'
 zmodule "yasuhiroki/ywait" -c 'path+=({}); export PATH'
 zmodule "yasuhiroki/bttf-color-zsh" -s bttf.plugin.zsh
+zmodule "yasuhiroki/yojitsu.zsh" -c 'path+=({}/bin); export PATH'
 
 zmodule "yasuhiroki/yfc" -s yfc.zsh
 alias fc=yfc
