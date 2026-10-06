@@ -123,4 +123,6 @@ function my::config::worktrunk() {
 
     local dir="${${(%):-%N}:A:h}/cookbooks/worktrunk"
     cp ${dir}/config.toml ~/.config/worktrunk/
+
+    wt config shell init zsh > ~/.iypymtiycaa/wt.zsh
 }

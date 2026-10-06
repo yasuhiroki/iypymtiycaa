@@ -1,1 +1,4 @@
 worktree-path = "{{ repo_path }}/../{{ branch }}"
+
+[post-switch]
+submodule = "git submodule update --init"
