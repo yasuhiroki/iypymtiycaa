@@ -57,15 +57,12 @@ Store historical context, decisions, and trade-offs in the commit message body r
 ```text
 <type>(<scope>): <summary line in present tense>
 
-(Optional 1: Why)
-- Problem statement or background requirement.
+Problem statement or background requirement.
 
-(Optional 2: Decision & Alternatives)
-- Chosen approach and reasons for choosing it.
-- Alternatives considered and reasons for rejecting them.
+Chosen approach and reasons for choosing it.
+Alternatives considered and reasons for rejecting them.
 
-(Optional 3: Notes)
-- Breaking changes, dependencies, or migration instructions.
+Breaking changes, dependencies, or migration instructions.
 ```
 
 ### 3.2 Example
@@ -76,12 +73,12 @@ fix(auth): handle expired refresh tokens without logging out active tabs
 When multiple tabs were open, token refresh in one tab invalidated the
 stored token of other tabs, causing unexpected logouts across sessions.
 
-- Chosen: Allow a 30-second server-side grace period for refreshed tokens.
-  Prevents race conditions while limiting replay attack risks.
-- Rejected alternative: Syncing tokens via BroadcastChannel was rejected
-  due to inconsistent behavior in private browsing modes and web workers.
-- Rejected alternative: Extending token lifetime was rejected due to
-  security policy constraints.
+Allow a 30-second server-side grace period for refreshed tokens.
+Prevents race conditions while limiting replay attack risks.
+Rejected alternative: Syncing tokens via BroadcastChannel was rejected
+due to inconsistent behavior in private browsing modes and web workers.
+Rejected alternative: Extending token lifetime was rejected due to
+security policy constraints.
 
 Fixes #452
 ```
