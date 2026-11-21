@@ -20,7 +20,7 @@ This repository is my tips and useful scripts for me.
 
 - [git](https://github.com/git/git)
 - [gh](https://github.com/cli/cli)
-- [gina.vim](https://github.com/lambdalisue/gina.vim)
+- [gitU.vim](https://github.com/yasuhiroki/gitU.vim)
 
 ### Docker
 
