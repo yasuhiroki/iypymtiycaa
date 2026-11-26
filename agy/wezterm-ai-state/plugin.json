@@ -1,0 +1,5 @@
+{
+  "name": "wezterm-ai-state",
+  "version": "0.0.1",
+  "description": "Sync Antigravity CLI state to WezTerm UserVar"
+}
