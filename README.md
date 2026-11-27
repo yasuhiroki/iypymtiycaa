@@ -22,6 +22,13 @@ This repository is my tips and useful scripts for me.
 - [gh](https://github.com/cli/cli)
 - [gitU.vim](https://github.com/yasuhiroki/gitU.vim)
 
+### AI
+
+- skills
+  - `npx skills add yasuhiroki/iypymtiycaa/skills`
+- plugin
+  - `agy plugin install https://github.com/yasuhiroki/agy/wezterm-ai-state`
+
 ### Docker
 
 - Docker Desktop for Mac
