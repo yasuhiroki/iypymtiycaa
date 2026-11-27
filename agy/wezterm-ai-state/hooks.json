@@ -1,35 +1,49 @@
 {
-  "SessionStart": [
-    {
-      "type": "command",
-      "command": "sh -c '[ -n \"$WEZTERM_PANE\" ] && [ -w /dev/tty ] && printf \"\\033]1337;SetUserVar=AI_STATE=cnVubmluZw==\\007\" > /dev/tty; printf \"{}\\n\"'",
-      "timeout": 5
-    }
-  ],
-  "PreInvocation": [
-    {
-      "type": "command",
-      "command": "sh -c '[ -n \"$WEZTERM_PANE\" ] && [ -w /dev/tty ] && printf \"\\033]1337;SetUserVar=AI_STATE=cnVubmluZw==\\007\" > /dev/tty; printf \"{}\\n\"'",
-      "timeout": 5
-    }
-  ],
-  "PreToolUse": [
-    {
-      "matcher": "ask_question",
-      "hooks": [
-        {
-          "type": "command",
-          "command": "sh -c '[ -n \"$WEZTERM_PANE\" ] && [ -w /dev/tty ] && printf \"\\033]1337;SetUserVar=AI_STATE=d2FpdGluZw==\\007\" > /dev/tty; printf \"{\\\"decision\\\":\\\"allow\\\"}\\n\"'",
-          "timeout": 5
-        }
-      ]
-    }
-  ],
-  "Stop": [
-    {
-      "type": "command",
-      "command": "sh -c '[ -n \"$WEZTERM_PANE\" ] && [ -w /dev/tty ] && printf \"\\033]1337;SetUserVar=AI_STATE=d2FpdGluZw==\\007\" > /dev/tty; printf \"{\\\"decision\\\":\\\"stop\\\"}\\n\"'",
-      "timeout": 5
-    }
-  ]
+  "wezterm-ai-state": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "command": "sh ./set-state.sh idle",
+        "timeout": 5
+      }
+    ],
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "sh ./set-state.sh running",
+        "timeout": 5
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "ask_question",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh ./set-state.sh ask '{\"decision\":\"allow\"}'",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "ask_question",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh ./set-state.sh running",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "type": "command",
+        "command": "sh ./set-state.sh complete '{\"decision\":\"stop\"}'",
+        "timeout": 5
+      }
+    ]
+  }
 }
