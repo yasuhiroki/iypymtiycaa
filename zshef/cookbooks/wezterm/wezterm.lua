@@ -1,5 +1,6 @@
 local wezterm = require 'wezterm'
 local act = wezterm.action
+local select_pane = require 'plugin.select_pane'
 
 local config = {}
 if wezterm.config_builder then
@@ -19,35 +20,6 @@ end)
 
 wezterm.on('window-config-reloaded', function(window, pane)
   window:toast_notification('wezterm', 'configuration reloaded!', nil, 4000)
-end)
-
-local function get_ai_agent_process(pane)
-  local process = pane:get_foreground_process_info()
-  if not process or not process.argv then
-    return nil
-  end
-  for _, arg in ipairs(process.argv) do
-    if arg:match("copilot$") then
-      return "copilot"
-    elseif arg:match("agy$") then
-      return "agy"
-    end
-  end
-
-  return nil
-end
-
-wezterm.on('bell', function(window, pane)
-  local ai_agent = get_ai_agent_process(pane)
-
-  if ai_agent ~= nil then
-    local msg = string.format(
-      '%d: %s',
-      pane:tab():get_index(),
-      pane:get_title()
-    )
-    window:toast_notification('AI agent sounds bell', msg, nil, 4000)
-  end
 end)
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
@@ -81,6 +53,8 @@ config.colors = {
     copy_mode_inactive_highlight_fg = { Color = 'rgba(128,128,128,1)' },
     copy_mode_inactive_highlight_bg = { Color = 'rgba(114,84,179,0.5)' },
 }
+config.command_palette_bg_color = '#073642'
+config.command_palette_fg_color = '#93a1a1'
 config.leader = { key = 'q', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.font = wezterm.font("HackGen35")
 config.macos_forward_to_ime_modifier_mask = "SHIFT|CTRL"
@@ -170,6 +144,11 @@ config.keys = {
             act { AdjustPaneSize = { "Right", 1 } },
             act.ActivateKeyTable { name = 'resize_pane_right', one_shot = false, timeout_milliseconds = 400 },
         }
+    },
+    {
+        key = 'i',
+        mods = 'LEADER',
+        action = select_pane.action(),
     },
 
     -- Copy Mode
