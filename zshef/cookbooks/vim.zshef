@@ -1,9 +1,5 @@
 #!/usr/bin/env zsh
 
-function zshef::install() {
-    :
-}
-
 function zshef::install::osx() {
     zshef::util::mng::is_installed "vim" || {
         zshef::util::os::mac::install "vim"
@@ -11,59 +7,10 @@ function zshef::install::osx() {
     }
 }
 
-function zshef::install::debian() {
-    local vim_src_dir=$(my::src::path)
-    [ ! -d ${vim_src_dir} ] && {
-        git clone https://github.com/vim/vim ${vim_src_dir}
-        cd ${vim_src_dir}
-        my::depends::debian
-        my::make
-    }
-}
-
 function zshef::update::osx() {
     zshef::util::mng::is_installed "vim" && {
         zshef::util::os::mac::update "vim"
     }
-}
-
-function zshef::update::debian() {
-    local vim_src_dir=$(my::src::path)
-    [ -d ${vim_src_dir} ] && {
-        cd ${vim_src_dir}
-        git clean -xdf
-        git pull
-        my::make
-    }
-}
-
-function my::src::path() {
-    echo "$HOME/.vim-src"
-}
-
-function my::make() {
-    ./configure \
-        --with-features=huge \
-        --enable-perlinterp \
-        --enable-pythoninterp \
-        --enable-python3interp \
-        --enable-rubyinterp \
-        --enable-luainterp \
-        --with-lua-prefix=$(dirname $(dirname $(which lua))) \
-        --with-luajit \
-        --enable-fail-if-missing
-    [ $? = 0 ] || return -1
-    make
-    make install
-}
-
-function my::depends::debian() {
-    sudo apt-get -y build-dep vim
-    sudo apt install -y gettext libncurses5-dev libacl1-dev libgpm-dev lua5.2 liblua5.2-dev luajit libluajit-5.1 libperl-dev python-dev python3-dev ruby-dev ncurses-dev
-}
-
-function zshef::config::debian() {
-    echo "alias vim='/usr/local/bin/vim'" > ~/.iypymtiycaa/vimrc.sh
 }
 
 function my::depends::osx() {
