@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+function zshef::install::osx() {
+    zshef::util::mng::is_installed "copilot" || {
+        zshef::util::os::mac::install "copilot-cli"
+    }
+}
+
+
+function zshef::update::osx() {
+    zshef::util::mng::is_installed "copilot" && {
+        zshef::util::os::mac::update "copilot-cli"
+    }
+}
+
