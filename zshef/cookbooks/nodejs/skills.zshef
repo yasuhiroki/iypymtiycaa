@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+function zshef::install() {
+    npx skills add -g -y --all max-sixty/worktrunk
+    npx skills add -g -y --all yasuhiroki/iypymtiycaa/skills
+}
+
