@@ -49,11 +49,10 @@ RUN chsh -s /usr/bin/zsh ubuntu \
 USER ubuntu
 WORKDIR /home/ubuntu
 
-RUN mkdir -p /home/ubuntu/github.com/yasuhiroki /home/ubuntu/.iypymtiycaa /home/ubuntu/mybin \
-    && git clone --depth=1 https://github.com/yasuhiroki/iypymtiycaa /home/ubuntu/github.com/yasuhiroki/iypymtiycaa \
-    && git clone --depth=1 https://github.com/yasuhiroki/zshef.git /home/ubuntu/.zshef \
-    && zsh -c 'source /home/ubuntu/.zshef/init.sh && cd /home/ubuntu/github.com/yasuhiroki/iypymtiycaa/zshef && zshef run'
+RUN curl -O https://raw.githubusercontent.com/yasuhiroki/iypymtiycaa/refs/heads/master/init.sh \
+        && zsh init.sh
 
-ENV PATH="/home/ubuntu/.local/bin:/home/ubuntu/go/bin:/home/ubuntu/.cargo/bin:${PATH}"
+RUN zsh -c 'cd /home/ubuntu/.iypymtiycaa/init/iypymtiycaa/zshef && source load_local_zshef.sh && zshef install && zshef config' \
+        && zsh -c 'source ~/.zshrc'
 
 CMD ["/usr/bin/zsh"]
