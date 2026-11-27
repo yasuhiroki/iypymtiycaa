@@ -2,21 +2,18 @@
 
 set -eu
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || brew -v
+GH_REPO_BASE_DIR="$HOME/.iypymtiycaa/init/"
 
-mkdir -p ~/ghq/github.com/yasuhiroki/
-git clone git@github.com:yasuhiroki/iypymtiycaa ~/ghq/github.com/yasuhiroki/iypymtiycaa
-git clone git@github.com:yasuhiroki/zshef ~/ghq/github.com/yasuhiroki/zshef
-
-mkdir -p ~/.iypymtiycaa/env ~/.iypymtiycaa/rc
-mkdir -p ~/mybin
+mkdir -p "${GH_REPO_BASE_DIR}"
+git clone https://github.com/yasuhiroki/iypymtiycaa "${GH_REPO_BASE_DIR}/iypymtiycaa"
+git clone https://github.com/yasuhiroki/zshef "${GH_REPO_BASE_DIR}/zshef"
 
 (
-cd ~/ghq/github.com/yasuhiroki/iypymtiycaa/zshef
-source ../../zshef/init.sh
-zshef install
-zshef config
+    cd "${GH_REPO_BASE_DIR}/iypymtiycaa/zshef"
+    source ../../zshef/init.sh
+    zshef install zsh asdf
+    zshef config zsh asdf
+
+    zshef install
+    zshef config
 )
-
-
-
