@@ -2,7 +2,7 @@
 
 FROM ubuntu:26.04
 
-LABEL org.opencontainers.image.authors="Yasuhiro Kiyota"
+LABEL org.opencontainers.image.authors="yasuhiroki"
 
 ARG DEBIAN_FRONTEND=noninteractive
 
