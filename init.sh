@@ -8,7 +8,7 @@ mkdir -p ~/ghq/github.com/yasuhiroki/
 git clone git@github.com:yasuhiroki/iypymtiycaa ~/ghq/github.com/yasuhiroki/iypymtiycaa
 git clone git@github.com:yasuhiroki/zshef ~/ghq/github.com/yasuhiroki/zshef
 
-mkdir -p ~/.iypymtiycaa
+mkdir -p ~/.iypymtiycaa/env ~/.iypymtiycaa/rc
 mkdir -p ~/mybin
 
 (

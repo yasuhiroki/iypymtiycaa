@@ -7,5 +7,6 @@ function zshef::install::osx() {
 }
 
 function zshef::config() {
-    echo 'path=("$HOME/.lmstudio/bin" $path)' > ~/.iypymtiycaa/lm-studio.zsh
+    mkdir -p ~/.iypymtiycaa/env
+    echo 'path=("$HOME/.lmstudio/bin" $path)' > ~/.iypymtiycaa/env/lm-studio.sh
 }

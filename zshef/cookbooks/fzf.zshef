@@ -20,7 +20,8 @@ function zshef::update() {
 }
 
 function zshef::config() {
-cat <<EOH > ~/.iypymtiycaa/fzfrc.sh
+mkdir -p ~/.iypymtiycaa/rc
+cat <<EOH > ~/.iypymtiycaa/rc/fzfrc.sh
 export FZF_DEFAULT_OPTS='--reverse'
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

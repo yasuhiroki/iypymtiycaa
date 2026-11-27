@@ -13,7 +13,8 @@ function zshef::update::osx() {
 }
 
 function zshef::config::osx() {
-    cat <<EOH > ~/.iypymtiycaa/pythonrc.sh
+    mkdir -p ~/.iypymtiycaa/env
+    cat <<EOH > ~/.iypymtiycaa/env/pythonrc.sh
 path=("\$(brew --prefix)/opt/python/libexec/bin" \$path)
 export PATH
 EOH

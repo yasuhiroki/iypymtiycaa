@@ -25,7 +25,8 @@ function zshef::update::osx() {
 }
 
 function zshef::config() {
-    echo "complete -C '/usr/local/aws-cli/aws_completer' aws" > ~/.iypymtiycaa/awsclirc.sh
+    mkdir -p ~/.iypymtiycaa/rc
+    echo "complete -C '/usr/local/aws-cli/aws_completer' aws" > ~/.iypymtiycaa/rc/awsclirc.sh
 }
 
 function my::url::awsecscli::osx() {

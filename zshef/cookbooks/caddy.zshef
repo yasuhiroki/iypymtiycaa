@@ -16,6 +16,7 @@ function zshef::update() {
 }
 
 function zshef::config() {
-    echo 'alias caddy="ruby ~/.golf-caddy/caddy.rb"' > ~/.iypymtiycaa/caddyrc.sh
+    mkdir -p ~/.iypymtiycaa/rc
+    echo 'alias caddy="ruby ~/.golf-caddy/caddy.rb"' > ~/.iypymtiycaa/rc/caddyrc.sh
 }
 

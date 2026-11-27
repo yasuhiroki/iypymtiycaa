@@ -7,6 +7,7 @@ function zshef::install::debian() {
 }
 
 function zshef::config::debian() {
-    echo "alias pbcopy='xsel --clipboard --input'" > ~/.iypymtiycaa/pbcopyrc.sh
+    mkdir -p ~/.iypymtiycaa/rc
+    echo "alias pbcopy='xsel --clipboard --input'" > ~/.iypymtiycaa/rc/pbcopyrc.sh
 }
 

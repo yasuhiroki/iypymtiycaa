@@ -33,7 +33,8 @@ function zshef::update::debian() {
 }
 
 function zshef::config() {
-    local rc="${HOME}/.iypymtiycaa/$(my::asdf::rc::name)"
+    mkdir -p "${HOME}/.iypymtiycaa/env"
+    local rc="${HOME}/.iypymtiycaa/env/$(my::asdf::rc::name)"
     : > ${rc}
     echo 'export GOPATH=$HOME/go' >> ${rc}
     echo 'eval $(asdf info | grep "^ASDF_DATA_DIR=")' >> ${rc}

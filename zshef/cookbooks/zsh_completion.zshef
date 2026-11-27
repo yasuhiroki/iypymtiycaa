@@ -2,7 +2,8 @@
 
 function zshef::config() {
     zshef::util::mng::is_installed "kubectl" && {
-        echo 'source <(kubectl completion zsh) || true' > ~/.iypymtiycaa/kubectl.sh
+        mkdir -p ~/.iypymtiycaa/rc
+        echo 'source <(kubectl completion zsh) || true' > ~/.iypymtiycaa/rc/kubectl.sh
     }
 }
 

@@ -15,7 +15,8 @@ function zshef::config() {
 }
 EOH
 
-    cat <<EOH > ~/.iypymtiycaa/docker.zsh
+    mkdir -p ~/.iypymtiycaa/rc
+    cat <<EOH > ~/.iypymtiycaa/rc/docker.sh
 function d::sh() {
   : \${1:?Need docker container id}
   docker exec -it \${1} /bin/sh

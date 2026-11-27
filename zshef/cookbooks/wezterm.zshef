@@ -2,7 +2,8 @@
 
 function zshef::config() {
     local dir="${${(%):-%N}:A:h}/cookbooks/wezterm"
-    cp ${dir}/weztermrc.sh ~/.iypymtiycaa/
+    mkdir -p ~/.iypymtiycaa/rc ~/.iypymtiycaa/zsh/completions
+    cp ${dir}/weztermrc.sh ~/.iypymtiycaa/rc/
 
     mkdir -p ~/.config/wezterm/plugin/
     cp ${dir}/wezterm.lua ~/.config/wezterm/

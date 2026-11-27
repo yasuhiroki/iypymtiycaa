@@ -43,6 +43,7 @@ function my::update::modules() {
 }
 
 function zshef::config() {
-    echo 'export NODE_PATH=`npm root -g`'       > ~/.iypymtiycaa/noderc.sh
-    npm completion                             >> ~/.iypymtiycaa/noderc.sh
+    mkdir -p ~/.iypymtiycaa/env ~/.iypymtiycaa/rc
+    echo 'export NODE_PATH=`npm root -g`'       > ~/.iypymtiycaa/env/noderc.sh
+    npm completion                             > ~/.iypymtiycaa/rc/noderc.sh
 }

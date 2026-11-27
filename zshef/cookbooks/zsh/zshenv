@@ -1,0 +1,11 @@
+# Read custom env
+for f in ~/.iypymtiycaa/env/*.sh(N)
+do
+    test -f "$f" || continue
+    source "$f" || echo "Could not source $f"
+done
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/yasuhiroki/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yasuhiroki/google-cloud-sdk/path.zsh.inc'; fi
+
+typeset -U path PATH

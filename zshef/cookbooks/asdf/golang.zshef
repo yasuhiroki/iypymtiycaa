@@ -27,7 +27,8 @@ function zshef::update() {
 }
 
 function zshef::config() {
-    cat <<EOH > ~/.iypymtiycaa/golangrc.sh
+    mkdir -p ~/.iypymtiycaa/env
+    cat <<EOH > ~/.iypymtiycaa/env/golangrc.sh
 path=("\$HOME/go/bin" \$path)
 export PATH
 EOH

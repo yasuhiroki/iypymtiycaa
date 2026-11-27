@@ -9,7 +9,8 @@ function zshef::update() {
 }
 
 function zshef::config() {
-cat <<EOH > ~/.zshenv
+mkdir -p ~/.iypymtiycaa/env
+cat <<EOH > ~/.iypymtiycaa/env/aliasrc.sh
 alias yukino=git
 alias yuhei=git
 alias yk=git
@@ -37,6 +38,7 @@ zshef::config::for_vim
 
 function zshef::config::for_vim() {
     # vim の ! コマンドでも alias が使えるようにする
+    mkdir -p ~/.vim
     echo "shopt -s expand_aliases"  > ~/.vim/alias_for_vim.sh
-    cat ~/.zshenv >> ~/.vim/alias_for_vim.sh
+    cat ~/.iypymtiycaa/env/aliasrc.sh >> ~/.vim/alias_for_vim.sh
 }

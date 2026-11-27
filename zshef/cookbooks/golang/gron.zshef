@@ -20,7 +20,8 @@ function zshef::update::osx() {
 }
 
 function zshef::config() {
-cat <<EOH > ~/.iypymtiycaa/gronrc.sh
+mkdir -p ~/.iypymtiycaa/rc
+cat <<EOH > ~/.iypymtiycaa/rc/gronrc.sh
 # gron 形式を JSON 形式に戻す
 # example:
 #   $ jo a=1 b=2 | gron | norg

@@ -28,5 +28,6 @@ function zshef::update() {
 }
 
 function zshef::config() {
-    echo 'alias be="bundle exec"' > ~/.iypymtiycaa/rubyrc.sh
+    mkdir -p ~/.iypymtiycaa/rc
+    echo 'alias be="bundle exec"' > ~/.iypymtiycaa/rc/rubyrc.sh
 }
