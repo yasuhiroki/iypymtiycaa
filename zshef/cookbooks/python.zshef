@@ -2,30 +2,6 @@
 
 source ${${(%):-%N}:A:h}/asdf/_func.sh
 
-function zshef::install::debian() {
-    zshef::util::mng::is_installed "asdf" || {
-        zshef::util::log::error "Depends asdf"
-        return 1
-    }
-
-    # TODO: install gpg when use OSX
-    my::asdf::is_installed "python" || {
-        param=(\
-          "python"\
-          "2.7"\
-          "https://github.com/tuvistavie/asdf-python.git"\
-          )
-        my::asdf::default_install ${param[@]}
-
-        param=(\
-          "python"\
-          "3.6.2"\
-          "https://github.com/tuvistavie/asdf-python.git"\
-          )
-        my::asdf::default_install ${param[@]}
-    }
-}
-
 function zshef::install::osx() {
     zshef::util::os::mac::install "python"
     zshef::util::os::mac::install "uv"
