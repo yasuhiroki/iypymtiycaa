@@ -1,36 +1,50 @@
-FROM ubuntu
-MAINTAINER Yasuhiro Kiyota
+# syntax=docker/dockerfile:1
 
-RUN apt-get clean && apt-get update
-RUN apt-get install locales
-RUN locale-gen en_US.UTF-8
+FROM ubuntu:26.04
 
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US.UTF-8
-ENV LC_ALL en_US.UTF-8
-ENV TERM xterm-256color
+LABEL org.opencontainers.image.authors="Yasuhiro Kiyota"
 
-SHELL ["/bin/bash", "-c"]
+ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt -y update \
-    && apt -y upgrade \
-    && apt -y install git sudo curl zsh make gcc connect-proxy man fonts-horai-umefont
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-RUN apt -y install libboost-all-dev cmake openjdk-8-jre
+# NOTE: Disable Ubuntu's default docker-clean hook so BuildKit apt cache mounts persist downloaded .deb files.
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    rm -f /etc/apt/apt.conf.d/docker-clean \
+    && echo 'Binary::apt::APT::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/keep-cache \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
+        build-essential \
+        ca-certificates \
+        curl \
+        git \
+        gnupg \
+        jq \
+        less \
+        locales \
+        man-db \
+        openssh-client \
+        pkg-config \
+        ripgrep \
+        sudo \
+        unzip \
+        vim \
+        zsh \
+    && locale-gen en_US.UTF-8 \
+    && update-locale LANG=en_US.UTF-8
 
-RUN sed -i 's/bash/zsh/' /etc/passwd
+ENV LANG=en_US.UTF-8 \
+    LANGUAGE=en_US.UTF-8 \
+    LC_ALL=en_US.UTF-8 \
+    TERM=xterm-256color
 
-RUN mkdir -p /root/github.com/yasuhiroki/ \
-    && cd /root/github.com/yasuhiroki/ \
-    && git clone https://github.com/yasuhiroki/vimrc \
-    && cd vimrc \
-    && bash ./install-vim.sh \
-    && bash ./update.sh
+RUN chsh -s /usr/bin/zsh ubuntu \
+    && echo "ubuntu ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/ubuntu \
+    && chmod 0440 /etc/sudoers.d/ubuntu \
+    && visudo -cf /etc/sudoers.d/ubuntu
 
-RUN mkdir -p /root/github.com/yasuhiroki/ \
-    && cd /root/github.com/yasuhiroki/ \
-    && git clone https://github.com/yasuhiroki/iypymtiycaa
+USER ubuntu
+WORKDIR /home/ubuntu
 
-RUN curl https://raw.githubusercontent.com/yasuhiroki/zshef/master/install.sh | sh
-
-RUN cd /root/github.com/yasuhiroki/iypymtiycaa/zshef && zshef run
+CMD ["/usr/bin/zsh"]
