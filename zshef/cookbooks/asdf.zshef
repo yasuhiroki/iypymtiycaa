@@ -2,15 +2,33 @@
 
 source ${${(%):-%N}:A:h}/asdf/_func.sh
 
-function zshef::install() {
+function zshef::install::macos() {
     zshef::util::mng::is_installed "asdf" || {
         zshef::util::os::install "asdf"
     }
 }
 
-function zshef::update() {
+function zshef::update::macos() {
     zshef::util::mng::is_installed "asdf" && {
         zshef::util::os::update "asdf"
+    }
+}
+
+ASDF_VERSION="v0.20.2"
+
+function zshef::install::debian() {
+    zshef::util::mng::is_installed "asdf" || {
+        local arch="$(dpkg --print-architecture)"
+        curl -sSL https://github.com/asdf-vm/asdf/releases/download/${ASDF_VERSION}/asdf-${ASDF_VERSION}-linux-${arch:?}.tar.gz -o asdf.tar.gz
+        tar -xzf asdf.tar.gz && sudo mv asdf /usr/local/bin/ && rm asdf.tar.gz
+    }
+}
+
+function zshef::update::debian() {
+    zshef::util::mng::is_installed "asdf" && {
+        local arch="$(dpkg --print-architecture)"
+        curl -sSL https://github.com/asdf-vm/asdf/releases/download/${ASDF_VERSION}/asdf-${ASDF_VERSION}-linux-${arch:?}.tar.gz -o asdf.tar.gz
+        tar -xzf asdf.tar.gz && sudo mv asdf /usr/local/bin/ && rm asdf.tar.gz
     }
 }
 
