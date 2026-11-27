@@ -11,3 +11,9 @@ function zshef::update::osx() {
         zshef::util::os::mac::update "antigravity-cli"
     }
 }
+
+function zshef::install::debian() {
+    zshef::util::mng::is_installed "agy" || {
+        curl -fsSL https://antigravity.google/cli/install.sh | bash
+    }
+}

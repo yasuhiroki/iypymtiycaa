@@ -19,6 +19,7 @@ function zshef::config() {
     cat <<EOH > ~/.iypymtiycaa/env/_path.sh
 path=("/usr/local/sbin" \$path)
 path=("\$HOME/mybin" \$path)
+path=("\$HOME/.local/bin" \$path)
 export PATH
 EOH
 }
