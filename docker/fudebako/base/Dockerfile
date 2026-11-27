@@ -26,6 +26,8 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
         man-db \
         openssh-client \
         pkg-config \
+        python3-dev \
+        ruby-dev \
         ripgrep \
         sudo \
         unzip \
@@ -46,5 +48,12 @@ RUN chsh -s /usr/bin/zsh ubuntu \
 
 USER ubuntu
 WORKDIR /home/ubuntu
+
+RUN mkdir -p /home/ubuntu/github.com/yasuhiroki /home/ubuntu/.iypymtiycaa /home/ubuntu/mybin \
+    && git clone --depth=1 https://github.com/yasuhiroki/iypymtiycaa /home/ubuntu/github.com/yasuhiroki/iypymtiycaa \
+    && git clone --depth=1 https://github.com/yasuhiroki/zshef.git /home/ubuntu/.zshef \
+    && zsh -c 'source /home/ubuntu/.zshef/init.sh && cd /home/ubuntu/github.com/yasuhiroki/iypymtiycaa/zshef && zshef run'
+
+ENV PATH="/home/ubuntu/.local/bin:/home/ubuntu/go/bin:/home/ubuntu/.cargo/bin:${PATH}"
 
 CMD ["/usr/bin/zsh"]
