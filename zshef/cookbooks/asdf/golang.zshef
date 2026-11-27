@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-source ${${(%):-%N}:A:h}/asdf/_func.sh
+source ${${(%):-%N}:A:h}/_func.sh
 
 function zshef::install() {
     local lang="go"
