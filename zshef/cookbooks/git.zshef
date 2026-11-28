@@ -4,9 +4,17 @@ function zshef::install() {
     zshef::util::mng::is_installed "git" || {
         zshef::util::os::install "git"
     }
+}
 
+function zshef::install::osx() {
     zshef::util::mng::is_installed "wt" || {
-        zshef::util::os::install "worktrunk"
+        zshef::util::os::mac::install "worktrunk"
+    }
+}
+
+function zshef::install::debian() {
+    zshef::util::mng::is_installed "wt" || {
+        curl --proto '=https' --tlsv1.2 -LsSf https://github.com/max-sixty/worktrunk/releases/latest/download/worktrunk-installer.sh | sh
     }
 }
 
@@ -14,9 +22,17 @@ function zshef::update() {
     zshef::util::mng::is_installed "git" && {
         zshef::util::os::update "git"
     }
+}
 
+function zshef::update::osx() {
     zshef::util::mng::is_installed "wt" && {
-        zshef::util::os::update "worktrunk"
+        zshef::util::os::mac::update "worktrunk"
+    }
+}
+
+function zshef::update::debian() {
+    zshef::util::mng::is_installed "wt" && {
+        curl --proto '=https' --tlsv1.2 -LsSf https://github.com/max-sixty/worktrunk/releases/latest/download/worktrunk-installer.sh | sh
     }
 }
 

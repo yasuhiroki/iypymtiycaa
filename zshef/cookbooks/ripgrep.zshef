@@ -12,3 +12,15 @@ function zshef::update::osx() {
     }
 }
 
+function zshef::install::debian() {
+    zshef::util::mng::is_installed "rg" || {
+        zshef::util::os::debian::install "ripgrep"
+    }
+}
+
+function zshef::update::debian() {
+    zshef::util::mng::is_installed "rg" && {
+        zshef::util::os::debian::update "ripgrep"
+    }
+}
+

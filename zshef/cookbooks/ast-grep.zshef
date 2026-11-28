@@ -12,6 +12,43 @@ function zshef::update::osx() {
     }
 }
 
+function zshef::install::debian() {
+    zshef::util::mng::is_installed "ast-grep" || {
+        my::install::debian::ast_grep
+    }
+}
+
+function zshef::update::debian() {
+    zshef::util::mng::is_installed "ast-grep" && {
+        my::install::debian::ast_grep
+    }
+}
+
+function my::install::debian::ast_grep() {
+    local arch
+    case "$(uname -m)" in
+        x86_64) arch="x86_64" ;;
+        aarch64|arm64) arch="aarch64" ;;
+        *)
+            zshef::util::log::error "Unsupported architecture: $(uname -m)"
+            return 1
+            ;;
+    esac
+
+    local tmpdir
+    tmpdir="$(mktemp -d)" || return 1
+    curl -fsSL "https://github.com/ast-grep/ast-grep/releases/latest/download/app-${arch}-unknown-linux-gnu.zip" -o "${tmpdir}/ast-grep.zip" \
+        && unzip -qo "${tmpdir}/ast-grep.zip" -d "${tmpdir}" \
+        && {
+            local bin="${tmpdir}/ast-grep"
+            [[ -f "${bin}" ]] || bin="${tmpdir}/sg"
+            sudo install -m 755 "${bin}" /usr/local/bin/ast-grep
+        }
+    local rc=$?
+    rm -rf "${tmpdir}"
+    return ${rc}
+}
+
 function zshef::config() {
     mkdir -p ~/.iypymtiycaa/rc
     ast-grep completions zsh > ~/.iypymtiycaa/rc/ast-grep.sh

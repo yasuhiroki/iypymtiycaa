@@ -13,6 +13,18 @@ function zshef::update::osx() {
     }
 }
 
+function zshef::install::debian() {
+    zshef::util::mng::is_installed "vim" || {
+        zshef::util::os::debian::install "vim"
+    }
+}
+
+function zshef::update::debian() {
+    zshef::util::mng::is_installed "vim" && {
+        zshef::util::os::debian::update "vim"
+    }
+}
+
 function my::depends::osx() {
     brew install cmake boost lua@5.3
 }

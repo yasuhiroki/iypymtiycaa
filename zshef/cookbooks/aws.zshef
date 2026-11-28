@@ -24,9 +24,70 @@ function zshef::update::osx() {
     }
 }
 
+function zshef::install::debian() {
+    zshef::util::mng::is_installed "aws" || {
+        my::install::debian::awscli
+    }
+    zshef::util::mng::is_installed "sam" || {
+        my::install::debian::sam
+    }
+}
+
+function zshef::update::debian() {
+    zshef::util::mng::is_installed "aws" && {
+        my::install::debian::awscli
+    }
+    zshef::util::mng::is_installed "sam" && {
+        my::install::debian::sam
+    }
+}
+
 function zshef::config() {
     mkdir -p ~/.iypymtiycaa/rc
-    echo "complete -C '/usr/local/aws-cli/aws_completer' aws" > ~/.iypymtiycaa/rc/awsclirc.sh
+    local completer="$(command -v aws_completer || echo /usr/local/aws-cli/aws_completer)"
+    echo "complete -C '${completer}' aws" > ~/.iypymtiycaa/rc/awsclirc.sh
+}
+
+function my::install::debian::awscli() {
+    local arch
+    case "$(uname -m)" in
+        x86_64) arch="x86_64" ;;
+        aarch64|arm64) arch="aarch64" ;;
+        *)
+            zshef::util::log::error "Unsupported architecture: $(uname -m)"
+            return 1
+            ;;
+    esac
+
+    local tmpdir
+    tmpdir="$(mktemp -d)" || return 1
+    curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-${arch}.zip" -o "${tmpdir}/awscliv2.zip" \
+        && unzip -q "${tmpdir}/awscliv2.zip" -d "${tmpdir}" \
+        && sudo "${tmpdir}/aws/install" --update
+    local rc=$?
+    rm -rf "${tmpdir}"
+    return ${rc}
+}
+
+function my::install::debian::sam() {
+    local arch
+    case "$(uname -m)" in
+        x86_64) arch="x86_64" ;;
+        aarch64|arm64) arch="arm64" ;;
+        *)
+            zshef::util::log::error "Unsupported architecture: $(uname -m)"
+            return 1
+            ;;
+    esac
+
+    local tmpdir
+    tmpdir="$(mktemp -d)" || return 1
+    curl -fsSL "https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-${arch}.zip" -o "${tmpdir}/aws-sam-cli.zip" \
+        && unzip -q "${tmpdir}/aws-sam-cli.zip" -d "${tmpdir}/sam-installation" \
+        && sudo "${tmpdir}/sam-installation/install" --update
+    local rc=$?
+    rm -rf "${tmpdir}"
+    return ${rc}
 }
 
 function my::url::awsecscli::osx() {

@@ -20,3 +20,52 @@ function zshef::update::osx() {
         zshef::util::os::mac::update "ktlint"
     }
 }
+
+function zshef::install::debian() {
+    zshef::util::mng::is_installed "java" || {
+        zshef::util::os::debian::install "default-jdk-headless"
+    }
+
+    zshef::util::mng::is_installed "kotlin" || {
+        my::install::debian::kotlin
+    }
+
+    zshef::util::mng::is_installed "ktlint" || {
+        my::install::debian::ktlint
+    }
+}
+
+function zshef::update::debian() {
+    zshef::util::mng::is_installed "kotlin" && {
+        my::install::debian::kotlin
+    }
+
+    zshef::util::mng::is_installed "ktlint" && {
+        my::install::debian::ktlint
+    }
+}
+
+function my::install::debian::kotlin() {
+    local tag tmpdir
+    tag="$(curl -fsSLI -o /dev/null -w '%{url_effective}' https://github.com/JetBrains/kotlin/releases/latest | sed 's|.*/||')" || return 1
+    tmpdir="$(mktemp -d)" || return 1
+    curl -fsSL "https://github.com/JetBrains/kotlin/releases/download/${tag}/kotlin-compiler-${tag#v}.zip" -o "${tmpdir}/kotlin.zip" \
+        && unzip -q "${tmpdir}/kotlin.zip" -d "${tmpdir}" \
+        && sudo rm -rf /opt/kotlinc \
+        && sudo mv "${tmpdir}/kotlinc" /opt/kotlinc \
+        && sudo ln -sf /opt/kotlinc/bin/kotlin /usr/local/bin/kotlin \
+        && sudo ln -sf /opt/kotlinc/bin/kotlinc /usr/local/bin/kotlinc
+    local rc=$?
+    rm -rf "${tmpdir}"
+    return ${rc}
+}
+
+function my::install::debian::ktlint() {
+    local tmpfile
+    tmpfile="$(mktemp)" || return 1
+    curl -fsSL "https://github.com/ktlint/ktlint/releases/latest/download/ktlint" -o "${tmpfile}" \
+        && sudo install -m 755 "${tmpfile}" /usr/local/bin/ktlint
+    local rc=$?
+    rm -f "${tmpfile}"
+    return ${rc}
+}

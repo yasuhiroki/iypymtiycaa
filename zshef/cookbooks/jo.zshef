@@ -17,3 +17,15 @@ function zshef::update::osx() {
         zshef::util::os::mac::update "jo"
     }
 }
+
+function zshef::install::debian() {
+    zshef::util::mng::is_installed "jo" || {
+        zshef::util::os::debian::install "jo"
+    }
+}
+
+function zshef::update::debian() {
+    zshef::util::mng::is_installed "jo" && {
+        zshef::util::os::debian::update "jo"
+    }
+}

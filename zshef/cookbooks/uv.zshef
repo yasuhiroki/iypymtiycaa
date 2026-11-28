@@ -12,3 +12,15 @@ function zshef::update::osx() {
     }
 }
 
+function zshef::install::debian() {
+    zshef::util::mng::is_installed "uv" || {
+        curl -LsSf https://astral.sh/uv/install.sh | sh
+    }
+}
+
+function zshef::update::debian() {
+    zshef::util::mng::is_installed "uv" && {
+        uv self update
+    }
+}
+

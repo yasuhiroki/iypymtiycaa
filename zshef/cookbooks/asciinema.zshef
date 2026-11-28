@@ -13,3 +13,15 @@ function zshef::update::osx() {
         zshef::util::os::mac::update "asciinema"
     }
 }
+
+function zshef::install::debian() {
+    zshef::util::mng::is_installed "asciinema" || {
+        zshef::util::os::debian::install "asciinema"
+    }
+}
+
+function zshef::update::debian() {
+    zshef::util::mng::is_installed "asciinema" && {
+        zshef::util::os::debian::update "asciinema"
+    }
+}

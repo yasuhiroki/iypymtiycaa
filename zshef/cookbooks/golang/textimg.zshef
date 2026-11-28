@@ -2,13 +2,13 @@
 # textimg: Command to convert from color text (ANSI or 256) to image
 # ex) echo-sd | textimg -o sd.png
 
-function zshef::install::osx() {
+function zshef::install() {
     zshef::util::mng::is_installed "textimg" || {
         zshef::util::lang::go::install github.com/jiro4989/textimg@latest
     }
 }
 
-function zshef::update::osx() {
+function zshef::update() {
     zshef::util::mng::is_installed "textimg" && {
         zshef::util::lang::go::update github.com/jiro4989/textimg@latest
     }

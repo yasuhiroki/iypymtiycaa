@@ -2,13 +2,13 @@
 # pup: HTML パーサーコマンドラインツール
 # ex) cat index.html | pup 'meta'
 
-function zshef::install::osx() {
+function zshef::install() {
     zshef::util::mng::is_installed "pup" || {
         zshef::util::lang::go::install github.com/ericchiang/pup@latest
     }
 }
 
-function zshef::update::osx() {
+function zshef::update() {
     zshef::util::mng::is_installed "pup" && {
         zshef::util::lang::go::update github.com/ericchiang/pup@latest
     }

@@ -23,6 +23,28 @@ function zshef::install::osx() {
 
    gem install rubocop ruby-lsp
 }
+
+function zshef::install::debian() {
+    local lang="ruby"
+    local ver="3.4.5"
+    my::asdf::is_installed "${lang}" "${ver}" || {
+        zshef::util::os::debian::install \
+            "autoconf" "bison" "patch" "build-essential" \
+            "libssl-dev" "libyaml-dev" "libreadline-dev" "zlib1g-dev" \
+            "libgmp-dev" "libncurses-dev" "libffi-dev" "libgdbm-dev" \
+            "libdb-dev" "uuid-dev" || return 1
+
+        local param=( \
+            "${lang}" \
+            "${ver}" \
+            "https://github.com/asdf-vm/asdf-ruby.git" \
+        )
+
+        my::asdf::default_install ${param[@]} || return 1
+    }
+
+    gem install rubocop ruby-lsp
+}
 function zshef::update() {
     :
 }

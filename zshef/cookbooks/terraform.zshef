@@ -12,3 +12,21 @@ function zshef::update::osx() {
         zshef::util::os::mac::update "hashicorp/tap/terraform"
     }
 }
+
+function zshef::install::debian() {
+    zshef::util::mng::is_installed "terraform" || {
+        local codename
+        codename="$(. /etc/os-release && echo "${UBUNTU_CODENAME:-${VERSION_CODENAME}}")"
+        zshef::util::os::debian::add_repo \
+          "hashicorp" \
+          "https://apt.releases.hashicorp.com/gpg" \
+          "https://apt.releases.hashicorp.com" "${codename:?}" "main" \
+          && zshef::util::os::debian::install "terraform"
+    }
+}
+
+function zshef::update::debian() {
+    zshef::util::mng::is_installed "terraform" && {
+        zshef::util::os::debian::update "terraform"
+    }
+}

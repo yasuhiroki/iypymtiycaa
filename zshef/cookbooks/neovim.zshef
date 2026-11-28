@@ -12,3 +12,15 @@ function zshef::update::osx() {
     }
 }
 
+function zshef::install::debian() {
+    zshef::util::mng::is_installed "nvim" || {
+        zshef::util::os::debian::install "neovim"
+    }
+}
+
+function zshef::update::debian() {
+    zshef::util::mng::is_installed "nvim" && {
+        zshef::util::os::debian::update "neovim"
+    }
+}
+

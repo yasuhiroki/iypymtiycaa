@@ -7,13 +7,13 @@
 #   json.b = 2;
 
 
-function zshef::install::osx() {
+function zshef::install() {
     zshef::util::mng::is_installed "gron" || {
         zshef::util::lang::go::install github.com/tomnomnom/gron@latest
     }
 }
 
-function zshef::update::osx() {
+function zshef::update() {
     zshef::util::mng::is_installed "gron" && {
         zshef::util::lang::go::update github.com/tomnomnom/gron@latest
     }

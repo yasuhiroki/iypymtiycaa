@@ -19,3 +19,15 @@ function zshef::update::osx() {
         zshef::util::os::mac::update "imagemagick"
     }
 }
+
+function zshef::install::debian() {
+    zshef::util::mng::is_installed "identify" || {
+        zshef::util::os::debian::install "imagemagick"
+    }
+}
+
+function zshef::update::debian() {
+    zshef::util::mng::is_installed "identify" && {
+        zshef::util::os::debian::update "imagemagick"
+    }
+}

@@ -1,14 +1,14 @@
 #!/usr/bin/env zsh
 # mmv: mv を EDITOR で編集できる
 
-function zshef::install::osx() {
+function zshef::install() {
     zshef::util::mng::is_installed "mmv" || {
         zshef::util::lang::go::install github.com/itchyny/mmv/cmd/mmv@latest
 
     }
 }
 
-function zshef::update::osx() {
+function zshef::update() {
     zshef::util::mng::is_installed "mmv" && {
         zshef::util::lang::go::update github.com/itchyny/mmv/cmd/mmv@latest
     }
